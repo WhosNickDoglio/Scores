@@ -75,7 +75,7 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring(libs.desguar)
     implementation(projects.libraries.nbaApi)
     implementation(projects.libraries.appScope)
     implementation(projects.libraries.widgetUi)
@@ -97,7 +97,7 @@ dependencies {
     kapt(libs.dagger.compiler)
 
     // app stuff
-    implementation("com.google.android.material:material:1.6.0-beta01")
+    implementation(libs.androidx.material)
     implementation(libs.androidx.core)
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.ui.tooling.preview)

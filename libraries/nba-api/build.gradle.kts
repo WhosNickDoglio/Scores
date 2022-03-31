@@ -34,6 +34,7 @@ anvil {
 }
 
 dependencies {
+
     implementation(projects.libraries.appScope)
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)

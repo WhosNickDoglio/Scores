@@ -27,16 +27,30 @@ package dev.whosnickdoglio.settings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.glance.action.Action
+import dev.whosnickdoglio.scores.ui.ScoresChip
 
 @Composable
 fun WidgetSettings(modifier: Modifier = Modifier) {
+    val action = object : Action {
+
+    }
+
     Column(modifier = modifier) {
+        // If this works make it a ViewPager to see all the sizes?
+        ScoresChip(
+            onRefresh = action,
+            onNavigateUp = action,
+            onNavigateDown = action,
+            game = null
+        )
         /**
          * TODO
          *  - Preview of Widget as currently styled (Like Weather Timeline)
          *  - Theme Options (Material You, Palette API?, hardcoded colors (Compose color picker)
          *  - League options (NBA, WNBA, maybe more?)
          *  - Favorite team selection? (Can filter results by favorite team only)
+         *  - About (Licenses, Github link, versions, etc)
          */
     }
 }

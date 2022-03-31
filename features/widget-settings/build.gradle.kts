@@ -67,10 +67,14 @@ android {
 }
 
 dependencies {
-    implementation("com.google.android.material:material:1.6.0-beta01")
+    coreLibraryDesugaring(libs.desguar)
+    implementation(libs.androidx.material)
+    implementation(projects.libraries.widgetUi)
+    implementation(projects.libraries.nbaApi)
     implementation(libs.androidx.core)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
+    implementation(libs.glance.appwidget)
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.ui.tooling.preview)
     debugImplementation(libs.compose.ui.tooling)

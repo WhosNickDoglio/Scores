@@ -34,6 +34,9 @@ import androidx.glance.layout.width
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
+/**
+ *
+ */
 @Composable
 fun GameInfo(
     modifier: GlanceModifier = GlanceModifier,
@@ -44,7 +47,8 @@ fun GameInfo(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Team logos?
+        // Team logos? Where can I get these?
+        // TODO Make this less ugly and handle more info
         Text(text = game.homeTeam.name)
         Spacer(modifier = GlanceModifier.width(4.dp))
         Text(text = game.homeTeamScore.toString())

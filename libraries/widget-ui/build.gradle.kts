@@ -67,6 +67,7 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desguar)
     implementation(projects.libraries.nbaApi)
     implementation(libs.glance.appwidget)
     implementation(libs.compose.ui)
