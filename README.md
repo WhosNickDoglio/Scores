@@ -10,15 +10,15 @@
 - **Dark / Light mode auto switch**
 - Custom theming
 - Palette API pull colors from Wallpaper
-- Super Resizable 
-    - Small "chip" size which narrow and just shows single game score 
-    - Wide normal 
-    - longer turns into a scrollable list that shows more than one game 
-  - Build logic 
-  - Multiplatform?
-  
-# License 
-  
+- Super Resizable
+    - Small "chip" size which narrow and just shows single game score
+    - Wide normal
+    - longer turns into a scrollable list that shows more than one game
+    - Build logic
+    - Multiplatform?
+
+# License
+
       MIT License
 
       Copyright (c) 2022 Nicholas Doglio

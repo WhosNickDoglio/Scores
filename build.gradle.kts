@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -59,15 +58,3 @@ tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.ExperimentalStdlibApi")
 }
 
-fun isNonStable(version: String): Boolean {
-    val unstableKeywords =
-        listOf("ALPHA", "RC", "BETA", "DEV", "-M").any { version.toUpperCase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    return unstableKeywords && !regex.matches(version)
-}
-
-tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
-    rejectVersionIf {
-        isNonStable(candidate.version)
-    }
-}
