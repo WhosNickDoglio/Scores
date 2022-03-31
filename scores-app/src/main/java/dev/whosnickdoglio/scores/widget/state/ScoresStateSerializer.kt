@@ -36,6 +36,7 @@ import java.io.OutputStream
 
 object ScoresStateSerializer : Serializer<ScoresState> {
 
+    // TODO I hate this
     private val moshi = Moshi.Builder().build()
 
     private val adapter = moshi.adapter<ScoresState>()

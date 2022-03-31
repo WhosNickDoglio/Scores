@@ -25,12 +25,17 @@
 package dev.whosnickdoglio.scores.widget
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
+import androidx.glance.LocalSize
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.SizeMode
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.currentState
 import androidx.glance.state.GlanceStateDefinition
 import dev.whosnickdoglio.nba.state.ScoresState
+import dev.whosnickdoglio.scores.ui.ScoresChip
+import dev.whosnickdoglio.scores.ui.ScoresList
 import dev.whosnickdoglio.scores.widget.actions.NavigateAction
 import dev.whosnickdoglio.scores.widget.actions.RefreshAction
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
@@ -43,24 +48,42 @@ class ScoreWidget : GlanceAppWidget() {
 
     override val stateDefinition: GlanceStateDefinition<*> = ScoresStateDefinition
 
-    // TODO make this responsive
-    override val sizeMode: SizeMode = SizeMode.Single
+    override val sizeMode: SizeMode = SizeMode.Responsive(setOf(SMALL, LONG, TALL))
 
     @Composable
     override fun Content() {
         val state = currentState<ScoresState>()
 
-        ScoresWide(
-            onRefresh = actionRunCallback<RefreshAction>(),
-            onNavigateUp = NavigateAction.up(),
-            onNavigateDown = NavigateAction.down(),
-            game = if (state.games.isEmpty()) null else state.games[state.currentIndex ?: 0]
-        )
+        when (LocalSize.current) {
+            SMALL -> {
+                ScoresChip(
+                    onRefresh = actionRunCallback<RefreshAction>(),
+                    onNavigateUp = NavigateAction.up(),
+                    onNavigateDown = NavigateAction.down(),
+                    game = if (state.games.isEmpty()) null else state.games[state.currentIndex ?: 0]
+                )
+            }
+            TALL -> {
+                ScoresList(
+                    onRefresh = actionRunCallback<RefreshAction>(),
+                    games = state.games
+                )
+            }
+            LONG -> {
+                ScoresWide(
+                    onRefresh = actionRunCallback<RefreshAction>(),
+                    onNavigateUp = NavigateAction.up(),
+                    onNavigateDown = NavigateAction.down(),
+                    game = if (state.games.isEmpty()) null else state.games[state.currentIndex ?: 0]
+                )
+            }
+        }
     }
 
     private companion object {
-        private val SMALL = ""
-        private val LONG = ""
-        private val TALL = ""
+        // TODO these are really just guesses, come up with better sizing numbers
+        private val SMALL = DpSize(100.dp, 50.dp)
+        private val LONG = DpSize(150.dp, 50.dp)
+        private val TALL = DpSize(150.dp, 200.dp)
     }
 }

@@ -37,6 +37,8 @@ import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
 
 class NavigateAction : ActionCallback {
 
+    private enum class Direction { UP, DOWN }
+
     override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val direction: Direction? = parameters[navKey]
 
@@ -47,6 +49,7 @@ class NavigateAction : ActionCallback {
             updateState = { currentState ->
                 val currentIndex = currentState.currentIndex ?: 0
 
+                // TODO more robust logic and handling of this
                 val newIndex = when (direction) {
                     Direction.DOWN -> if (currentIndex == currentState.games.lastIndex) 0 else currentIndex + 1
                     Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
@@ -61,11 +64,13 @@ class NavigateAction : ActionCallback {
     }
 
     companion object {
-        val navKey = ActionParameters.Key<Direction>("direction")
-        fun up() = actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.UP))
-        fun down() = actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.DOWN))
+        private val navKey = ActionParameters.Key<Direction>("direction")
 
+        fun up() =
+            actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.UP))
+
+        fun down() =
+            actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.DOWN))
     }
 }
 
-enum class Direction { UP, DOWN }
