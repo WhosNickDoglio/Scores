@@ -22,30 +22,26 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+plugins {
+    id("org.jetbrains.kotlin.jvm")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.anvil)
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+anvil {
+    generateDaggerFactories.set(true)
+}
 
-rootProject.name = "Scores"
+dependencies {
+    implementation(projects.libraries.appScope)
+    implementation(libs.dagger.core)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.moshi)
+    implementation(libs.coroutines.core)
+    api(libs.eithernet)
 
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)
+    api(libs.moshi)
+    ksp(libs.moshi.ksp)
+
+}

@@ -22,30 +22,31 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
+package dev.whosnickdoglio.scores.widget.state
+
+import androidx.datastore.core.Serializer
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapter
+import dev.whosnickdoglio.nba.state.ScoresState
+import okio.buffer
+import okio.sink
+import okio.source
+import java.io.InputStream
+import java.io.OutputStream
+
+object ScoresStateSerializer : Serializer<ScoresState> {
+
+    private val moshi = Moshi.Builder().build()
+
+    private val adapter = moshi.adapter<ScoresState>()
+
+    override val defaultValue: ScoresState = ScoresState()
+
+    override suspend fun readFrom(input: InputStream): ScoresState =
+        adapter.fromJson(input.source().buffer()) ?: ScoresState()
+
+    override suspend fun writeTo(t: ScoresState, output: OutputStream) {
+        adapter.toJson(output.sink().buffer(), t)
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

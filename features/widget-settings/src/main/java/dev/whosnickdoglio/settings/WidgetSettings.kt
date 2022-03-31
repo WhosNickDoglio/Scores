@@ -22,30 +22,21 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
+package dev.whosnickdoglio.settings
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun WidgetSettings(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        /**
+         * TODO
+         *  - Preview of Widget as currently styled (Like Weather Timeline)
+         *  - Theme Options (Material You, Palette API?, hardcoded colors (Compose color picker)
+         *  - League options (NBA, WNBA, maybe more?)
+         *  - Favorite team selection? (Can filter results by favorite team only)
+         */
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

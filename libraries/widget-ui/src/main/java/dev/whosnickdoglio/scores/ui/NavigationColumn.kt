@@ -22,30 +22,38 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
+package dev.whosnickdoglio.scores.ui
+
+import androidx.compose.runtime.Composable
+import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
+import androidx.glance.action.Action
+import androidx.glance.action.clickable
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Column
+import androidx.glance.layout.fillMaxHeight
+
+@Composable
+fun NavigationColumn(
+    modifier: GlanceModifier = GlanceModifier,
+    onNavigateUp: Action,
+    onNavigateDown: Action,
+) {
+    Column(
+        modifier = modifier.fillMaxHeight(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            provider = ImageProvider(R.drawable.up),
+            contentDescription = "Navigate to the previous game in the list.",
+            modifier = GlanceModifier.clickable(onNavigateUp)
+        )
+        Image(
+            provider = ImageProvider(R.drawable.down),
+            contentDescription = "Navigate to the next game in the list.",
+            modifier = GlanceModifier.clickable(onNavigateDown)
+        )
     }
+
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

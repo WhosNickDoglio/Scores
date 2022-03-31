@@ -22,30 +22,35 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.whosnickdoglio.nba.models
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
+/**
+ * @param date
+ * @param homeTeam
+ * @param homeTeamScore
+ * @param id
+ * @param period
+ * @param postseason
+ * @param season
+ * @param status
+ * @param time
+ * @param visitorTeam
+ * @param visitorTeamScore
+ */
+@JsonClass(generateAdapter = true)
+data class Game(
+    val date: String, // TODO convert to LocalDate will need adapter
+    @Json(name = "home_team") val homeTeam: Team,
+    @Json(name = "home_team_score") val homeTeamScore: Int,
+    val id: Int,
+    val period: Int,
+    val postseason: Boolean,
+    val season: Int,
+    val status: String,
+    val time: String,
+    @Json(name = "visitor_team") val visitorTeam: Team,
+    @Json(name = "visitor_team_score") val visitorTeamScore: Int
 )

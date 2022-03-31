@@ -9,6 +9,8 @@
         <entry key="scores-widget/src/main/res/drawable/refresh.xml" value="0.2245" />
         <entry key="scores-widget/src/main/res/drawable/up.xml" value="0.2245" />
         <entry key="scores-widget/src/main/res/xml/widget.xml" value="0.40572916666666664" />
+        <entry key="widget-ui/src/main/res/drawable/down.xml" value="0.2245" />
+        <entry key="widget-ui/src/main/res/drawable/up.xml" value="0.2245" />
       </map>
     </option>
   </component>

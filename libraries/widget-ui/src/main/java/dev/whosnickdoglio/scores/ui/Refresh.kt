@@ -22,30 +22,22 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package dev.whosnickdoglio.scores.ui
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
+import androidx.glance.action.Action
+import androidx.glance.action.clickable
+import androidx.glance.layout.padding
+
+@Composable
+fun Refresh(onRefresh: Action) {
+    Image(
+        provider = ImageProvider(R.drawable.refresh),
+        contentDescription = "Button to refresh game scores data",
+        modifier = GlanceModifier.clickable(onRefresh).padding(4.dp)
+    )
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

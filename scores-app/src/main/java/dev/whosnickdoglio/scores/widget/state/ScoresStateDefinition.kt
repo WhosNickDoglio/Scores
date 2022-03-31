@@ -22,30 +22,23 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package dev.whosnickdoglio.scores.widget.state
+
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.DataStoreFactory
+import androidx.datastore.dataStoreFile
+import androidx.glance.state.GlanceStateDefinition
+import dev.whosnickdoglio.nba.state.ScoresState
+import java.io.File
+
+object ScoresStateDefinition: GlanceStateDefinition<ScoresState> {
+    override suspend fun getDataStore(context: Context, fileKey: String): DataStore<ScoresState> =
+        DataStoreFactory.create(
+            serializer = ScoresStateSerializer,
+            produceFile = { context.dataStoreFile(fileKey) }
+        )
+
+    override fun getLocation(context: Context, fileKey: String): File =
+        context.dataStoreFile(fileKey)
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

@@ -22,30 +22,29 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+package dev.whosnickdoglio.scores.di
+
+import android.content.Context
+import com.squareup.anvil.annotations.MergeComponent
+import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.nba.BallDontLieService
+import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
+import javax.inject.Singleton
+
+@Singleton
+@MergeComponent(AppScope::class)
+interface AppComponent {
+
+//    val workerFactory: ScoresWorkerFactory
+
+    val service: BallDontLieService
+
+    fun inject(target: ScoresWidgetReceiver)
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+
+
+interface ComponentProvider {
+    val component: AppComponent
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)
+val Context.injector get() = (applicationContext as ComponentProvider).component
