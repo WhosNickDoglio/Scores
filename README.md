@@ -2,21 +2,6 @@
 
 [comment]: <> (CI, Min API, Contribution Guide, CodeCliamte, License badges)
 
-## TODO / Ideas
-
-- Material3 Scores widget using Glance APIs
-- NBA, WNBA (and maybe college?) scores
-- Launch a Activity to configure what scores are shown, select favorite teams, other configuration?
-- **Dark / Light mode auto switch**
-- Custom theming
-- Palette API pull colors from Wallpaper
-- Super Resizable
-    - Small "chip" size which narrow and just shows single game score
-    - Wide normal
-    - longer turns into a scrollable list that shows more than one game
-    - Build logic
-    - Multiplatform?
-
 # License
 
       MIT License
