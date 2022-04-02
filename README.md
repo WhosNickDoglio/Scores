@@ -1,6 +1,10 @@
 # Basketball Scores widget
 
-[comment]: <> (CI, Min API, Contribution Guide, CodeCliamte, License badges)
+[comment]: <> (Contribution Guide)
+[![CI](https://github.com/WhosNickDoglio/Scores/actions/workflows/ci.yml/badge.svg)](https://github.com/WhosNickDoglio/Scores/actions/workflows/ci.yml)
+[![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=24)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f7c8d3315a53bd0e8ca6/maintainability)](https://codeclimate.com/github/WhosNickDoglio/Scores/maintainability)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # License
 
