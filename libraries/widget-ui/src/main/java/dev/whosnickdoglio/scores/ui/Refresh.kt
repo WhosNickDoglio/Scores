@@ -38,6 +38,6 @@ fun Refresh(onRefresh: Action) {
     Image(
         provider = ImageProvider(R.drawable.refresh),
         contentDescription = "Button to refresh game scores data",
-        modifier = GlanceModifier.clickable(onRefresh).padding(4.dp)
+        modifier = GlanceModifier.clickable(onRefresh)
     )
 }

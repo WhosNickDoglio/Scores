@@ -30,7 +30,7 @@ import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.state.updateAppWidgetState
 import com.slack.eithernet.ApiResult
-import dev.whosnickdoglio.nba.state.ScoresState
+import dev.whosnickdoglio.nba.state.ScoresWidgetState
 import dev.whosnickdoglio.scores.di.injector
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
 import kotlinx.coroutines.CoroutineScope
@@ -66,14 +66,14 @@ class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
                             endDate = today
                         )
                         if (result is ApiResult.Success) {
-                            return@updateAppWidgetState ScoresState(
+                            return@updateAppWidgetState ScoresWidgetState(
                                 currentIndex = currentState.currentIndex ?: 0,
                                 // TODO figure out how to move games that haven't started yet.
-                                games = result.value.games.sortedBy { it.period }
+                                games = result.value.games.orEmpty().sortedBy { it.period }
                             )
                         } else {
                             // TODO better error handling
-                            return@updateAppWidgetState ScoresState()
+                            return@updateAppWidgetState ScoresWidgetState()
                         }
                     }
                 )

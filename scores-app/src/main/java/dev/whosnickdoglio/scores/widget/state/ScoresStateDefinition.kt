@@ -29,11 +29,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import androidx.glance.state.GlanceStateDefinition
-import dev.whosnickdoglio.nba.state.ScoresState
+import dev.whosnickdoglio.nba.state.ScoresWidgetState
 import java.io.File
 
-object ScoresStateDefinition: GlanceStateDefinition<ScoresState> {
-    override suspend fun getDataStore(context: Context, fileKey: String): DataStore<ScoresState> =
+object ScoresStateDefinition: GlanceStateDefinition<ScoresWidgetState> {
+    override suspend fun getDataStore(context: Context, fileKey: String): DataStore<ScoresWidgetState> =
         DataStoreFactory.create(
             serializer = ScoresStateSerializer,
             produceFile = { context.dataStoreFile(fileKey) }

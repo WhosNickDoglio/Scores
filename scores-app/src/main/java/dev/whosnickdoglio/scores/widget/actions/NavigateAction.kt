@@ -31,7 +31,7 @@ import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.state.updateAppWidgetState
-import dev.whosnickdoglio.nba.state.ScoresState
+import dev.whosnickdoglio.nba.state.ScoresWidgetState
 import dev.whosnickdoglio.scores.widget.ScoreWidget
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
 
@@ -56,7 +56,7 @@ class NavigateAction : ActionCallback {
                     null -> currentState.currentIndex
                 }
 
-                return@updateAppWidgetState ScoresState(newIndex, currentState.games)
+                return@updateAppWidgetState ScoresWidgetState(newIndex, currentState.games)
             }
         )
 

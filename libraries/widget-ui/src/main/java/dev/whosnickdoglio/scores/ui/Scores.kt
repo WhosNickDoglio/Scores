@@ -41,7 +41,7 @@ import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
 @Composable
-fun ScoresWide(
+fun Scores(
     modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,

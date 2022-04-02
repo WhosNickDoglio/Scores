@@ -33,13 +33,13 @@ import androidx.glance.appwidget.SizeMode
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.currentState
 import androidx.glance.state.GlanceStateDefinition
-import dev.whosnickdoglio.nba.state.ScoresState
-import dev.whosnickdoglio.scores.ui.ScoresChip
+import dev.whosnickdoglio.nba.state.ScoresWidgetState
+import dev.whosnickdoglio.scores.ui.ScoresMini
 import dev.whosnickdoglio.scores.ui.ScoresList
 import dev.whosnickdoglio.scores.widget.actions.NavigateAction
 import dev.whosnickdoglio.scores.widget.actions.RefreshAction
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
-import dev.whosnickdoglio.scores.ui.ScoresWide
+import dev.whosnickdoglio.scores.ui.Scores
 
 /**
  *
@@ -48,15 +48,15 @@ class ScoreWidget : GlanceAppWidget() {
 
     override val stateDefinition: GlanceStateDefinition<*> = ScoresStateDefinition
 
-    override val sizeMode: SizeMode = SizeMode.Responsive(setOf(SMALL, LONG, TALL))
+    override val sizeMode: SizeMode = SizeMode.Responsive(setOf(MINI, LONG, TALL))
 
     @Composable
     override fun Content() {
-        val state = currentState<ScoresState>()
+        val state = currentState<ScoresWidgetState>()
 
         when (LocalSize.current) {
-            SMALL -> {
-                ScoresChip(
+            MINI -> {
+                ScoresMini(
                     onRefresh = actionRunCallback<RefreshAction>(),
                     onNavigateUp = NavigateAction.up(),
                     onNavigateDown = NavigateAction.down(),
@@ -70,7 +70,7 @@ class ScoreWidget : GlanceAppWidget() {
                 )
             }
             LONG -> {
-                ScoresWide(
+                Scores(
                     onRefresh = actionRunCallback<RefreshAction>(),
                     onNavigateUp = NavigateAction.up(),
                     onNavigateDown = NavigateAction.down(),
@@ -82,8 +82,8 @@ class ScoreWidget : GlanceAppWidget() {
 
     private companion object {
         // TODO these are really just guesses, come up with better sizing numbers
-        private val SMALL = DpSize(100.dp, 50.dp)
-        private val LONG = DpSize(150.dp, 50.dp)
+        private val MINI = DpSize(100.dp, 80.dp)
+        private val LONG = DpSize(150.dp, 80.dp)
         private val TALL = DpSize(150.dp, 200.dp)
     }
 }

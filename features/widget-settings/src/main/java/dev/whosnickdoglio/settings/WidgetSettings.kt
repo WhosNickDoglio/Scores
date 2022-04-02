@@ -28,8 +28,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.glance.action.Action
-import dev.whosnickdoglio.scores.ui.ScoresChip
+import dev.whosnickdoglio.scores.ui.ScoresMini
 
+// TODO do we want a onboarding for league selection?
 @Composable
 fun WidgetSettings(modifier: Modifier = Modifier) {
     val action = object : Action {
@@ -38,7 +39,7 @@ fun WidgetSettings(modifier: Modifier = Modifier) {
 
     Column(modifier = modifier) {
         // If this works make it a ViewPager to see all the sizes?
-        ScoresChip(
+        ScoresMini(
             onRefresh = action,
             onNavigateUp = action,
             onNavigateDown = action,

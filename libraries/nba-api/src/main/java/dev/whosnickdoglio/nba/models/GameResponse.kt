@@ -33,6 +33,6 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class GameResponse(
-    @Json(name = "data") val games: List<Game>,
-    val meta: Meta
+    @Json(name = "data") val games: List<Game>? = null,
+    val meta: Meta? = null
 )

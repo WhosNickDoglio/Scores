@@ -39,6 +39,8 @@ dependencies {
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
+    api(libs.okhttp.core)
+    implementation(libs.okhttp.logging)
     implementation(libs.coroutines.core)
     api(libs.eithernet)
 

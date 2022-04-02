@@ -28,7 +28,9 @@ import com.slack.eithernet.ApiResult
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
 import com.squareup.moshi.Moshi
+import dagger.Lazy
 import dev.whosnickdoglio.nba.models.GameResponse
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -65,8 +67,12 @@ interface BallDontLieService {
         /**
          *
          */
-        fun create(moshi: Moshi): BallDontLieService = Retrofit.Builder()
+        fun create(
+            moshi: Moshi,
+            okHttpClient: Lazy<OkHttpClient>
+        ): BallDontLieService = Retrofit.Builder()
             .baseUrl(BASE_URL)
+            .callFactory { okHttpClient.get().newCall(it) }
             .addConverterFactory(ApiResultConverterFactory)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(ApiResultCallAdapterFactory)

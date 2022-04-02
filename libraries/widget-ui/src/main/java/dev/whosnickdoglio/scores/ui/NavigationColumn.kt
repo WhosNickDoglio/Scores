@@ -30,9 +30,7 @@ import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
-import androidx.glance.layout.Alignment
-import androidx.glance.layout.Column
-import androidx.glance.layout.fillMaxHeight
+import androidx.glance.layout.*
 
 @Composable
 fun NavigationColumn(
@@ -55,5 +53,4 @@ fun NavigationColumn(
             modifier = GlanceModifier.clickable(onNavigateDown)
         )
     }
-
 }

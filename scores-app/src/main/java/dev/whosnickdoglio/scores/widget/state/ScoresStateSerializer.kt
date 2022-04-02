@@ -27,26 +27,26 @@ package dev.whosnickdoglio.scores.widget.state
 import androidx.datastore.core.Serializer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
-import dev.whosnickdoglio.nba.state.ScoresState
+import dev.whosnickdoglio.nba.state.ScoresWidgetState
 import okio.buffer
 import okio.sink
 import okio.source
 import java.io.InputStream
 import java.io.OutputStream
 
-object ScoresStateSerializer : Serializer<ScoresState> {
+object ScoresStateSerializer : Serializer<ScoresWidgetState> {
 
     // TODO I hate this
     private val moshi = Moshi.Builder().build()
 
-    private val adapter = moshi.adapter<ScoresState>()
+    private val adapter = moshi.adapter<ScoresWidgetState>()
 
-    override val defaultValue: ScoresState = ScoresState()
+    override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
-    override suspend fun readFrom(input: InputStream): ScoresState =
-        adapter.fromJson(input.source().buffer()) ?: ScoresState()
+    override suspend fun readFrom(input: InputStream): ScoresWidgetState =
+        adapter.fromJson(input.source().buffer()) ?: ScoresWidgetState()
 
-    override suspend fun writeTo(t: ScoresState, output: OutputStream) {
+    override suspend fun writeTo(t: ScoresWidgetState, output: OutputStream) {
         adapter.toJson(output.sink().buffer(), t)
     }
 }

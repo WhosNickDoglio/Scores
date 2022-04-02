@@ -26,16 +26,18 @@ package dev.whosnickdoglio.nba.di
 
 import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.moshi.Moshi
+import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.nba.BallDontLieService
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Singleton
 
 @ContributesTo(AppScope::class)
 @Module
 object NbaApiModule {
-
 
     @Singleton
     @Provides
@@ -43,6 +45,20 @@ object NbaApiModule {
 
     @Singleton
     @Provides
-    fun provideBallDontLieService(moshi: Moshi): BallDontLieService =
-        BallDontLieService.create(moshi)
+    fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(
+            // TODO only for debug builds
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        )
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideBallDontLieService(
+        moshi: Moshi,
+        okHttpClient: Lazy<OkHttpClient>
+    ): BallDontLieService =
+        BallDontLieService.create(moshi, okHttpClient)
 }
