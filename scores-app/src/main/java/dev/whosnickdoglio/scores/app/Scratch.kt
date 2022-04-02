@@ -27,7 +27,15 @@ package dev.whosnickdoglio.scores.app
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,22 +45,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.glance.GlanceModifier
-import androidx.glance.ImageProvider
-import androidx.glance.action.clickable
-import androidx.glance.layout.padding
 import dev.whosnickdoglio.nba.models.Game
 import dev.whosnickdoglio.nba.models.Team
 import dev.whosnickdoglio.scores.ui.R
-import dev.whosnickdoglio.scores.ui.Refresh
 
 // TODO clean this up
 @Composable
 fun Chip(
     modifier: Modifier = Modifier,
-    onRefresh: () -> Unit = {},
-    onNavigateUp: () -> Unit = {},
-    onNavigateDown: () -> Unit = {},
     game: Game? = null
 ) {
     Column(

@@ -30,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.glance.action.Action
 import dev.whosnickdoglio.scores.ui.ScoresMini
 
-// TODO do we want a onboarding for league selection?
 @Composable
 fun WidgetSettings(modifier: Modifier = Modifier) {
     val action = object : Action {
@@ -45,13 +44,5 @@ fun WidgetSettings(modifier: Modifier = Modifier) {
             onNavigateDown = action,
             game = null
         )
-        /**
-         * TODO
-         *  - Preview of Widget as currently styled (Like Weather Timeline)
-         *  - Theme Options (Material You, Palette API?, hardcoded colors (Compose color picker)
-         *  - League options (NBA, WNBA, maybe more?)
-         *  - Favorite team selection? (Can filter results by favorite team only)
-         *  - About (Licenses, Github link, versions, etc)
-         */
     }
 }
