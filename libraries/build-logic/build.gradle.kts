@@ -22,43 +22,26 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    includeBuild("libraries/build-logic")
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 plugins {
-    id("com.gradle.enterprise") version ("3.9")
+    `kotlin-dsl`
+    alias(libs.plugins.detekt)
 }
 
-
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
+tasks.withType<JavaCompile>().configureEach {
+    sourceCompatibility = JavaVersion.VERSION_11.toString()
+    targetCompatibility = JavaVersion.VERSION_11.toString()
+}
+tasks.withType<KotlinJvmCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)
+dependencies {
+    detektPlugins(libs.detekt.formatting)
+    implementation(libs.gradle.kotlin)
+    implementation(libs.gradle.android)
+    implementation(libs.gradle.detekt)
+}

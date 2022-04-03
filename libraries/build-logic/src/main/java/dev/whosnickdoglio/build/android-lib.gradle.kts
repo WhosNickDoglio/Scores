@@ -1,3 +1,10 @@
+import com.android.build.api.dsl.LibraryExtension
+import dev.whosnickdoglio.build.COMPILE_SDK
+import dev.whosnickdoglio.build.JAVA_VERSION
+import dev.whosnickdoglio.build.MIN_SDK
+import dev.whosnickdoglio.build.TARGET_SDK
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+
 /*
  * MIT License
  *
@@ -22,43 +29,32 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    includeBuild("libraries/build-logic")
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 
 plugins {
-    id("com.gradle.enterprise") version ("3.9")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
+kotlinExtension.explicitApi()
+
+extensions.configure<LibraryExtension>() {
+    compileSdk = COMPILE_SDK
+    defaultConfig {
+        minSdk = MIN_SDK
+        targetSdk = TARGET_SDK
+    }
+    compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JAVA_VERSION
+        targetCompatibility = JAVA_VERSION
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
     }
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

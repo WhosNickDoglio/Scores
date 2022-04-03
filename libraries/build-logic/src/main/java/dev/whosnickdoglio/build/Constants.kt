@@ -22,43 +22,15 @@
  * SOFTWARE.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    includeBuild("libraries/build-logic")
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+package dev.whosnickdoglio.build
 
-plugins {
-    id("com.gradle.enterprise") version ("3.9")
-}
+import org.gradle.api.JavaVersion
 
 
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
-}
+internal val JAVA_VERSION = JavaVersion.VERSION_11
+internal const val COMPILE_SDK = 32
+internal const val MIN_SDK = 24
+internal const val TARGET_SDK = 32
+internal const val VERSION_CODE = 1
+internal const val VERSION_NAME = "0.1.0"
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Scores"
-
-include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
-)

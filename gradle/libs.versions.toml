@@ -24,6 +24,12 @@ anvil = { id = "com.squareup.anvil", version = "2.4.0" }
 paparazzi = { id = "app.cash.paparazzi", version = "0.9.3" }
 
 [libraries]
+gradle-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+#gradle-playpublish = { module = "com.github.triplet.gradle:play-publisher", version.ref = "publish" }
+
+
 androidx-core = { module = "androidx.core:core-ktx", version = "1.9.0-alpha02" }
 androidx-datastore = { module = "androidx.datastore:datastore", version = "1.0.0" }
 androidx-workmanager = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
