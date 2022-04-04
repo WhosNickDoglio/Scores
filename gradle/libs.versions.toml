@@ -2,7 +2,7 @@
 agp = "7.1.2"
 kotlin = "1.6.10"
 detekt = "1.19.0"
-coroutines = "1.6.0"
+coroutines = "1.6.1"
 retrofit = "2.9.0"
 okhttp = "4.9.3"
 compose = "1.2.0-alpha06"
