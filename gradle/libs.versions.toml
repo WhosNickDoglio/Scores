@@ -14,7 +14,7 @@ work = "2.8.0-alpha01"
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 doctor = { id = "com.osacky.doctor", version = "0.8.0" }
 play-publish = { id = "com.github.triplet.play", version = "3.7.0" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.0.0-rc05" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.0.0-rc06" }
 android-app = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
