@@ -8,7 +8,7 @@ okhttp = "4.9.3"
 compose = "1.2.0-alpha07"
 dagger = "2.41"
 moshi = "1.13.0"
-work = "2.8.0-alpha01"
+work = "2.8.0-alpha02"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
