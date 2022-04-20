@@ -46,7 +46,7 @@ class UpdateScoresWorker @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
-        val apiResult = service.retrieveGameData()
+        service.retrieveGameData()
 
         return TODO()
     }

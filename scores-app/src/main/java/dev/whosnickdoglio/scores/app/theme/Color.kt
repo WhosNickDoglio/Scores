@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
+@file:SuppressWarnings("MagicNumber")
 package dev.whosnickdoglio.scores.app.theme
 
 import androidx.compose.ui.graphics.Color

@@ -32,12 +32,12 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
         applicationId = "dev.whosnickdoglio.scores"
-        minSdk = 24
-        targetSdk = 32
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 

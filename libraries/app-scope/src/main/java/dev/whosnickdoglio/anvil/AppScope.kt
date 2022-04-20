@@ -24,4 +24,4 @@
 
 package dev.whosnickdoglio.anvil
 
-abstract class AppScope private constructor()
+sealed class AppScope private constructor()
