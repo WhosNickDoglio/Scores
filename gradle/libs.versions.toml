@@ -57,7 +57,7 @@ moshi-ksp = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = 
 
 eithernet = { module = "com.slack.eithernet:eithernet", version = "1.2.1" }
 desguar = { module = "com.android.tools:desugar_jdk_libs", version = "1.1.5" }
-leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version = "2.8.1" }
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version = "2.9.1" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
 
