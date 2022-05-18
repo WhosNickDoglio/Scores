@@ -27,7 +27,7 @@ anvil = { id = "com.squareup.anvil", version = "2.4.0" }
 paparazzi = { id = "app.cash.paparazzi", version = "0.9.3" }
 
 [libraries]
-androidx-core = { module = "androidx.core:core-ktx", version = "1.8.0-rc01" }
+androidx-core = { module = "androidx.core:core-ktx", version = "1.8.0-rc02" }
 androidx-datastore = { module = "androidx.datastore:datastore", version = "1.0.0" }
 androidx-workmanager = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.0-rc01" }
