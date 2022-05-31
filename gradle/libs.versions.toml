@@ -15,7 +15,7 @@ work = "2.8.0-alpha02"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-doctor = { id = "com.osacky.doctor", version = "0.8.0" }
+doctor = { id = "com.osacky.doctor", version = "0.8.1" }
 play-publish = { id = "com.github.triplet.play", version = "3.7.0" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.4.0" }
 android-app = { id = "com.android.application", version.ref = "agp" }
