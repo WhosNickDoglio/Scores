@@ -22,32 +22,40 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget.state
+package dev.whosnickdoglio.widget.state
 
 import androidx.datastore.core.Serializer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
-import dev.whosnickdoglio.nba.state.ScoresWidgetState
 import okio.buffer
 import okio.sink
-import okio.source
+import java.io.EOFException
 import java.io.InputStream
 import java.io.OutputStream
+import javax.inject.Inject
 
-object ScoresStateSerializer : Serializer<ScoresWidgetState> {
-
-    // TODO I hate this
-    private val moshi = Moshi.Builder().build()
+/**
+ * A DataStore [Serializer] for the [ScoresWidgetState] object.
+ *
+ * @param moshi A [Moshi] instance that parses the [ScoresWidgetState]
+ */
+class ScoresStateSerializer @Inject constructor(
+    moshi: Moshi,
+) : Serializer<ScoresWidgetState> {
 
     private val adapter = moshi.adapter<ScoresWidgetState>()
 
     override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
-    override suspend fun readFrom(input: InputStream): ScoresWidgetState =
-        adapter.fromJson(input.source().buffer()) ?: ScoresWidgetState()
+    override suspend fun readFrom(input: InputStream): ScoresWidgetState = try {
+        adapter.fromJson(input.bufferedReader().readText()) ?: ScoresWidgetState()
+    } catch (exception: EOFException) {
+        ScoresWidgetState()
+    }
 
     override suspend fun writeTo(t: ScoresWidgetState, output: OutputStream) {
-        adapter.toJson(output.sink().buffer(), t)
+        val sink = output.sink().buffer()
+        adapter.toJson(sink, t)
+        sink.close()
     }
 }
-
