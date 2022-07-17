@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.app
+package dev.whosnickdoglio.settings
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -31,20 +31,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import dev.whosnickdoglio.scores.app.theme.ScoresTheme
-import dev.whosnickdoglio.settings.WidgetSettings
 
-class MainActivity : ComponentActivity() {
+/**
+ */
+class ConfigurationActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ScoresTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    WidgetSettings()
-                }
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background,
+            ) {
+                WidgetSettings()
             }
         }
     }
