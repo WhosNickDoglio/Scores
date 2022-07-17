@@ -43,17 +43,6 @@ tasks.named<Wrapper>("wrapper") {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-tasks.register<Detekt>("detektAll") {
-    parallel = true
-    autoCorrect = true
-    config.setFrom("$projectDir/config/detekt/detekt.yml")
-    setSource(files(projectDir))
-    include("**/*.kt")
-    include("**/*.kts")
-    exclude("**/resources/**")
-    exclude("**/build/**")
-}
-
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.ExperimentalStdlibApi")
 }

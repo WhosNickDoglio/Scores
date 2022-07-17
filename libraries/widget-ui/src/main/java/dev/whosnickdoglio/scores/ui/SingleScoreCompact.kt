@@ -69,7 +69,8 @@ fun SingleScoreCompact(
     Column(
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier) {
+        modifier = modifier
+    ) {
         Row(
             modifier = GlanceModifier.fillMaxWidth().wrapContentHeight(),
             verticalAlignment = Alignment.CenterVertically,
@@ -112,13 +113,11 @@ fun SingleScoreCompact(
     }
 }
 
-//@Composable
-//private fun Loading(
-//    modifier: GlanceModifier = GlanceModifier,
-//    action: Action
-//) {
-//    Text(text = "Loading...")
-//}
+@Suppress("UnusedPrivateMember")
+@Composable
+private fun Loading() {
+    Text(text = "Loading...")
+}
 
 @Composable
 private fun NavigationRow(
@@ -145,7 +144,6 @@ private fun NavigationRow(
         )
     }
 }
-
 
 @Composable
 private fun EmptyChip(

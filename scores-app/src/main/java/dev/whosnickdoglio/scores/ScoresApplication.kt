@@ -27,7 +27,6 @@ package dev.whosnickdoglio.scores
 import android.app.Application
 import android.os.StrictMode
 import com.google.android.material.color.DynamicColors
-import dev.whosnickdoglio.scores.BuildConfig
 import dev.whosnickdoglio.scores.di.AppComponent
 import dev.whosnickdoglio.scores.di.ComponentProvider
 import dev.whosnickdoglio.scores.di.DaggerAppComponent

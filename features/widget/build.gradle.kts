@@ -27,6 +27,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.anvil)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.detekt)
 }
 
 anvil {
@@ -73,6 +74,7 @@ android {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
     implementation(projects.libraries.nbaApi)
 
     coreLibraryDesugaring(libs.desguar)

@@ -38,10 +38,10 @@ import androidx.glance.currentState
 import androidx.glance.layout.fillMaxHeight
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.state.GlanceStateDefinition
-import dev.whosnickdoglio.scores.ui.SingleGame
 import dev.whosnickdoglio.scores.ui.MultipleGameList
-import dev.whosnickdoglio.scores.ui.SingleScoreCompact
 import dev.whosnickdoglio.scores.ui.ScoresWidgetTheme
+import dev.whosnickdoglio.scores.ui.SingleGame
+import dev.whosnickdoglio.scores.ui.SingleScoreCompact
 import dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback
 import dev.whosnickdoglio.scores.widget.actions.RefreshActionCallback
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition

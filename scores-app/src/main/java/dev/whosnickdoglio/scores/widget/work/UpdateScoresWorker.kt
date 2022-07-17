@@ -1,3 +1,4 @@
+@file:Suppress("CommentSpacing")
 /*
  * MIT License
  *
@@ -56,7 +57,6 @@ class UpdateScoresWorker @AssistedInject constructor(
 @BindingKey(UpdateScoresWorker::class)
 @AssistedFactory
 interface UpdateScoresFactory : AssistedWorkerFactory
-
 
 @MapKey
 annotation class BindingKey(val value: KClass<out CoroutineWorker>)

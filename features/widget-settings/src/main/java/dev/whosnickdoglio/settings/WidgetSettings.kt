@@ -33,7 +33,6 @@ import dev.whosnickdoglio.scores.ui.SingleGame
 @Composable
 fun WidgetSettings(modifier: Modifier = Modifier) {
     val action = object : Action {
-
     }
 
     Column(modifier = modifier) {

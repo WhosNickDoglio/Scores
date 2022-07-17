@@ -25,6 +25,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -68,6 +69,7 @@ android {
 
 dependencies {
     coreLibraryDesugaring(libs.desguar)
+    detektPlugins(libs.detekt.formatting)
     implementation(projects.libraries.nbaApi)
     implementation(libs.glance.appwidget)
     implementation(libs.compose.ui)

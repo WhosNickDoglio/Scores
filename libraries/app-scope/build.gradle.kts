@@ -24,4 +24,9 @@
 
 plugins {
     id("org.jetbrains.kotlin.jvm")
+    alias(libs.plugins.detekt)
+}
+
+dependencies {
+    detektPlugins(libs.detekt.formatting)
 }

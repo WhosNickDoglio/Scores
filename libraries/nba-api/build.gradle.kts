@@ -26,6 +26,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
     alias(libs.plugins.ksp)
     alias(libs.plugins.anvil)
+    alias(libs.plugins.detekt)
 }
 
 anvil {
@@ -33,6 +34,7 @@ anvil {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
     implementation(projects.libraries.appScope)
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)
