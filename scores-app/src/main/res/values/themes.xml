@@ -22,9 +22,7 @@
   ~ SOFTWARE.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar" />
-    <style name="WidgetTheme" parent="@android:style/Theme.DeviceDefault" />
-
 </resources>

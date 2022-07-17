@@ -57,4 +57,3 @@ tasks.register<Detekt>("detektAll") {
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.ExperimentalStdlibApi")
 }
-
