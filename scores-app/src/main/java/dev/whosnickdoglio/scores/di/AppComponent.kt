@@ -27,6 +27,8 @@ package dev.whosnickdoglio.scores.di
 import android.content.Context
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.nba.BallDontLieService
+import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
 import dev.whosnickdoglio.widget.state.ScoresStateSerializer
 import javax.inject.Singleton
 
