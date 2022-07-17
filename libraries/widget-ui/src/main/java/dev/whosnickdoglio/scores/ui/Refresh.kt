@@ -25,19 +25,20 @@
 package dev.whosnickdoglio.scores.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
-import androidx.glance.layout.padding
 
 @Composable
-fun Refresh(onRefresh: Action) {
+internal fun Refresh(
+    modifier: GlanceModifier = GlanceModifier,
+    onRefresh: Action
+) {
     Image(
         provider = ImageProvider(R.drawable.refresh),
-        contentDescription = "Button to refresh game scores data",
-        modifier = GlanceModifier.clickable(onRefresh)
+        contentDescription = stringResource(R.string.cd_refresh),
+        modifier = modifier.clickable(onRefresh)
     )
 }

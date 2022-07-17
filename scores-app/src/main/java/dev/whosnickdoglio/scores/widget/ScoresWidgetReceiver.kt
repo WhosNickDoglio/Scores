@@ -24,63 +24,12 @@
 
 package dev.whosnickdoglio.scores.widget
 
-import android.content.Context
 import androidx.glance.appwidget.GlanceAppWidget
-import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
-import androidx.glance.appwidget.state.updateAppWidgetState
-import com.slack.eithernet.ApiResult
-import dev.whosnickdoglio.nba.state.ScoresWidgetState
-import dev.whosnickdoglio.scores.di.injector
-import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 /**
- *
+ * A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget].
  */
 class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
-
-    override val glanceAppWidget: GlanceAppWidget = ScoreWidget()
-
-    override fun onEnabled(context: Context?) {
-        super.onEnabled(context)
-        if (context != null) {
-            // TODO this is terrible
-            CoroutineScope(Dispatchers.Default).launch {
-                val ids =
-                    GlanceAppWidgetManager(context = context).getGlanceIds(glanceAppWidget::class.java)
-
-                val service = context.injector.service
-                updateAppWidgetState(
-                    context = context,
-                    definition = ScoresStateDefinition,
-                    glanceId = ids.first(),
-                    updateState = { currentState ->
-                        val today = LocalDate.now()
-
-                        val result = service.retrieveGameData(
-                            startDate = today,
-                            endDate = today
-                        )
-                        if (result is ApiResult.Success) {
-                            return@updateAppWidgetState ScoresWidgetState(
-                                currentIndex = currentState.currentIndex ?: 0,
-                                // TODO figure out how to move games that haven't started yet.
-                                games = result.value.games.orEmpty().sortedBy { it.period }
-                            )
-                        } else {
-                            // TODO better error handling
-                            return@updateAppWidgetState ScoresWidgetState()
-                        }
-                    }
-                )
-
-                glanceAppWidget.update(context, ids.first())
-            }
-        }
-
-    }
+    override val glanceAppWidget: GlanceAppWidget = ScoresWidget()
 }

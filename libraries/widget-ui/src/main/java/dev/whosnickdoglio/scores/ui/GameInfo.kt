@@ -30,6 +30,7 @@ import androidx.glance.GlanceModifier
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Row
 import androidx.glance.layout.Spacer
+import androidx.glance.layout.padding
 import androidx.glance.layout.width
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
@@ -38,25 +39,33 @@ import dev.whosnickdoglio.nba.models.Game
  *
  */
 @Composable
-fun GameInfo(
+internal fun GameInfo(
     modifier: GlanceModifier = GlanceModifier,
     game: Game, // TODO make a sport agnostic game model at some point
 ) {
+    // TODO
+    //  - Don't show scores if game hasn't started
+    //  - Add a LIVE text for when a game is live
     Row(
-        modifier = modifier,
+        modifier = modifier.padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Team logos? Where can I get these?
         // TODO Make this less ugly and handle more info
-        Text(text = game.homeTeam.name)
-        Spacer(modifier = GlanceModifier.width(4.dp))
-        Text(text = game.homeTeamScore.toString())
-        Spacer(modifier = GlanceModifier.width(4.dp))
-        Text(text = game.status) // More info on game
-        Spacer(modifier = GlanceModifier.width(4.dp))
-        Text(text = game.visitorTeamScore.toString())
-        Spacer(modifier = GlanceModifier.width(4.dp))
-        Text(text = game.visitorTeam.name)
+        Text(text = game.homeTeam.name, style = ScoresWidgetTheme.textStyle)
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        if (game.period != 0) {
+            Text(text = game.homeTeamScore.toString(), style = ScoresWidgetTheme.scoreTextStyle)
+        }
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        Text(text = game.status, style = ScoresWidgetTheme.textStyle) // More info on game
+        Spacer(modifier = GlanceModifier.width(6.dp))
+
+        if (game.period != 0) {
+            Text(text = game.visitorTeamScore.toString(), style = ScoresWidgetTheme.scoreTextStyle)
+        }
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        Text(text = game.visitorTeam.name, style = ScoresWidgetTheme.textStyle)
     }
 }

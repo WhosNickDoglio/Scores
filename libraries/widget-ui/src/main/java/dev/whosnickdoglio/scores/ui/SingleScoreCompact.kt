@@ -25,19 +25,19 @@
 package dev.whosnickdoglio.scores.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
-import androidx.glance.appwidget.appWidgetBackground
-import androidx.glance.background
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.Spacer
+import androidx.glance.layout.fillMaxHeight
+import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
 import androidx.glance.layout.width
 import androidx.glance.layout.wrapContentHeight
@@ -46,26 +46,36 @@ import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
 // TODO clean this up
-// Centering seems off with Team columns and navigation row icons
+//  Centering seems off with Team columns and navigation row icons
+/**
+ * This is the compact version of [SingleGame] which just shows the team abbreviations instead of the
+ * full name (NYK instead of New York Knicks).
+ *
+ * @param modifier
+ * @param onRefresh
+ * @param onNavigateUp
+ * @param onNavigateDown
+ * @param game
+ */
 @Composable
-fun ScoresMini(
+fun SingleScoreCompact(
     modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,
     onNavigateDown: Action,
-    game: Game? = null
+    game: Game? = null,
+//    forceRefresh: Boolean = false,
 ) {
     Column(
-        verticalAlignment = Alignment.Top,
+        verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-            .width(100.dp)
-            .height(80.dp)
-            .background(Color.White)
-            .appWidgetBackground()
-    ) {
-        Row(modifier = GlanceModifier.height(40.dp)) {
-            val chipContentHeight = GlanceModifier.height(50.dp)
+        modifier = modifier) {
+        Row(
+            modifier = GlanceModifier.fillMaxWidth().wrapContentHeight(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            val chipContentHeight = GlanceModifier.fillMaxHeight()
             if (game != null) {
                 TeamColumn(
                     modifier = chipContentHeight,
@@ -79,15 +89,21 @@ fun ScoresMini(
                     score = game.visitorTeamScore.toString()
                 )
             } else {
-                EmptyChip(onRefresh = onRefresh)
+                EmptyChip(
+                    modifier = GlanceModifier.fillMaxWidth().fillMaxSize(),
+                    onRefresh = onRefresh
+                )
             }
         }
 
         if (game != null) {
-            Text(text = game.status) // More info on game
+            Text(
+                text = game.status,
+                style = ScoresWidgetTheme.textStyle
+            ) // More info on game
             Spacer(GlanceModifier.height(2.dp))
             NavigationRow(
-                modifier = GlanceModifier.height(20.dp),
+                modifier = GlanceModifier.height(50.dp).fillMaxWidth(),
                 onRefresh = onRefresh,
                 onNavigateUp = onNavigateUp,
                 onNavigateDown = onNavigateDown,
@@ -95,6 +111,14 @@ fun ScoresMini(
         }
     }
 }
+
+//@Composable
+//private fun Loading(
+//    modifier: GlanceModifier = GlanceModifier,
+//    action: Action
+//) {
+//    Text(text = "Loading...")
+//}
 
 @Composable
 private fun NavigationRow(
@@ -110,13 +134,13 @@ private fun NavigationRow(
     ) {
         Image(
             provider = ImageProvider(R.drawable.back),
-            contentDescription = "Navigate to the previous game in the list.",
+            contentDescription = stringResource(R.string.cd_navigation_previous),
             modifier = GlanceModifier.clickable(onNavigateUp)
         )
         Refresh(onRefresh = onRefresh)
         Image(
             provider = ImageProvider(R.drawable.next),
-            contentDescription = "Navigate to the next game in the list.",
+            contentDescription = stringResource(R.string.cd_navigation_next),
             modifier = GlanceModifier.clickable(onNavigateDown)
         )
     }
@@ -129,14 +153,11 @@ private fun EmptyChip(
     onRefresh: Action,
 ) {
     Column(
-        modifier = modifier
-            .width(100.dp)
-            .height(80.dp)
-            .background(Color.Red),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "No games!")
+        Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
         Refresh(onRefresh = onRefresh)
     }
 }
@@ -153,10 +174,10 @@ private fun TeamColumn(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = GlanceModifier.height(2.dp))
-        Text(text = name)
+        Text(text = name, style = ScoresWidgetTheme.textStyle)
         Spacer(modifier = GlanceModifier.height(2.dp))
         if (score.isNotEmpty()) {
-            Text(text = score)
+            Text(text = score, style = ScoresWidgetTheme.textStyle)
             Spacer(modifier = GlanceModifier.height(2.dp))
         }
     }

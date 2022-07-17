@@ -25,30 +25,29 @@
 package dev.whosnickdoglio.scores.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
-import androidx.glance.Image
-import androidx.glance.ImageProvider
 import androidx.glance.action.Action
-import androidx.glance.action.clickable
-import androidx.glance.appwidget.appWidgetBackground
 import androidx.glance.appwidget.lazy.LazyColumn
 import androidx.glance.appwidget.lazy.items
-import androidx.glance.background
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
-import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.padding
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
+/**
+ *
+ * @param modifier
+ * @param onRefresh
+ * @param games
+ */
 @Composable
-fun ScoresList(
+fun MultipleGameList(
     modifier: GlanceModifier = GlanceModifier,
-    onRefresh: Action,
-    games: List<Game> = emptyList()
+    games: List<Game> = emptyList(),
+    onRefresh: Action
 ) {
     if (games.isEmpty()) {
         Column(
@@ -56,25 +55,22 @@ fun ScoresList(
             verticalAlignment = Alignment.CenterVertically,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "No Games")
-            Image(
-                provider = ImageProvider(R.drawable.refresh),
-                contentDescription = "Button to refresh game scores data",
-                modifier = GlanceModifier.clickable(onRefresh).padding(4.dp)
+            Text(
+                text = stringResource(R.string.no_games),
+                style = ScoresWidgetTheme.textStyle
+            )
+            Refresh(
+                modifier = GlanceModifier.padding(4.dp),
+                onRefresh = onRefresh
             )
         }
     } else {
-        Row(
-            modifier.fillMaxWidth().appWidgetBackground()
-                .background(Color.White)
-        ) {
+        Row(modifier = modifier) {
             // TODO clean this up
             Refresh(onRefresh = onRefresh)
             LazyColumn(modifier = GlanceModifier.defaultWeight()) {
                 items(games) { game ->
-                    GameInfo(
-                        game = game
-                    )
+                    GameInfo(game = game)
                 }
             }
         }

@@ -25,38 +25,39 @@
 package dev.whosnickdoglio.scores.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.action.Action
-import androidx.glance.appwidget.appWidgetBackground
-import androidx.glance.background
+import androidx.glance.action.clickable
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxHeight
-import androidx.glance.layout.fillMaxWidth
-import androidx.glance.layout.height
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
+/**
+ * @param modifier
+ * @param onRefresh
+ * @param onNavigateUp
+ * @param onNavigateDown
+ * @param game
+ */
 @Composable
-fun Scores(
+fun SingleGame(
     modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,
     onNavigateDown: Action,
     game: Game? = null
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth().height(60.dp).appWidgetBackground()
-            .background(Color.White)
-    ) {
+    Row(modifier = modifier) {
         Column(
             modifier = GlanceModifier.fillMaxHeight(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Refresh(onRefresh)
+            Refresh(onRefresh = onRefresh)
         }
 
         if (game != null) {
@@ -70,7 +71,10 @@ fun Scores(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "No Games")
+                Text(
+                    text = stringResource(R.string.no_games),
+                    style = ScoresWidgetTheme.textStyle
+                )
             }
         }
 
@@ -83,10 +87,25 @@ fun Scores(
     }
 }
 
-
-
-
-
-
-
-
+@Composable
+private fun NavigationColumn(
+    modifier: GlanceModifier = GlanceModifier,
+    onNavigateUp: Action,
+    onNavigateDown: Action,
+) {
+    Column(
+        modifier = modifier.fillMaxHeight(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            provider = ImageProvider(R.drawable.up),
+            contentDescription = stringResource(R.string.cd_navigation_previous),
+            modifier = GlanceModifier.clickable(onNavigateUp)
+        )
+        Image(
+            provider = ImageProvider(R.drawable.down),
+            contentDescription = stringResource(R.string.cd_navigation_next),
+            modifier = GlanceModifier.clickable(onNavigateDown)
+        )
+    }
+}
