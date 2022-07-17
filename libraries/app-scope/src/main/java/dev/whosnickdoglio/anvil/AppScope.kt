@@ -24,4 +24,11 @@
 
 package dev.whosnickdoglio.anvil
 
-sealed class AppScope private constructor()
+/**
+ * A scope for Anvil that adds anything contributed to it to the
+ * top-level app component graph.
+ *
+ * @see <a href="https://github.com/square/anvil">More info on Anvil
+ *     Github repo.</a>
+ */
+sealed interface AppScope
