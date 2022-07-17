@@ -25,6 +25,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
+}
+
+anvil {
+    generateDaggerFactories.set(true)
 }
 
 android {
@@ -67,5 +73,17 @@ android {
 }
 
 dependencies {
+    implementation(projects.libraries.nbaApi)
+
     coreLibraryDesugaring(libs.desguar)
+
+    ksp(libs.moshi.ksp)
+
+    implementation(libs.androidx.datastore)
+    implementation(libs.glance.appwidget)
+    implementation(libs.compose.material)
+    implementation(libs.compose.ui)
+
+    implementation(libs.dagger.core)
+
 }
