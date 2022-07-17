@@ -28,7 +28,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.glance.action.Action
-import dev.whosnickdoglio.scores.ui.ScoresMini
+import dev.whosnickdoglio.scores.ui.SingleGame
 
 @Composable
 fun WidgetSettings(modifier: Modifier = Modifier) {
@@ -38,7 +38,7 @@ fun WidgetSettings(modifier: Modifier = Modifier) {
 
     Column(modifier = modifier) {
         // If this works make it a ViewPager to see all the sizes?
-        ScoresMini(
+        SingleGame(
             onRefresh = action,
             onNavigateUp = action,
             onNavigateDown = action,
