@@ -47,6 +47,7 @@ class ScoresStateSerializer @Inject constructor(
 
     override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
+    @Suppress("SwallowedException") // TODO come back to this
     override suspend fun readFrom(input: InputStream): ScoresWidgetState = try {
         adapter.fromJson(input.bufferedReader().readText()) ?: ScoresWidgetState()
     } catch (exception: EOFException) {
