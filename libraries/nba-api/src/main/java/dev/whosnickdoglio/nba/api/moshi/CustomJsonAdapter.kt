@@ -22,43 +22,11 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.di
+package dev.whosnickdoglio.nba.api.moshi
 
-import com.squareup.anvil.annotations.ContributesTo
-import com.squareup.moshi.Moshi
-import dagger.Lazy
-import dagger.Module
-import dagger.Provides
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.nba.BallDontLieService
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import javax.inject.Singleton
-
-@ContributesTo(AppScope::class)
-@Module
-object NbaApiModule {
-
-    @Singleton
-    @Provides
-    fun provideMoshi(): Moshi = Moshi.Builder().build()
-
-    @Singleton
-    @Provides
-    fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(
-            // TODO only for debug builds
-            HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }
-        )
-        .build()
-
-    @Singleton
-    @Provides
-    fun provideBallDontLieService(
-        moshi: Moshi,
-        okHttpClient: Lazy<OkHttpClient>
-    ): BallDontLieService =
-        BallDontLieService.create(moshi, okHttpClient)
-}
+/**
+ * A marker interface used to easily multibinding Moshi
+ * [com.squareup.moshi.JsonAdapters][com.squareup.moshi.JsonAdapter]
+ * into the Dagger graph.
+ */
+interface CustomJsonAdapter
