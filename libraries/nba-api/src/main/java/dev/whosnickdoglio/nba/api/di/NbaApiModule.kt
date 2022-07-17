@@ -33,6 +33,7 @@ import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.nba.api.moshi.CustomJsonAdapter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**

@@ -25,7 +25,6 @@
 plugins {
     id("org.jetbrains.kotlin.jvm")
     alias(libs.plugins.ksp)
-    alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
 }
 
@@ -34,17 +33,16 @@ anvil {
 }
 
 dependencies {
-
     implementation(projects.libraries.appScope)
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
-    api(libs.okhttp.core)
     implementation(libs.okhttp.logging)
     implementation(libs.coroutines.core)
+
+    api(libs.okhttp.core)
     api(libs.eithernet)
 
     api(libs.moshi)
     ksp(libs.moshi.ksp)
-
 }
