@@ -27,24 +27,40 @@ package dev.whosnickdoglio.scores.di
 import android.content.Context
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.nba.BallDontLieService
-import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
+import dev.whosnickdoglio.widget.state.ScoresStateSerializer
 import javax.inject.Singleton
 
+/**
+ * A top level [dagger.Component] for our dependency graph, this [dagger.Component] should be
+ * a [Singleton] and only initialized once per app launch via the [ComponentProvider]. All
+ * [dagger.Modules][dagger.Module] or classes that contribute to [AppScope] will be available in the
+ * [AppComponent] graph.
+ */
 @Singleton
 @MergeComponent(AppScope::class)
 interface AppComponent {
 
-//    val workerFactory: ScoresWorkerFactory
+    val serializer: ScoresStateSerializer
 
     val service: BallDontLieService
 
     fun inject(target: ScoresWidgetReceiver)
 }
 
-
+/**
+ * A class that provides and maintains a single instance of a [AppComponent].
+ *
+ * NOTE: This should be applied to the Application class.
+ */
 interface ComponentProvider {
+
+    /**
+     * An instance of the [AppComponent].
+     */
     val component: AppComponent
 }
 
+/**
+ * Exposes the [AppComponent] via an [android.content.Context] for easy member injection.
+ */
 val Context.injector get() = (applicationContext as ComponentProvider).component
