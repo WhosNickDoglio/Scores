@@ -22,28 +22,45 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.app
+package dev.whosnickdoglio.scores
 
 import android.app.Application
-import androidx.work.Configuration
-import androidx.work.WorkManager
+import android.os.StrictMode
+import com.google.android.material.color.DynamicColors
+import dev.whosnickdoglio.scores.BuildConfig
 import dev.whosnickdoglio.scores.di.AppComponent
 import dev.whosnickdoglio.scores.di.ComponentProvider
 import dev.whosnickdoglio.scores.di.DaggerAppComponent
 import timber.log.Timber
 
+/**
+ * Our Android [Application] class that acts as our [ComponentProvider] to maintain a single
+ * instance of our [AppComponent] as well as initializing some debug tools.
+ */
 class ScoresApplication : Application(), ComponentProvider {
 
     override val component: AppComponent by lazy { DaggerAppComponent.create() }
 
     override fun onCreate() {
         super.onCreate()
-        Timber.plant(Timber.DebugTree())
-//
-//        val workManagerConfig = Configuration.Builder()
-//            .setWorkerFactory(component.workerFactory)
-//            .build()
-//
-//        WorkManager.initialize(this, workManagerConfig)
+        DynamicColors.applyToActivitiesIfAvailable(this)
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+
+            StrictMode.setThreadPolicy(
+                StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build()
+            )
+
+            StrictMode.setVmPolicy(
+                StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build()
+            )
+        }
     }
 }
