@@ -29,6 +29,7 @@ plugins {
     alias(libs.plugins.play.publish)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -80,6 +81,7 @@ dependencies {
     implementation(projects.libraries.appScope)
     implementation(projects.libraries.widgetUi)
     implementation(projects.features.widgetSettings)
+    implementation(projects.features.widget)
 
     // widget stuff
     implementation(libs.glance.appwidget)
@@ -89,9 +91,10 @@ dependencies {
     implementation(libs.androidx.workmanager)
     androidTestImplementation(libs.androidx.workmanager.test)
 
-
     implementation(libs.androidx.datastore)
 
+    implementation(libs.moshi)
+    ksp(libs.moshi.ksp)
 
     implementation(libs.dagger.core)
     kapt(libs.dagger.compiler)
