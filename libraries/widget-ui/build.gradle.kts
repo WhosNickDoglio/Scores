@@ -71,4 +71,5 @@ dependencies {
     implementation(projects.libraries.nbaApi)
     implementation(libs.glance.appwidget)
     implementation(libs.compose.ui)
+    implementation(libs.androidx.material)
 }
