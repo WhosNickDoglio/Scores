@@ -31,11 +31,11 @@ import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.state.updateAppWidgetState
-import dev.whosnickdoglio.nba.state.ScoresWidgetState
-import dev.whosnickdoglio.scores.widget.ScoreWidget
+import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
+import dev.whosnickdoglio.widget.state.ScoresWidgetState
 
-class NavigateAction : ActionCallback {
+class NavigateActionCallback : ActionCallback {
 
     private enum class Direction { UP, DOWN }
 
@@ -45,32 +45,38 @@ class NavigateAction : ActionCallback {
         updateAppWidgetState(
             context = context,
             definition = ScoresStateDefinition,
-            glanceId = glanceId,
-            updateState = { currentState ->
-                val currentIndex = currentState.currentIndex ?: 0
+            glanceId = glanceId
+        ) { currentState ->
+            val currentIndex = currentState.currentIndex ?: 0
 
-                // TODO more robust logic and handling of this
-                val newIndex = when (direction) {
-                    Direction.DOWN -> if (currentIndex == currentState.games.lastIndex) 0 else currentIndex + 1
-                    Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
-                    null -> currentState.currentIndex
+            // TODO more robust logic and handling of this
+            // TODO wrapping around
+            val newIndex = when (direction) {
+                Direction.DOWN -> if (currentIndex == currentState.games.lastIndex) {
+                    0
+                } else {
+                    currentIndex + 1
                 }
-
-                return@updateAppWidgetState ScoresWidgetState(newIndex, currentState.games)
+                Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
+                null -> currentState.currentIndex
             }
-        )
 
-        ScoreWidget().update(context, glanceId)
+            return@updateAppWidgetState ScoresWidgetState(
+                newIndex,
+                currentState.games
+            )
+        }
+
+        ScoresWidget().update(context, glanceId)
     }
 
     companion object {
         private val navKey = ActionParameters.Key<Direction>("direction")
 
         fun up() =
-            actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.UP))
+            actionRunCallback<NavigateActionCallback>(actionParametersOf(navKey to Direction.UP))
 
         fun down() =
-            actionRunCallback<NavigateAction>(parameters = actionParametersOf(navKey to Direction.DOWN))
+            actionRunCallback<NavigateActionCallback>(actionParametersOf(navKey to Direction.DOWN))
     }
 }
-

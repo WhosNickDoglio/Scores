@@ -30,39 +30,60 @@ import androidx.glance.action.ActionParameters
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.state.updateAppWidgetState
 import com.slack.eithernet.ApiResult
-import dev.whosnickdoglio.nba.state.ScoresWidgetState
+import dev.whosnickdoglio.nba.models.Game
 import dev.whosnickdoglio.scores.di.injector
-import dev.whosnickdoglio.scores.widget.ScoreWidget
+import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
+import dev.whosnickdoglio.widget.state.ScoresWidgetState
 import java.time.LocalDate
 
-class RefreshAction : ActionCallback {
+class RefreshActionCallback : ActionCallback {
+
     override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val service = context.injector.service
+        val logger = context.injector.logger
         updateAppWidgetState(
             context = context,
             definition = ScoresStateDefinition,
-            glanceId = glanceId,
-            updateState = { currentState ->
-                val today = LocalDate.now()
+            glanceId = glanceId
+        ) { currentState ->
+            val today = LocalDate.now()
 
-                val result = service.retrieveGameData(
-                    startDate = today,
-                    endDate = today
+            val result = service.retrieveGameData(
+                startDate = today,
+                endDate = today
+            )
+            if (result is ApiResult.Success) {
+                logger.log("Updating widget state. glanceId: $glanceId")
+
+                return@updateAppWidgetState ScoresWidgetState(
+                    currentIndex = currentState.calculateNewIndex(),
+                    games = result.value.games.orEmpty().sortedGames(),
+                    areThereGamesToday = result.value.games?.isNotEmpty() == true
                 )
-                if (result is ApiResult.Success) {
-                    return@updateAppWidgetState ScoresWidgetState(
-                        currentIndex = currentState.currentIndex ?: 0,
-                        // TODO figure out how to move games that haven't started yet.
-                        games = result.value.games.orEmpty().sortedBy { it.period }
-                    )
-                } else {
-                    // TODO better error handling
-                    return@updateAppWidgetState ScoresWidgetState()
-                }
+            } else {
+                // TODO better error handling
+                return@updateAppWidgetState ScoresWidgetState()
             }
-        )
+        }
 
-        ScoreWidget().update(context, glanceId)
+        ScoresWidget().update(context, glanceId)
+    }
+
+    // TODO figure out how to move games that haven't started yet.
+    private fun List<Game>.sortedGames(): List<Game> {
+        val inProgressGames = this.filter { it.period != 0 }.sortedBy { it.period }
+        val notStartedGames = this.filter { it.period == 0 }
+
+        return buildList {
+            addAll(inProgressGames)
+            addAll(notStartedGames)
+        }
+    }
+
+    private fun ScoresWidgetState.calculateNewIndex(): Int {
+        val index = currentIndex ?: 0
+
+        return if (index > games.lastIndex) 0 else index
     }
 }
