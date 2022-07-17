@@ -41,7 +41,6 @@ class RefreshActionCallback : ActionCallback {
 
     override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val service = context.injector.service
-        val logger = context.injector.logger
         updateAppWidgetState(
             context = context,
             definition = ScoresStateDefinition,
@@ -54,7 +53,6 @@ class RefreshActionCallback : ActionCallback {
                 endDate = today
             )
             if (result is ApiResult.Success) {
-                logger.log("Updating widget state. glanceId: $glanceId")
 
                 return@updateAppWidgetState ScoresWidgetState(
                     currentIndex = currentState.calculateNewIndex(),
