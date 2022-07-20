@@ -30,6 +30,7 @@ import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.nba.api.moshi.CustomJsonAdapter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
