@@ -26,7 +26,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.anvil)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.moshiIr)
     alias(libs.plugins.detekt)
 }
 
@@ -78,8 +78,6 @@ dependencies {
     implementation(projects.libraries.nbaApi)
 
     coreLibraryDesugaring(libs.desguar)
-
-    ksp(libs.moshi.ksp)
 
     implementation(libs.androidx.datastore)
     implementation(libs.glance.appwidget)

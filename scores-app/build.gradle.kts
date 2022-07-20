@@ -29,7 +29,7 @@ plugins {
     alias(libs.plugins.play.publish)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.moshiIr)
 }
 
 android {
@@ -94,7 +94,6 @@ dependencies {
     implementation(libs.androidx.datastore)
 
     implementation(libs.moshi)
-    ksp(libs.moshi.ksp)
 
     implementation(libs.dagger.core)
     kapt(libs.dagger.compiler)

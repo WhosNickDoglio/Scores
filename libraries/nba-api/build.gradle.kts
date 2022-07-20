@@ -24,7 +24,7 @@
 
 plugins {
     id("org.jetbrains.kotlin.jvm")
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.moshiIr)
     alias(libs.plugins.anvil)
     alias(libs.plugins.detekt)
 }
@@ -46,5 +46,4 @@ dependencies {
     api(libs.eithernet)
 
     api(libs.moshi)
-    ksp(libs.moshi.ksp)
 }
