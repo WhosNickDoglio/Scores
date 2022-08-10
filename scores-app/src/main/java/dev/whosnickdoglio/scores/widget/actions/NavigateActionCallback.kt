@@ -39,7 +39,7 @@ class NavigateActionCallback : ActionCallback {
 
     private enum class Direction { UP, DOWN }
 
-    override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val direction: Direction? = parameters[navKey]
 
         updateAppWidgetState(

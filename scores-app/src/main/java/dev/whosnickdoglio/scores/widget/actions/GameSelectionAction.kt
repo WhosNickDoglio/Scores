@@ -31,7 +31,7 @@ import androidx.glance.appwidget.action.ActionCallback
 
 // TODO is this even possible? Can I deeplink properly into the Android app?
 class GameSelectionAction : ActionCallback {
-    override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         TODO("Not yet implemented")
     }
 }
