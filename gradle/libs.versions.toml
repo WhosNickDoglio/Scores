@@ -1,7 +1,7 @@
 [versions]
 min-sdk = "24"
-target-sdk = "32"
-compile-sdk = "32"
+target-sdk = "33"
+compile-sdk = "33"
 agp = "7.2.2"
 kotlin = "1.7.10"
 detekt = "1.21.0"
