@@ -39,7 +39,7 @@ import java.time.LocalDate
 
 class RefreshActionCallback : ActionCallback {
 
-    override suspend fun onRun(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val service = context.injector.service
         updateAppWidgetState(
             context = context,
