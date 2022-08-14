@@ -30,6 +30,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
     alias(libs.plugins.moshiIr)
+    alias(libs.plugins.tangle)
 }
 
 android {

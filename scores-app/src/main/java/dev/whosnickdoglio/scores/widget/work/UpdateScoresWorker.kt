@@ -26,61 +26,63 @@
 package dev.whosnickdoglio.scores.widget.work
 
 import android.content.Context
+import androidx.glance.appwidget.GlanceAppWidgetManager
+import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.squareup.anvil.annotations.ContributesMultibinding
-import dagger.MapKey
+import com.slack.eithernet.ApiResult
 import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.nba.BallDontLieService
-import kotlin.reflect.KClass
+import dev.whosnickdoglio.scores.widget.ScoresWidget
+import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
+import dev.whosnickdoglio.widget.state.ScoresWidgetState
+import tangle.work.TangleWorker
+import java.time.LocalDate
 
-//
-// https://commonsware.com/blog/2018/11/24/workmanager-app-widgets-side-effects.html
-// https://stackoverflow.com/questions/70654474/starting-workmanager-task-from-appwidgetprovider-results-in-endless-onupdate-cal
+@TangleWorker
 class UpdateScoresWorker @AssistedInject constructor(
     private val service: BallDontLieService,
-    @Assisted appContext: Context,
+    @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
-        service.retrieveGameData()
+        val today = LocalDate.now()
 
-        return TODO()
+        val apiResult = service.retrieveGameData(
+            startDate = today,
+            endDate = today
+        )
+
+        return when (apiResult) {
+            is ApiResult.Success -> {
+                val glanceId =
+                    GlanceAppWidgetManager(appContext).getGlanceIds(ScoresWidget::class.java)
+                        .firstOrNull()
+
+                if (glanceId != null) {
+                    updateAppWidgetState(
+                        context = appContext,
+                        definition = ScoresStateDefinition,
+                        glanceId = glanceId
+                    ) { oldState ->
+                        ScoresWidgetState(
+                            currentIndex = oldState.currentIndex ?: 0,
+                            games = apiResult.value.games.orEmpty().sortedBy { it.period }
+                        )
+                    }
+
+                    Result.success()
+                } else {
+                    Result.failure()
+                }
+            }
+            is ApiResult.Failure.NetworkFailure -> Result.failure()
+            is ApiResult.Failure.UnknownFailure -> Result.failure()
+            is ApiResult.Failure.HttpFailure -> Result.failure()
+            is ApiResult.Failure.ApiFailure -> Result.failure()
+            else -> Result.failure()
+        }
     }
 }
-
-@ContributesMultibinding(scope = AppScope::class, boundType = AssistedWorkerFactory::class)
-@BindingKey(UpdateScoresWorker::class)
-@AssistedFactory
-interface UpdateScoresFactory : AssistedWorkerFactory
-
-@MapKey
-annotation class BindingKey(val value: KClass<out CoroutineWorker>)
-
-interface AssistedWorkerFactory {
-    fun createWorker(appContext: Context, workerParams: WorkerParameters): UpdateScoresWorker
-}
-
-//class ScoresWorkerFactory @Inject constructor(
-//    private val assistedWorkerFactories: Map<KClass<out CoroutineWorker>, @JvmSuppressWildcards AssistedWorkerFactory>
-//) : WorkerFactory() {
-//    override fun createWorker(
-//        appContext: Context,
-//        workerClassName: String,
-//        workerParams: WorkerParameters
-//    ): ListenableWorker? {
-//        val clazz =
-//            Class.forName(workerClassName).kotlin ?: return null // handle rename or deletion of worker
-//
-//        val factory =
-//            assistedWorkerFactories[clazz] ?: assistedWorkerFactories.entries.firstOrNull {
-//                clazz.java.isAssignableFrom(it.key.java)
-//            }?.value ?: return null // delegate to default if not found
-//
-//        return factory.createWorker(appContext, workerParams)
-//    }
-//}

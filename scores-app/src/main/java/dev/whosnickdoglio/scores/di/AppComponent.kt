@@ -24,6 +24,7 @@
 
 package dev.whosnickdoglio.scores.di
 
+import android.app.Application
 import android.content.Context
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.AppScope
@@ -47,12 +48,14 @@ interface AppComponent {
     val service: BallDontLieService
 
     fun inject(target: ScoresWidgetReceiver)
+
+    fun inject(target: Application)
 }
 
 /**
  * A class that provides and maintains a single instance of a [AppComponent].
  *
- * NOTE: This should be applied to the Application class.
+ * **NOTE**: This should be applied to the Application class.
  */
 interface ComponentProvider {
 
