@@ -39,7 +39,7 @@ compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
-compose-material = { module = "androidx.compose.material3:material3", version = "1.0.0-beta01" }
+compose-material = { module = "androidx.compose.material3:material3", version = "1.0.0-beta02" }
 glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.0.0-alpha04" }
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
