@@ -23,7 +23,7 @@
  */
 
 plugins {
-    id("org.jetbrains.kotlin.jvm")
+    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.moshiIr)
     alias(libs.plugins.anvil)
     alias(libs.plugins.detekt)

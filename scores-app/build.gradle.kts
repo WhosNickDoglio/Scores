@@ -23,9 +23,9 @@
  */
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    alias(libs.plugins.android.app)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.play.publish)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
