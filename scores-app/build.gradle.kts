@@ -88,6 +88,7 @@ dependencies {
     implementation(libs.glance.appwidget)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
+    debugImplementation(libs.glanceTool.viewer)
 
     implementation(libs.androidx.workmanager)
     androidTestImplementation(libs.androidx.workmanager.test)

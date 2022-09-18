@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.glance.appwidget)
+    implementation(libs.glanceTool.configuration)
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.ui.tooling.preview)
     debugImplementation(libs.compose.ui.tooling)

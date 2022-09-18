@@ -22,29 +22,31 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.settings
+package dev.whosnickdoglio.scores
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import android.appwidget.AppWidgetProvider
+import androidx.glance.appwidget.ExperimentalGlanceRemoteViewsApi
+import androidx.glance.appwidget.GlanceAppWidgetReceiver
+import com.google.android.glance.tools.viewer.GlanceSnapshot
+import com.google.android.glance.tools.viewer.GlanceViewerActivity
+import dev.whosnickdoglio.scores.widget.ScoresWidget
+import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
+import dev.whosnickdoglio.widget.state.ScoresWidgetState
 
-/**
- */
-class ConfigurationActivity : ComponentActivity() {
+@OptIn(ExperimentalGlanceRemoteViewsApi::class)
+class PreviewActivity : GlanceViewerActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background,
-            ) {
-//                WidgetSettings()
-            }
+    override suspend fun getGlanceSnapshot(
+        receiver: Class<out GlanceAppWidgetReceiver>
+    ): GlanceSnapshot =
+        when (receiver) {
+            ScoresWidgetReceiver::class.java -> GlanceSnapshot(
+                instance = ScoresWidget(),
+                state = ScoresWidgetState()
+            )
+            else -> error("This is not the expected Widget!")
         }
-    }
+
+    override fun getProviders(): List<Class<out AppWidgetProvider>> =
+        listOf(ScoresWidgetReceiver::class.java)
 }

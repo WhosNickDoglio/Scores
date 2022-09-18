@@ -24,24 +24,44 @@
 
 package dev.whosnickdoglio.settings
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Done
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.glance.action.Action
-import dev.whosnickdoglio.scores.ui.SingleGame
+import androidx.glance.appwidget.ExperimentalGlanceRemoteViewsApi
+import androidx.glance.appwidget.GlanceAppWidget
+import com.google.android.glance.appwidget.configuration.AppWidgetConfigurationScaffold
+import com.google.android.glance.appwidget.configuration.AppWidgetConfigurationState
+import com.google.android.glance.appwidget.configuration.rememberAppWidgetConfigurationState
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalGlanceRemoteViewsApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun WidgetSettings(modifier: Modifier = Modifier) {
-    val action = object : Action {
-    }
+fun WidgetSettings(
+    modifier: Modifier = Modifier,
+    widget: GlanceAppWidget
+) {
+    val configurationState: AppWidgetConfigurationState =
+        rememberAppWidgetConfigurationState(widget)
+    val scope = rememberCoroutineScope()
 
-    Column(modifier = modifier) {
-        // If this works make it a ViewPager to see all the sizes?
-        SingleGame(
-            onRefresh = action,
-            onNavigateUp = action,
-            onNavigateDown = action,
-            game = null
-        )
+    AppWidgetConfigurationScaffold(
+        modifier = modifier,
+        appWidgetConfigurationState = configurationState,
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                scope.launch {
+                    configurationState.applyConfiguration()
+                }
+            }) {
+                Icon(imageVector = Icons.Rounded.Done, contentDescription = "Save changes")
+            }
+        }
+    ) {
+        // Add your configuration content
     }
 }
