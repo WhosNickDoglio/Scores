@@ -63,8 +63,10 @@ moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 
 eithernet = { module = "com.slack.eithernet:eithernet", version = "1.2.1" }
 desguar = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.2" }
-detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
+
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+detekt-compose = { module = "com.twitter.compose.rules:detekt", version = "0.0.12" }
 
 junit = { module = "junit:junit", version = "4.13.2" }
 truth = { module = "com.google.truth:truth", version = "1.1.3" }

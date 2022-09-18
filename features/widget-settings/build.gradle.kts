@@ -69,6 +69,7 @@ android {
 
 dependencies {
     detektPlugins(libs.detekt.formatting)
+    detektPlugins(libs.detekt.compose)
     coreLibraryDesugaring(libs.desguar)
     implementation(libs.androidx.material)
     implementation(projects.libraries.widgetUi)

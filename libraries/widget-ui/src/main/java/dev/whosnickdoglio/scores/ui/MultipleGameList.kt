@@ -45,9 +45,9 @@ import dev.whosnickdoglio.nba.models.Game
  */
 @Composable
 fun MultipleGameList(
+    onRefresh: Action,
     modifier: GlanceModifier = GlanceModifier,
-    games: List<Game> = emptyList(),
-    onRefresh: Action
+    games: List<Game> = emptyList()
 ) {
     if (games.isEmpty()) {
         Column(

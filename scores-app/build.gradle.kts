@@ -111,6 +111,7 @@ dependencies {
     implementation(libs.timber)
 
     detektPlugins(libs.detekt.formatting)
+    detektPlugins(libs.detekt.compose)
 
     testImplementation(libs.junit)
     testImplementation(libs.truth)

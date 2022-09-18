@@ -42,8 +42,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalGlanceRemoteViewsApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun WidgetSettings(
-    modifier: Modifier = Modifier,
-    widget: GlanceAppWidget
+    widget: GlanceAppWidget,
+    modifier: Modifier = Modifier
 ) {
     val configurationState: AppWidgetConfigurationState =
         rememberAppWidgetConfigurationState(widget)

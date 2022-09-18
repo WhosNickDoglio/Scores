@@ -40,8 +40,8 @@ import dev.whosnickdoglio.nba.models.Game
  */
 @Composable
 internal fun GameInfo(
-    modifier: GlanceModifier = GlanceModifier,
     game: Game, // TODO make a sport agnostic game model at some point
+    modifier: GlanceModifier = GlanceModifier,
 ) {
     // TODO
     //  - Don't show scores if game hasn't started

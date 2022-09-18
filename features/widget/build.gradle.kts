@@ -75,6 +75,7 @@ android {
 
 dependencies {
     detektPlugins(libs.detekt.formatting)
+    detektPlugins(libs.detekt.compose)
     implementation(projects.libraries.nbaApi)
 
     coreLibraryDesugaring(libs.desguar)

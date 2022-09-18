@@ -46,10 +46,10 @@ import dev.whosnickdoglio.nba.models.Game
  */
 @Composable
 fun SingleGame(
-    modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,
     onNavigateDown: Action,
+    modifier: GlanceModifier = GlanceModifier,
     game: Game? = null
 ) {
     Row(modifier = modifier) {
@@ -89,9 +89,9 @@ fun SingleGame(
 
 @Composable
 private fun NavigationColumn(
-    modifier: GlanceModifier = GlanceModifier,
     onNavigateUp: Action,
     onNavigateDown: Action,
+    modifier: GlanceModifier = GlanceModifier,
 ) {
     Column(
         modifier = modifier.fillMaxHeight(),

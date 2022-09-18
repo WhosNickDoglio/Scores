@@ -59,10 +59,10 @@ import dev.whosnickdoglio.nba.models.Game
  */
 @Composable
 fun SingleScoreCompact(
-    modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,
     onNavigateDown: Action,
+    modifier: GlanceModifier = GlanceModifier,
     game: Game? = null,
 //    forceRefresh: Boolean = false,
 ) {
@@ -121,10 +121,10 @@ private fun Loading() {
 
 @Composable
 private fun NavigationRow(
-    modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
     onNavigateUp: Action,
     onNavigateDown: Action,
+    modifier: GlanceModifier = GlanceModifier,
 ) {
     Row(
         modifier = modifier.wrapContentHeight(),
@@ -147,8 +147,8 @@ private fun NavigationRow(
 
 @Composable
 private fun EmptyChip(
-    modifier: GlanceModifier = GlanceModifier,
     onRefresh: Action,
+    modifier: GlanceModifier = GlanceModifier,
 ) {
     Column(
         modifier = modifier,
@@ -162,9 +162,9 @@ private fun EmptyChip(
 
 @Composable
 private fun TeamColumn(
-    modifier: GlanceModifier = GlanceModifier,
     name: String,
-    score: String
+    score: String,
+    modifier: GlanceModifier = GlanceModifier
 ) {
     Column(
         modifier = modifier.wrapContentWidth(),

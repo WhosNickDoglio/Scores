@@ -35,6 +35,7 @@ anvil {
 
 dependencies {
     detektPlugins(libs.detekt.formatting)
+    detektPlugins(libs.detekt.compose)
     implementation(projects.libraries.appScope)
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)
