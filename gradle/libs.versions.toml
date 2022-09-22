@@ -13,7 +13,7 @@ composeCompiler = "1.3.0-beta01"
 dagger = "2.44"
 moshi = "1.14.0"
 work = "2.8.0-alpha04"
-glanceTool = "0.2.1"
+glanceTool = "0.2.2"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
