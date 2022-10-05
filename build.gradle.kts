@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -42,7 +41,7 @@ tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
 
-tasks.named<Wrapper>("wrapper") {
+tasks.named<Wrapper>("wrapper").configure {
     distributionType = Wrapper.DistributionType.ALL
 }
 
