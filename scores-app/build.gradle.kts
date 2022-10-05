@@ -35,6 +35,7 @@ plugins {
 
 android {
     compileSdk = libs.versions.compile.sdk.get().toInt()
+    namespace = "dev.whosnickdoglio.scores"
 
     defaultConfig {
         applicationId = "dev.whosnickdoglio.scores"
