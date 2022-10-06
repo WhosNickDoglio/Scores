@@ -46,5 +46,5 @@ tasks.named<Wrapper>("wrapper").configure {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += listOf("-Xopt-in=kotlin.ExperimentalStdlibApi")
+    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.ExperimentalStdlibApi")
 }
