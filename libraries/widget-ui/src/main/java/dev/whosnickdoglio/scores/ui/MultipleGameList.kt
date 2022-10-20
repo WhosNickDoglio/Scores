@@ -36,6 +36,8 @@ import androidx.glance.layout.Row
 import androidx.glance.layout.padding
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 /**
  *
@@ -47,7 +49,7 @@ import dev.whosnickdoglio.nba.models.Game
 fun MultipleGameList(
     onRefresh: Action,
     modifier: GlanceModifier = GlanceModifier,
-    games: List<Game> = emptyList()
+    games: ImmutableList<Game> = emptyList<Game>().toImmutableList()
 ) {
     if (games.isEmpty()) {
         Column(

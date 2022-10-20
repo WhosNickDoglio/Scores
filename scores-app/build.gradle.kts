@@ -95,6 +95,7 @@ dependencies {
     androidTestImplementation(libs.androidx.workmanager.test)
 
     implementation(libs.androidx.datastore)
+    implementation(libs.immutableCollections)
 
     implementation(libs.moshi)
 

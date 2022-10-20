@@ -46,6 +46,7 @@ import dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback
 import dev.whosnickdoglio.scores.widget.actions.RefreshActionCallback
 import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
 import dev.whosnickdoglio.widget.state.ScoresWidgetState
+import kotlinx.collections.immutable.toImmutableList
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */
 class ScoresWidget : GlanceAppWidget() {
@@ -79,7 +80,7 @@ class ScoresWidget : GlanceAppWidget() {
                 MultipleGameList(
                     modifier = topLevelModifier,
                     onRefresh = actionRunCallback<RefreshActionCallback>(),
-                    games = state.games
+                    games = state.games.toImmutableList()
                 )
             }
             SINGLE_GAME -> {

@@ -72,6 +72,8 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
     implementation(projects.libraries.nbaApi)
+
+    implementation(libs.immutableCollections)
     implementation(libs.glance.appwidget)
     implementation(libs.compose.ui)
     implementation(libs.androidx.material)
