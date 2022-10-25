@@ -68,9 +68,13 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.compose.bom))
+
     coreLibraryDesugaring(libs.desguar)
+
     detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
+
     implementation(projects.libraries.nbaApi)
 
     implementation(libs.immutableCollections)

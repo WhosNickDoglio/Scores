@@ -74,11 +74,14 @@ android {
 }
 
 dependencies {
-    detektPlugins(libs.detekt.formatting)
-    detektPlugins(libs.detekt.compose)
-    implementation(projects.libraries.nbaApi)
+    implementation(platform(libs.compose.bom))
 
     coreLibraryDesugaring(libs.desguar)
+
+    detektPlugins(libs.detekt.formatting)
+    detektPlugins(libs.detekt.compose)
+
+    implementation(projects.libraries.nbaApi)
 
     implementation(libs.androidx.datastore)
     implementation(libs.glance.appwidget)
@@ -86,5 +89,4 @@ dependencies {
     implementation(libs.compose.ui)
 
     implementation(libs.dagger.core)
-
 }

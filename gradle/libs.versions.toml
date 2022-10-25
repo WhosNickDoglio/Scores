@@ -38,10 +38,11 @@ androidx-workmanager = { module = "androidx.work:work-runtime-ktx", version.ref 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.1" }
 androidx-material = { module = "com.google.android.material:material", version = "1.7.0" }
 
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+compose-bom = { module = "androidx.compose:compose-bom", version = "2022.10.00" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 compose-material = { module = "androidx.compose.material3:material3", version = "1.0.0" }
 glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.0.0-alpha05" }
 glanceTool-configuration = { module = "com.google.android.glance.tools:appwidget-configuration", version.ref = "glanceTool" }

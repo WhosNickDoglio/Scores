@@ -68,12 +68,17 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.compose.bom))
+
     detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
+
     coreLibraryDesugaring(libs.desguar)
-    implementation(libs.androidx.material)
+
     implementation(projects.libraries.widgetUi)
     implementation(projects.libraries.nbaApi)
+
+    implementation(libs.androidx.material)
     implementation(libs.androidx.core)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
