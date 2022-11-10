@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -43,6 +44,20 @@ tasks.register<Delete>("clean") {
 
 tasks.named<Wrapper>("wrapper").configure {
     distributionType = Wrapper.DistributionType.ALL
+}
+
+
+fun isNonStable(version: String): Boolean {
+    val unstableKeywords =
+        listOf("ALPHA", "RC", "BETA", "DEV", "-M").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    return unstableKeywords && !regex.matches(version)
+}
+
+tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
