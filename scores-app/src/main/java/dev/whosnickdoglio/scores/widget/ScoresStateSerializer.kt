@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.widget.state
+package dev.whosnickdoglio.scores.widget
 
 import androidx.datastore.core.Serializer
 import com.squareup.moshi.Moshi

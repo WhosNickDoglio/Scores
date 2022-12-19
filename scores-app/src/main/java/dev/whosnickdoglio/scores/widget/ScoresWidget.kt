@@ -42,10 +42,7 @@ import dev.whosnickdoglio.scores.ui.MultipleGameList
 import dev.whosnickdoglio.scores.ui.ScoresWidgetTheme
 import dev.whosnickdoglio.scores.ui.SingleGame
 import dev.whosnickdoglio.scores.ui.SingleScoreCompact
-import dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback
 import dev.whosnickdoglio.scores.widget.actions.RefreshActionCallback
-import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
-import dev.whosnickdoglio.widget.state.ScoresWidgetState
 import kotlinx.collections.immutable.toImmutableList
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */

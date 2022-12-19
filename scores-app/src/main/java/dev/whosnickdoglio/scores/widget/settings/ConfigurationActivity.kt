@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.settings
+package dev.whosnickdoglio.scores.widget.settings
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.widget.state
+package dev.whosnickdoglio.scores.widget
 
 import com.squareup.moshi.JsonClass
 import dev.whosnickdoglio.nba.models.Game

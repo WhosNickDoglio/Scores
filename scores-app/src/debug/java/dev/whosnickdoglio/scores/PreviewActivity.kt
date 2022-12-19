@@ -31,7 +31,7 @@ import com.google.android.glance.tools.viewer.GlanceSnapshot
 import com.google.android.glance.tools.viewer.GlanceViewerActivity
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
-import dev.whosnickdoglio.widget.state.ScoresWidgetState
+import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 
 @OptIn(ExperimentalGlanceRemoteViewsApi::class)
 class PreviewActivity : GlanceViewerActivity() {

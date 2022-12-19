@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget.actions
+package dev.whosnickdoglio.scores.widget
 
 import android.content.Context
 import androidx.glance.GlanceId
@@ -31,9 +31,6 @@ import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.state.updateAppWidgetState
-import dev.whosnickdoglio.scores.widget.ScoresWidget
-import dev.whosnickdoglio.scores.widget.state.ScoresStateDefinition
-import dev.whosnickdoglio.widget.state.ScoresWidgetState
 
 class NavigateActionCallback : ActionCallback {
 

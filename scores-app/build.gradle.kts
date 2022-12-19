@@ -88,13 +88,12 @@ dependencies {
     implementation(projects.libraries.nbaApi)
     implementation(projects.libraries.appScope)
     implementation(projects.libraries.widgetUi)
-    implementation(projects.features.widgetSettings)
-    implementation(projects.features.widget)
 
     // widget stuff
-    implementation(libs.glance.appwidget)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
+    implementation(libs.glance.appwidget)
+    implementation(libs.glanceTool.configuration)
     debugImplementation(libs.glanceTool.viewer)
 
     implementation(libs.androidx.workmanager)

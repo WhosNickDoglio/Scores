@@ -37,7 +37,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="dev.whosnickdoglio.settings.ConfigurationActivity"
+            android:name=".widget.settings.ConfigurationActivity"
             android:exported="false"
             android:theme="@style/AppTheme">
             <intent-filter>

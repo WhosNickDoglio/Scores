@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.settings
+package dev.whosnickdoglio.scores.widget.settings
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Done

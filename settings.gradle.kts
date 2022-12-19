@@ -46,6 +46,4 @@ include(
     ":libraries:nba-api",
     ":libraries:app-scope",
     ":libraries:widget-ui",
-    ":features:widget-settings",
-    ":features:widget"
 )
