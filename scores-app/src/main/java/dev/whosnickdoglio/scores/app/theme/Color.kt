@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 @file:SuppressWarnings("MagicNumber")
+
 package dev.whosnickdoglio.scores.app.theme
 
 import androidx.compose.ui.graphics.Color

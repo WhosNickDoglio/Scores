@@ -53,7 +53,6 @@ class RefreshActionCallback : ActionCallback {
                 endDate = today
             )
             if (result is ApiResult.Success) {
-
                 return@updateAppWidgetState ScoresWidgetState(
                     currentIndex = currentState.calculateNewIndex(),
                     games = result.value.games.orEmpty().sortedGames(),
