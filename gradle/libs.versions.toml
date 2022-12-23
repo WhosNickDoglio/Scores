@@ -18,7 +18,7 @@ glanceTool = "0.2.2"
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 doctor = { id = "com.osacky.doctor", version = "0.8.1" }
 play-publish = { id = "com.github.triplet.play", version = "3.7.0" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.17.0" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.18.0" }
 android-app = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
