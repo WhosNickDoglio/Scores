@@ -63,7 +63,7 @@ moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 
 immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.5" }
 
-eithernet = { module = "com.slack.eithernet:eithernet", version = "1.2.1" }
+eithernet = { module = "com.slack.eithernet:eithernet", version = "1.3.1" }
 desguar = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.2" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
 
