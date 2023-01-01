@@ -33,9 +33,14 @@ plugins {
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.tangle) apply false
     alias(libs.plugins.detekt)
+    alias(libs.plugins.junit.jacoco)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)
+}
+
+junitJacoco {
+    version = libs.versions.jacoco.get()
 }
 
 tasks.register<Delete>("clean") {
