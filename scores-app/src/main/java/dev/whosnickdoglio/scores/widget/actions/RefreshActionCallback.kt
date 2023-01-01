@@ -32,8 +32,8 @@ import androidx.glance.appwidget.state.updateAppWidgetState
 import com.slack.eithernet.ApiResult
 import dev.whosnickdoglio.nba.models.Game
 import dev.whosnickdoglio.scores.di.injector
-import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
+import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import java.time.LocalDate
 

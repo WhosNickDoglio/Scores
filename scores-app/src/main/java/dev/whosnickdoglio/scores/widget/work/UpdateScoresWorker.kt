@@ -35,8 +35,8 @@ import com.slack.eithernet.ApiResult
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dev.whosnickdoglio.nba.BallDontLieService
-import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
+import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import tangle.work.TangleWorker
 import java.time.LocalDate

@@ -30,7 +30,6 @@ import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import androidx.glance.state.GlanceStateDefinition
 import dev.whosnickdoglio.scores.di.injector
-import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import java.io.File
 
 object ScoresStateDefinition : GlanceStateDefinition<ScoresWidgetState> {
