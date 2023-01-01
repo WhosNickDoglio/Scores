@@ -30,7 +30,7 @@ plugins {
 
 android {
     compileSdk = libs.versions.compile.sdk.get().toInt()
-
+    namespace = "dev.whosnickdoglio.scores.ui"
     defaultConfig {
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
