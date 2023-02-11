@@ -41,10 +41,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalGlanceRemoteViewsApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun WidgetSettings(
-    widget: GlanceAppWidget,
-    modifier: Modifier = Modifier
-) {
+fun WidgetSettings(widget: GlanceAppWidget, modifier: Modifier = Modifier) {
     val configurationState: AppWidgetConfigurationState =
         rememberAppWidgetConfigurationState(widget)
     val scope = rememberCoroutineScope()
@@ -53,11 +50,9 @@ fun WidgetSettings(
         modifier = modifier,
         appWidgetConfigurationState = configurationState,
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                scope.launch {
-                    configurationState.applyConfiguration()
-                }
-            }) {
+            FloatingActionButton(
+                onClick = { scope.launch { configurationState.applyConfiguration() } }
+            ) {
                 Icon(imageVector = Icons.Rounded.Done, contentDescription = "Save changes")
             }
         }

@@ -57,23 +57,15 @@ fun MultipleGameList(
             verticalAlignment = Alignment.CenterVertically,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = stringResource(R.string.no_games),
-                style = ScoresWidgetTheme.textStyle
-            )
-            Refresh(
-                modifier = GlanceModifier.padding(4.dp),
-                onRefresh = onRefresh
-            )
+            Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
+            Refresh(modifier = GlanceModifier.padding(4.dp), onRefresh = onRefresh)
         }
     } else {
         Row(modifier = modifier) {
             // TODO clean this up
             Refresh(onRefresh = onRefresh)
             LazyColumn(modifier = GlanceModifier.defaultWeight()) {
-                items(games) { game ->
-                    GameInfo(game = game)
-                }
+                items(games) { game -> GameInfo(game = game) }
             }
         }
     }

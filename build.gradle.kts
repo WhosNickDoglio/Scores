@@ -32,11 +32,19 @@ plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.tangle) apply false
+    alias(libs.plugins.ktfmt) apply false
     alias(libs.plugins.detekt)
     alias(libs.plugins.junit.jacoco)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)
+}
+
+subprojects {
+    // TODO make a convention plugin to avoid this
+    pluginManager.withPlugin("com.ncorti.ktfmt.gradle") {
+        configure<com.ncorti.ktfmt.gradle.KtfmtExtension> { kotlinLangStyle() }
+    }
 }
 
 junitJacoco {

@@ -31,6 +31,7 @@ plugins {
     alias(libs.plugins.anvil)
     alias(libs.plugins.moshiIr)
     alias(libs.plugins.tangle)
+    alias(libs.plugins.ktfmt)
 }
 
 android {

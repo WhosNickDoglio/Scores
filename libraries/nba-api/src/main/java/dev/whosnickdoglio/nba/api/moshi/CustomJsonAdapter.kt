@@ -25,8 +25,7 @@
 package dev.whosnickdoglio.nba.api.moshi
 
 /**
- * A marker interface used to easily multibinding Moshi
- * [com.squareup.moshi.JsonAdapters][com.squareup.moshi.JsonAdapter]
- * into the Dagger graph.
+ * A marker interface used to easily multibinding Moshi [com.squareup.moshi.JsonAdapters]
+ * [com.squareup.moshi.JsonAdapter] into the Dagger graph.
  */
 interface CustomJsonAdapter

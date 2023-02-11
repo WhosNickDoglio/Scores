@@ -48,8 +48,8 @@ import dev.whosnickdoglio.nba.models.Game
 // TODO clean this up
 //  Centering seems off with Team columns and navigation row icons
 /**
- * This is the compact version of [SingleGame] which just shows the team abbreviations instead of the
- * full name (NYK instead of New York Knicks).
+ * This is the compact version of [SingleGame] which just shows the team abbreviations instead of
+ * the full name (NYK instead of New York Knicks).
  *
  * @param modifier
  * @param onRefresh
@@ -64,8 +64,8 @@ fun SingleScoreCompact(
     onNavigateDown: Action,
     modifier: GlanceModifier = GlanceModifier,
     game: Game? = null,
-//    forceRefresh: Boolean = false,
-) {
+    //    forceRefresh: Boolean = false,
+    ) {
     Column(
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -98,10 +98,7 @@ fun SingleScoreCompact(
         }
 
         if (game != null) {
-            Text(
-                text = game.status,
-                style = ScoresWidgetTheme.textStyle
-            ) // More info on game
+            Text(text = game.status, style = ScoresWidgetTheme.textStyle) // More info on game
             Spacer(GlanceModifier.height(2.dp))
             NavigationRow(
                 modifier = GlanceModifier.height(50.dp).fillMaxWidth(),
@@ -161,11 +158,7 @@ private fun EmptyChip(
 }
 
 @Composable
-private fun TeamColumn(
-    name: String,
-    score: String,
-    modifier: GlanceModifier = GlanceModifier
-) {
+private fun TeamColumn(name: String, score: String, modifier: GlanceModifier = GlanceModifier) {
     Column(
         modifier = modifier.wrapContentWidth(),
         verticalAlignment = Alignment.Top,

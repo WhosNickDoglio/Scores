@@ -57,11 +57,11 @@ class ScoresWidget : GlanceAppWidget() {
     override fun Content() {
         val state = currentState<ScoresWidgetState>()
 
-        val topLevelModifier = GlanceModifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .appWidgetBackground()
-            .background(ScoresWidgetTheme.background)
+        val topLevelModifier =
+            GlanceModifier.fillMaxWidth()
+                .fillMaxHeight()
+                .appWidgetBackground()
+                .background(ScoresWidgetTheme.background)
 
         when (LocalSize.current) {
             SINGLE_GAME_COMPACT -> {

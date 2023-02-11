@@ -30,21 +30,19 @@ import com.slack.eithernet.ApiResultConverterFactory
 import com.squareup.moshi.Moshi
 import dagger.Lazy
 import dev.whosnickdoglio.nba.models.GameResponse
+import java.time.LocalDate
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.time.LocalDate
 
 /**
- *
  */
 interface BallDontLieService {
 
     /**
-     *
      *
      * https://www.balldontlie.io/#get-all-games
      */
@@ -65,18 +63,15 @@ interface BallDontLieService {
         private const val BASE_URL = "https://www.balldontlie.io/api/v1/"
 
         /**
-         *
          */
-        fun create(
-            moshi: Moshi,
-            okHttpClient: Lazy<OkHttpClient>
-        ): BallDontLieService = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .callFactory { okHttpClient.get().newCall(it) }
-            .addConverterFactory(ApiResultConverterFactory)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addCallAdapterFactory(ApiResultCallAdapterFactory)
-            .build()
-            .create()
+        fun create(moshi: Moshi, okHttpClient: Lazy<OkHttpClient>): BallDontLieService =
+            Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .callFactory { okHttpClient.get().newCall(it) }
+                .addConverterFactory(ApiResultConverterFactory)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(ApiResultCallAdapterFactory)
+                .build()
+                .create()
     }
 }

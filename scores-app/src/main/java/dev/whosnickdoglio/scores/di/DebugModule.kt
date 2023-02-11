@@ -35,7 +35,5 @@ import javax.inject.Named
 @Module
 object DebugModule {
 
-    @Provides
-    @Named("DEBUG")
-    fun provideDebugBoolean(): Boolean = BuildConfig.DEBUG
+    @Provides @Named("DEBUG") fun provideDebugBoolean(): Boolean = BuildConfig.DEBUG
 }

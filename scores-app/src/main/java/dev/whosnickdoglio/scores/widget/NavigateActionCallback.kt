@@ -34,9 +34,16 @@ import androidx.glance.appwidget.state.updateAppWidgetState
 
 class NavigateActionCallback : ActionCallback {
 
-    private enum class Direction { UP, DOWN }
+    private enum class Direction {
+        UP,
+        DOWN
+    }
 
-    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(
+        context: Context,
+        glanceId: GlanceId,
+        parameters: ActionParameters
+    ) {
         val direction: Direction? = parameters[navKey]
 
         updateAppWidgetState(
@@ -48,20 +55,19 @@ class NavigateActionCallback : ActionCallback {
 
             // TODO more robust logic and handling of this
             // TODO wrapping around
-            val newIndex = when (direction) {
-                Direction.DOWN -> if (currentIndex == currentState.games.lastIndex) {
-                    0
-                } else {
-                    currentIndex + 1
+            val newIndex =
+                when (direction) {
+                    Direction.DOWN ->
+                        if (currentIndex == currentState.games.lastIndex) {
+                            0
+                        } else {
+                            currentIndex + 1
+                        }
+                    Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
+                    null -> currentState.currentIndex
                 }
-                Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
-                null -> currentState.currentIndex
-            }
 
-            return@updateAppWidgetState ScoresWidgetState(
-                newIndex,
-                currentState.games
-            )
+            return@updateAppWidgetState ScoresWidgetState(newIndex, currentState.games)
         }
 
         ScoresWidget().update(context, glanceId)

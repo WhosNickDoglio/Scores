@@ -38,11 +38,13 @@ import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
-import tangle.work.TangleWorker
 import java.time.LocalDate
+import tangle.work.TangleWorker
 
 @TangleWorker
-class UpdateScoresWorker @AssistedInject constructor(
+class UpdateScoresWorker
+@AssistedInject
+constructor(
     private val service: BallDontLieService,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
@@ -51,15 +53,13 @@ class UpdateScoresWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         val today = LocalDate.now()
 
-        val apiResult = service.retrieveGameData(
-            startDate = today,
-            endDate = today
-        )
+        val apiResult = service.retrieveGameData(startDate = today, endDate = today)
 
         return when (apiResult) {
             is ApiResult.Success -> {
                 val glanceId =
-                    GlanceAppWidgetManager(appContext).getGlanceIds(ScoresWidget::class.java)
+                    GlanceAppWidgetManager(appContext)
+                        .getGlanceIds(ScoresWidget::class.java)
                         .firstOrNull()
 
                 if (glanceId != null) {

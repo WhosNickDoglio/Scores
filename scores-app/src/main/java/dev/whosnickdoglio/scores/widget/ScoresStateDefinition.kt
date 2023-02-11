@@ -37,10 +37,11 @@ object ScoresStateDefinition : GlanceStateDefinition<ScoresWidgetState> {
     override suspend fun getDataStore(
         context: Context,
         fileKey: String
-    ): DataStore<ScoresWidgetState> = DataStoreFactory.create(
-        serializer = context.injector.serializer,
-        produceFile = { context.dataStoreFile("$fileKey.json") }
-    )
+    ): DataStore<ScoresWidgetState> =
+        DataStoreFactory.create(
+            serializer = context.injector.serializer,
+            produceFile = { context.dataStoreFile("$fileKey.json") }
+        )
 
     override fun getLocation(context: Context, fileKey: String): File =
         context.dataStoreFile("$fileKey.json")

@@ -32,10 +32,7 @@ import androidx.glance.action.Action
 import androidx.glance.action.clickable
 
 @Composable
-internal fun Refresh(
-    onRefresh: Action,
-    modifier: GlanceModifier = GlanceModifier
-) {
+internal fun Refresh(onRefresh: Action, modifier: GlanceModifier = GlanceModifier) {
     Image(
         provider = ImageProvider(R.drawable.refresh),
         contentDescription = stringResource(R.string.cd_refresh),

@@ -36,7 +36,6 @@ import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
 /**
- *
  */
 @Composable
 internal fun GameInfo(

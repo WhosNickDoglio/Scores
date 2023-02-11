@@ -31,20 +31,18 @@ import com.google.android.material.color.DynamicColors
 import dev.whosnickdoglio.scores.di.AppComponent
 import dev.whosnickdoglio.scores.di.ComponentProvider
 import dev.whosnickdoglio.scores.di.DaggerAppComponent
+import javax.inject.Inject
 import tangle.inject.TangleGraph
 import tangle.work.TangleWorkerFactory
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
- * Our Android [Application] class that acts as our [ComponentProvider] to
- * maintain a single instance of our [AppComponent] as well as initializing
- * some debug tools.
+ * Our Android [Application] class that acts as our [ComponentProvider] to maintain a single
+ * instance of our [AppComponent] as well as initializing some debug tools.
  */
 class ScoresApplication : Application(), ComponentProvider, Configuration.Provider {
 
-    @Inject
-    lateinit var workerFactory: TangleWorkerFactory
+    @Inject lateinit var workerFactory: TangleWorkerFactory
 
     override val component: AppComponent by lazy { DaggerAppComponent.create() }
 
@@ -59,22 +57,13 @@ class ScoresApplication : Application(), ComponentProvider, Configuration.Provid
             Timber.plant(Timber.DebugTree())
 
             StrictMode.setThreadPolicy(
-                StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
+                StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build()
             )
 
-            StrictMode.setVmPolicy(
-                StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
-            )
+            StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build())
         }
     }
 
-    override fun getWorkManagerConfiguration(): Configuration = Configuration.Builder()
-        .setWorkerFactory(workerFactory)
-        .build()
+    override fun getWorkManagerConfiguration(): Configuration =
+        Configuration.Builder().setWorkerFactory(workerFactory).build()
 }

@@ -27,6 +27,7 @@ plugins {
     alias(libs.plugins.moshiIr)
     alias(libs.plugins.anvil)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.ktfmt)
 }
 
 anvil {

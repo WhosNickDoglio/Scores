@@ -40,10 +40,8 @@ class PreviewActivity : GlanceViewerActivity() {
         receiver: Class<out GlanceAppWidgetReceiver>
     ): GlanceSnapshot =
         when (receiver) {
-            ScoresWidgetReceiver::class.java -> GlanceSnapshot(
-                instance = ScoresWidget(),
-                state = ScoresWidgetState()
-            )
+            ScoresWidgetReceiver::class.java ->
+                GlanceSnapshot(instance = ScoresWidget(), state = ScoresWidgetState())
             else -> error("This is not the expected Widget!")
         }
 

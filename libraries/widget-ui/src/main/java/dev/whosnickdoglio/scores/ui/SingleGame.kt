@@ -61,28 +61,19 @@ fun SingleGame(
         }
 
         if (game != null) {
-            GameInfo(
-                modifier = GlanceModifier.fillMaxHeight().defaultWeight(),
-                game = game
-            )
+            GameInfo(modifier = GlanceModifier.fillMaxHeight().defaultWeight(), game = game)
         } else {
             Row(
                 modifier = GlanceModifier.fillMaxHeight().defaultWeight(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = stringResource(R.string.no_games),
-                    style = ScoresWidgetTheme.textStyle
-                )
+                Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
             }
         }
 
         if (game != null) {
-            NavigationColumn(
-                onNavigateUp = onNavigateUp,
-                onNavigateDown = onNavigateDown
-            )
+            NavigationColumn(onNavigateUp = onNavigateUp, onNavigateDown = onNavigateDown)
         }
     }
 }
@@ -93,10 +84,7 @@ private fun NavigationColumn(
     onNavigateDown: Action,
     modifier: GlanceModifier = GlanceModifier,
 ) {
-    Column(
-        modifier = modifier.fillMaxHeight(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+    Column(modifier = modifier.fillMaxHeight(), verticalAlignment = Alignment.CenterVertically) {
         Image(
             provider = ImageProvider(R.drawable.up),
             contentDescription = stringResource(R.string.cd_navigation_previous),

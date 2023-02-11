@@ -43,7 +43,7 @@ class ConfigurationActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background,
             ) {
-//                WidgetSettings()
+                //                WidgetSettings()
             }
         }
     }

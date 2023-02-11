@@ -34,8 +34,8 @@ import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
 import javax.inject.Singleton
 
 /**
- * A top level [dagger.Component] for our dependency graph, this [dagger.Component] should be
- * a [Singleton] and only initialized once per app launch via the [ComponentProvider]. All
+ * A top level [dagger.Component] for our dependency graph, this [dagger.Component] should be a
+ * [Singleton] and only initialized once per app launch via the [ComponentProvider]. All
  * [dagger.Modules][dagger.Module] or classes that contribute to [AppScope] will be available in the
  * [AppComponent] graph.
  */
@@ -59,13 +59,10 @@ interface AppComponent {
  */
 interface ComponentProvider {
 
-    /**
-     * An instance of the [AppComponent].
-     */
+    /** An instance of the [AppComponent]. */
     val component: AppComponent
 }
 
-/**
- * Exposes the [AppComponent] via an [android.content.Context] for easy member injection.
- */
-val Context.injector get() = (applicationContext as ComponentProvider).component
+/** Exposes the [AppComponent] via an [android.content.Context] for easy member injection. */
+val Context.injector
+    get() = (applicationContext as ComponentProvider).component

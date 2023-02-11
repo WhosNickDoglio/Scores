@@ -27,19 +27,21 @@ package dev.whosnickdoglio.scores.widget
 import androidx.datastore.core.Serializer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
-import okio.buffer
-import okio.sink
 import java.io.EOFException
 import java.io.InputStream
 import java.io.OutputStream
 import javax.inject.Inject
+import okio.buffer
+import okio.sink
 
 /**
  * A DataStore [Serializer] for the [ScoresWidgetState] object.
  *
  * @param moshi A [Moshi] instance that parses the [ScoresWidgetState]
  */
-class ScoresStateSerializer @Inject constructor(
+class ScoresStateSerializer
+@Inject
+constructor(
     moshi: Moshi,
 ) : Serializer<ScoresWidgetState> {
 
@@ -48,11 +50,12 @@ class ScoresStateSerializer @Inject constructor(
     override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
     @Suppress("SwallowedException") // TODO come back to this
-    override suspend fun readFrom(input: InputStream): ScoresWidgetState = try {
-        adapter.fromJson(input.bufferedReader().readText()) ?: ScoresWidgetState()
-    } catch (exception: EOFException) {
-        ScoresWidgetState()
-    }
+    override suspend fun readFrom(input: InputStream): ScoresWidgetState =
+        try {
+            adapter.fromJson(input.bufferedReader().readText()) ?: ScoresWidgetState()
+        } catch (exception: EOFException) {
+            ScoresWidgetState()
+        }
 
     override suspend fun writeTo(t: ScoresWidgetState, output: OutputStream) {
         val sink = output.sink().buffer()

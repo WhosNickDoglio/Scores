@@ -29,7 +29,6 @@ import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 
 /**
- *
  */
 object ScoresWidgetTheme {
 
@@ -40,12 +39,11 @@ object ScoresWidgetTheme {
 
     val background = ColorProvider(R.color.colorBackground)
 
-    val textStyle = TextStyle(
-        color = textColorPrimary
-    )
+    val textStyle = TextStyle(color = textColorPrimary)
 
-    val scoreTextStyle = TextStyle(
-        color = colorPrimary,
-        fontWeight = FontWeight.Bold,
-    )
+    val scoreTextStyle =
+        TextStyle(
+            color = colorPrimary,
+            fontWeight = FontWeight.Bold,
+        )
 }

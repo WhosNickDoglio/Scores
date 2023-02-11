@@ -39,7 +39,11 @@ import java.time.LocalDate
 
 class RefreshActionCallback : ActionCallback {
 
-    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(
+        context: Context,
+        glanceId: GlanceId,
+        parameters: ActionParameters
+    ) {
         val service = context.injector.service
         updateAppWidgetState(
             context = context,
@@ -48,10 +52,7 @@ class RefreshActionCallback : ActionCallback {
         ) { currentState ->
             val today = LocalDate.now()
 
-            val result = service.retrieveGameData(
-                startDate = today,
-                endDate = today
-            )
+            val result = service.retrieveGameData(startDate = today, endDate = today)
             if (result is ApiResult.Success) {
                 return@updateAppWidgetState ScoresWidgetState(
                     currentIndex = currentState.calculateNewIndex(),

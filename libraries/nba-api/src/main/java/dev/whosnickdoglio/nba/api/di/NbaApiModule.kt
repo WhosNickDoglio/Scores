@@ -32,15 +32,14 @@ import dagger.Provides
 import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.nba.api.moshi.CustomJsonAdapter
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Named
 import javax.inject.Singleton
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 /**
- * A [dagger.Module] that is contributed to the [AppScope] that provides
- * the necessary dependencies to make network requests for NBA and WNBA
- * game information.
+ * A [dagger.Module] that is contributed to the [AppScope] that provides the necessary dependencies
+ * to make network requests for NBA and WNBA game information.
  */
 @ContributesTo(AppScope::class)
 @Module
@@ -48,24 +47,20 @@ object NbaApiModule {
 
     @Singleton
     @Provides
-    fun provideMoshi(
-        adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>
-    ): Moshi = Moshi.Builder()
-        .apply { adapters.forEach { adapter -> add(adapter) } }
-        .build()
+    fun provideMoshi(adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>): Moshi =
+        Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
 
     @Singleton
     @Provides
     fun provideOkhttp(@Named("DEBUG") isDebugBuild: Boolean): OkHttpClient =
-        OkHttpClient.Builder().apply {
-            if (isDebugBuild) {
-                addInterceptor(
-                    HttpLoggingInterceptor().apply {
-                        level = HttpLoggingInterceptor.Level.BODY
-                    }
-                )
+        OkHttpClient.Builder()
+            .apply {
+                if (isDebugBuild) {
+                    addInterceptor(
+                        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+                    )
+                }
             }
-        }
             .build()
 
     @Singleton
@@ -73,6 +68,5 @@ object NbaApiModule {
     fun provideBallDontLieService(
         moshi: Moshi,
         okHttpClient: Lazy<OkHttpClient>
-    ): BallDontLieService =
-        BallDontLieService.create(moshi, okHttpClient)
+    ): BallDontLieService = BallDontLieService.create(moshi, okHttpClient)
 }
