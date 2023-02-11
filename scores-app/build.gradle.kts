@@ -81,7 +81,6 @@ android {
 dependencies {
     implementation(platform(libs.compose.bom))
 
-    detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
 
     coreLibraryDesugaring(libs.desguar)

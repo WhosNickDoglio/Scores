@@ -73,7 +73,6 @@ dependencies {
 
     coreLibraryDesugaring(libs.desguar)
 
-    detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
 
     implementation(projects.libraries.nbaApi)
