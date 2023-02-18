@@ -40,7 +40,7 @@ import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import java.time.LocalDate
 
-//@TangleWorker
+// @TangleWorker
 class UpdateScoresWorker
 @AssistedInject
 constructor(
