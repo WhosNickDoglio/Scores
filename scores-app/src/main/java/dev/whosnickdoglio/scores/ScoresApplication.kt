@@ -31,9 +31,6 @@ import com.google.android.material.color.DynamicColors
 import dev.whosnickdoglio.scores.di.AppComponent
 import dev.whosnickdoglio.scores.di.ComponentProvider
 import dev.whosnickdoglio.scores.di.DaggerAppComponent
-import javax.inject.Inject
-import tangle.inject.TangleGraph
-import tangle.work.TangleWorkerFactory
 import timber.log.Timber
 
 /**
@@ -42,7 +39,8 @@ import timber.log.Timber
  */
 class ScoresApplication : Application(), ComponentProvider, Configuration.Provider {
 
-    @Inject lateinit var workerFactory: TangleWorkerFactory
+    // https://github.com/RBusarow/Tangle/issues/564
+//    @Inject lateinit var workerFactory: TangleWorkerFactory
 
     override val component: AppComponent by lazy { DaggerAppComponent.create() }
 
@@ -50,7 +48,7 @@ class ScoresApplication : Application(), ComponentProvider, Configuration.Provid
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
 
-        TangleGraph.add(component)
+//        TangleGraph.add(component)
         component.inject(this)
 
         if (BuildConfig.DEBUG) {
@@ -65,5 +63,7 @@ class ScoresApplication : Application(), ComponentProvider, Configuration.Provid
     }
 
     override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder().setWorkerFactory(workerFactory).build()
+        Configuration.Builder()
+//            .setWorkerFactory(workerFactory)
+            .build()
 }
