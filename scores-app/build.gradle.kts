@@ -34,6 +34,7 @@ plugins {
     alias(libs.plugins.ktfmt)
 }
 
+
 android {
     compileSdk = libs.versions.compile.sdk.get().toInt()
     namespace = "dev.whosnickdoglio.scores"
