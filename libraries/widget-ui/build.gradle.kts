@@ -73,7 +73,7 @@ dependencies {
 
     coreLibraryDesugaring(libs.desguar)
 
-    detektPlugins(libs.detekt.compose)
+    lintChecks(libs.lints.compose)
 
     implementation(projects.libraries.nbaApi)
 

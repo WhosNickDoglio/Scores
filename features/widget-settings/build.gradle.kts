@@ -70,7 +70,7 @@ android {
 dependencies {
     implementation(platform(libs.compose.bom))
 
-    detektPlugins(libs.detekt.compose)
+    lintChecks(libs.lints.compose)
 
     coreLibraryDesugaring(libs.desguar)
 

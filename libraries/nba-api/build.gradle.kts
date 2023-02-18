@@ -24,6 +24,7 @@
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.android.lint)
     alias(libs.plugins.moshiIr)
     alias(libs.plugins.anvil)
     alias(libs.plugins.detekt)
@@ -35,7 +36,7 @@ anvil {
 }
 
 dependencies {
-    detektPlugins(libs.detekt.compose)
+    lintChecks(libs.lints.compose)
     implementation(projects.libraries.appScope)
     implementation(libs.dagger.core)
     implementation(libs.retrofit.core)

@@ -24,11 +24,11 @@
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.android.lint)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ktfmt)
 }
 
 dependencies {
-    detektPlugins(libs.detekt.compose)
-
+    lintChecks(libs.lints.compose)
 }
