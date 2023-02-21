@@ -32,7 +32,7 @@ gradle-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 anvil = { id = "com.squareup.anvil", version = "2.4.4" }
 tangle = { id = "com.rickbusarow.tangle", version = "0.15.1" }
 paparazzi = { id = "app.cash.paparazzi", version = "1.2.0" }
-ktfmt = { id = "com.ncorti.ktfmt.gradle", version = "0.11.0" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version = "0.12.0" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.9.0" }
