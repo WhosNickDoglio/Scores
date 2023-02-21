@@ -28,7 +28,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 moshiIr = { id = "dev.zacsweers.moshix", version = "0.21.0" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.45.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 anvil = { id = "com.squareup.anvil", version = "2.4.4" }
 tangle = { id = "com.rickbusarow.tangle", version = "0.15.1" }
 paparazzi = { id = "app.cash.paparazzi", version = "1.2.0" }
