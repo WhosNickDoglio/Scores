@@ -28,8 +28,7 @@ import androidx.glance.text.FontWeight
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 
-/**
- */
+/**  */
 object ScoresWidgetTheme {
 
     // TODO use textColorPrimary or colorPrimary?

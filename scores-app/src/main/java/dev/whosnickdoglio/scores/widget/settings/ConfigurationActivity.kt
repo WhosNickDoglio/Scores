@@ -32,8 +32,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 
-/**
- */
+/**  */
 class ConfigurationActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -51,4 +51,4 @@ val Typography =
             fontSize = 12.sp
         )
         */
-        )
+    )

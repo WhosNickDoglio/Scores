@@ -35,8 +35,7 @@ import androidx.glance.layout.width
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.models.Game
 
-/**
- */
+/**  */
 @Composable
 internal fun GameInfo(
     game: Game, // TODO make a sport agnostic game model at some point

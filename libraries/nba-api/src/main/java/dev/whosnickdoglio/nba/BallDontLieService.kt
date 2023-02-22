@@ -38,14 +38,10 @@ import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-/**
- */
+/**  */
 interface BallDontLieService {
 
-    /**
-     *
-     * https://www.balldontlie.io/#get-all-games
-     */
+    /** https://www.balldontlie.io/#get-all-games */
     @GET("games")
     suspend fun retrieveGameData(
         @Query("page") page: Int? = null,
@@ -62,8 +58,7 @@ interface BallDontLieService {
     companion object {
         private const val BASE_URL = "https://www.balldontlie.io/api/v1/"
 
-        /**
-         */
+        /**  */
         fun create(moshi: Moshi, okHttpClient: Lazy<OkHttpClient>): BallDontLieService =
             Retrofit.Builder()
                 .baseUrl(BASE_URL)

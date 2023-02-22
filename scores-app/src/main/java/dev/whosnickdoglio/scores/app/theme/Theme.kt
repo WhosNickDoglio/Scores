@@ -45,7 +45,7 @@ private val LightColorPalette =
         onBackground = Color.Black,
         onSurface = Color.Black,
         */
-        )
+    )
 
 @Composable
 fun ScoresTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {

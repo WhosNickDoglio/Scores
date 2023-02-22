@@ -40,7 +40,6 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
 /**
- *
  * @param modifier
  * @param onRefresh
  * @param games

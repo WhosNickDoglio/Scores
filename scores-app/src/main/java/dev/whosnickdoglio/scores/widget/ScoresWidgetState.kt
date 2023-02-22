@@ -31,16 +31,10 @@ import dev.whosnickdoglio.nba.models.Game
 /**
  * A data class that represents all the relevant state information for the Scores widget.
  *
- * @param currentIndex The index of the game within the [games] [List]
- * ```
- *     currently being shown by the widget if the widget is
- *     setup to only show a single game, defaults to `null`.
- * @param games
- * ```
- * A list of all the [Games][Game] that could be shown in
- * ```
- *     the widget, defaults to an empty list.
- * ```
+ * @param currentIndex The index of the game within the [games] [List] currently being shown by the
+ *   widget if the widget is setup to only show a single game, defaults to `null`.
+ * @param games A list of all the [Games][Game] that could be shown in the widget, defaults to an
+ *   empty list.
  */
 @JsonClass(generateAdapter = true)
 data class ScoresWidgetState(
