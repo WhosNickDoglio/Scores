@@ -2,7 +2,7 @@
 min-sdk = "24"
 target-sdk = "33"
 compile-sdk = "33"
-agp = "7.4.1"
+agp = "7.4.2"
 jacoco = "0.8.8"
 kotlin = "1.8.10"
 detekt = "1.22.0"
