@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -37,7 +36,6 @@ plugins {
     alias(libs.plugins.tangle) apply false
     alias(libs.plugins.ktfmt) apply false
     alias(libs.plugins.detekt)
-    //    alias(libs.plugins.junit.jacoco)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)
@@ -56,24 +54,6 @@ subprojects {
     pluginManager.withPlugin("org.jetbrains.kotlin.android") {
         configure<KotlinAndroidProjectExtension> { jvmToolchain(11) }
     }
-}
-
-// junitJacoco {
-//    version = libs.versions.jacoco.get()
-
-// }
-
-tasks.register<Delete>("clean") { delete(rootProject.buildDir) }
-
-fun isNonStable(version: String): Boolean {
-    val unstableKeywords =
-        listOf("ALPHA", "RC", "BETA", "DEV", "-M").any { version.toUpperCase().contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    return unstableKeywords && !regex.matches(version)
-}
-
-tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
-    rejectVersionIf { isNonStable(candidate.version) }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
