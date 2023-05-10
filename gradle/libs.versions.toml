@@ -18,7 +18,7 @@ glanceTool = "0.2.2"
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 doctor = { id = "com.osacky.doctor", version = "0.8.1" }
-play-publish = { id = "com.github.triplet.play", version = "3.8.2" }
+play-publish = { id = "com.github.triplet.play", version = "3.8.3" }
 junit-jacoco = { id = "com.vanniktech.android.junit.jacoco", version = "0.16.0" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.20.0" }
 android-app = { id = "com.android.application", version.ref = "agp" }
