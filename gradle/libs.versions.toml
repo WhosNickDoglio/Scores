@@ -47,7 +47,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 compose-material = { module = "androidx.compose.material3:material3" }
-glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.0.0-alpha05" }
+glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.0.0-beta01" }
 glanceTool-configuration = { module = "com.google.android.glance.tools:appwidget-configuration", version.ref = "glanceTool" }
 glanceTool-viewer = { module = "com.google.android.glance.tools:appwidget-viewer", version.ref = "glanceTool" }
 
