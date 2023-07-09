@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.api.moshi
+package dev.whosnickdoglio.nba.moshi
 
 /**
  * A marker interface used to easily multibinding Moshi [com.squareup.moshi.JsonAdapters]

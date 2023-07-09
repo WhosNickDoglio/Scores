@@ -28,6 +28,7 @@ import android.content.Context
 import androidx.work.WorkerFactory
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.scores.dagger.SingleIn
 import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
 import javax.inject.Singleton
 
@@ -37,7 +38,7 @@ import javax.inject.Singleton
  * [dagger.Modules][dagger.Module] or classes that contribute to [AppScope] will be available in the
  * [AppComponent] graph.
  */
-@Singleton
+@SingleIn(AppScope::class)
 @MergeComponent(AppScope::class)
 interface AppComponent {
     val workerFactory: WorkerFactory

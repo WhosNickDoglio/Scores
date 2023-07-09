@@ -61,6 +61,5 @@ include(
     ":widget-ui",
     ":widget-theme",
     ":startup",
+    ":dagger-scopes"
 )
-
-include(":dagger-scopes")

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2023 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,38 +22,38 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.api.di
+package dev.whosnickdoglio.nba.moshi
 
-import com.squareup.anvil.annotations.ContributesTo
-import com.squareup.moshi.Moshi
-import dagger.Lazy
-import dagger.Module
-import dagger.Provides
+import com.squareup.anvil.annotations.ContributesMultibinding
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonWriter
+import com.squareup.moshi.ToJson
 import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.nba.BallDontLieService
-import dev.whosnickdoglio.nba.api.moshi.CustomJsonAdapter
-import javax.inject.Singleton
-import okhttp3.OkHttpClient
+import java.time.LocalDate
+import javax.inject.Inject
 
-/**
- * A [dagger.Module] that is contributed to the [AppScope] that provides the necessary dependencies
- * to make network requests for NBA and WNBA game information.
- */
-@ContributesTo(AppScope::class)
-@Module
-object NbaApiModule {
+@ContributesMultibinding(scope = AppScope::class, boundType = CustomJsonAdapter::class)
+class LocalDateAdapter @Inject constructor() : JsonAdapter<LocalDate>(), CustomJsonAdapter {
 
-    @Singleton
-    @Provides
-    fun provideMoshi(adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>): Moshi =
-        Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
+    @FromJson
+    override fun fromJson(reader: JsonReader): LocalDate? {
+        if (reader.peek() == JsonReader.Token.NULL) {
+            return reader.nextNull()
+        }
+        val string = reader.nextString()
+        reader.close()
+        return LocalDate.parse(string)
+    }
 
-    @Singleton @Provides fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
-
-    @Singleton
-    @Provides
-    fun provideBallDontLieService(
-        moshi: Moshi,
-        okHttpClient: Lazy<OkHttpClient>
-    ): BallDontLieService = BallDontLieService.create(moshi, okHttpClient)
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: LocalDate?) {
+        if (value == null) {
+            writer.nullValue()
+        } else {
+            writer.value(value.toString())
+        }
+        writer.close()
+    }
 }

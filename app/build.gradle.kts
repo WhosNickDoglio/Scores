@@ -139,6 +139,7 @@ dependencies {
     implementation(libs.timber)
     implementation(projects.anvilScopes)
     implementation(projects.appTheme)
+    implementation(projects.daggerScopes)
     implementation(projects.nbaApi)
     implementation(projects.startup)
     implementation(projects.widgetUi)
