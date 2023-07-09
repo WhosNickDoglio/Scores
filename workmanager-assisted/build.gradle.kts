@@ -30,7 +30,7 @@ plugins {
 android { namespace = "dev.whosnickdoglio.workmanager" }
 
 dependencies {
-    implementation(projects.anvilScopes)
-    implementation(libs.dagger.core)
     implementation(libs.androidx.workmanager)
+    implementation(libs.dagger.core)
+    implementation(projects.anvilScopes)
 }
