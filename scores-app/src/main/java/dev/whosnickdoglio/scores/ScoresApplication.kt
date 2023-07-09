@@ -38,16 +38,12 @@ import timber.log.Timber
  */
 class ScoresApplication : Application(), ComponentProvider {
 
-    // https://github.com/RBusarow/Tangle/issues/564
-    //    @Inject lateinit var workerFactory: TangleWorkerFactory
-
     override val component: AppComponent by lazy { DaggerAppComponent.create() }
 
     override fun onCreate() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
 
-        //        TangleGraph.add(component)
         component.inject(this)
 
         if (BuildConfig.DEBUG) {

@@ -30,7 +30,6 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
     alias(libs.plugins.moshiIr)
-    alias(libs.plugins.tangle)
     alias(libs.plugins.ktfmt)
 }
 
@@ -95,8 +94,6 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.glance.appwidget)
-    implementation(libs.glanceTool.configuration)
-    debugImplementation(libs.glanceTool.viewer)
 
     implementation(libs.androidx.workmanager)
     androidTestImplementation(libs.androidx.workmanager.test)
