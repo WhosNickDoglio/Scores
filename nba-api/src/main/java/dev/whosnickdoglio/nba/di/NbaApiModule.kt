@@ -34,7 +34,7 @@ import dagger.Provides
 import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.nba.moshi.CustomJsonAdapter
-import javax.inject.Singleton
+import dev.whosnickdoglio.scores.dagger.SingleIn
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -48,14 +48,16 @@ import retrofit2.create
 @Module
 object NbaApiModule {
 
-    @Singleton
+    @SingleIn(AppScope::class)
     @Provides
     fun provideMoshi(adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>): Moshi =
         Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
 
-    @Singleton @Provides fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
+    @SingleIn(AppScope::class)
+    @Provides
+    fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
 
-    @Singleton
+    @SingleIn(AppScope::class)
     @Provides
     fun provideBallDontLieService(
         moshi: Moshi,

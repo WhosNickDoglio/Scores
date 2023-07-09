@@ -22,29 +22,39 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.di
+package dev.whosnickdoglio.workmanager
 
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import com.squareup.anvil.annotations.ContributesBinding
+import dagger.MapKey
 import dev.whosnickdoglio.anvil.AppScope
 import javax.inject.Inject
 import javax.inject.Provider
+import kotlin.reflect.KClass
 
 // https://gist.github.com/Zhuinden/54136120b15fdabd56aa164c20dc934f
+
+@MustBeDocumented
+@Target(
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.PROPERTY_SETTER
+)
+@Retention(AnnotationRetention.RUNTIME)
+@MapKey
+annotation class WorkerKey(val value: KClass<out ListenableWorker>)
+
+fun interface AssistedWorkerFactory<T : ListenableWorker> {
+    fun createWorker(appContext: Context, workerParams: WorkerParameters): T
+}
+
 @ContributesBinding(AppScope::class)
 class ScoresWorkerFactory
 @Inject
-constructor(
-    private val assistedWorkerFactories:
-        Map<
-            Class<out ListenableWorker>,
-            @JvmSuppressWildcards
-            Provider<AssistedWorkerFactory<out ListenableWorker>>
-        >
-) : WorkerFactory() {
+constructor(private val assistedWorkerFactories: workerFactoryMap) : WorkerFactory() {
     @Suppress("ReturnCount")
     override fun createWorker(
         appContext: Context,
@@ -64,3 +74,10 @@ constructor(
         return factory.get().createWorker(appContext, workerParameters)
     }
 }
+
+private typealias workerFactoryMap =
+    Map<
+        Class<out ListenableWorker>,
+        @JvmSuppressWildcards
+        Provider<AssistedWorkerFactory<out ListenableWorker>>
+    >

@@ -25,6 +25,7 @@
 package dev.whosnickdoglio.scores.widget.di
 
 import com.squareup.anvil.annotations.MergeComponent
-import javax.inject.Singleton
+import dev.whosnickdoglio.anvil.WidgetScope
+import dev.whosnickdoglio.scores.dagger.SingleIn
 
-@Singleton @MergeComponent(WidgetComponent::class) interface WidgetComponent
+@SingleIn(WidgetScope::class) @MergeComponent(WidgetScope::class) interface WidgetComponent

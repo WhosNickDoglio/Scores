@@ -29,14 +29,14 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import androidx.glance.state.GlanceStateDefinition
+import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.scores.dagger.SingleIn
 import java.io.File
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class ScoresStateDefinition @Inject constructor(
-    private val serializer: ScoresStateSerializer
-) : GlanceStateDefinition<ScoresWidgetState> {
+@SingleIn(AppScope::class)
+class ScoresStateDefinition @Inject constructor(private val serializer: ScoresStateSerializer) :
+    GlanceStateDefinition<ScoresWidgetState> {
 
     override suspend fun getDataStore(
         context: Context,

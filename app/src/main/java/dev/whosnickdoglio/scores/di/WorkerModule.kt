@@ -32,6 +32,8 @@ import dagger.multibindings.IntoMap
 import dagger.multibindings.Multibinds
 import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
+import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
+import dev.whosnickdoglio.workmanager.WorkerKey
 
 @Module
 @ContributesTo(AppScope::class)

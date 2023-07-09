@@ -61,5 +61,6 @@ include(
     ":widget-ui",
     ":widget-theme",
     ":startup",
-    ":dagger-scopes"
+    ":dagger-scopes",
+    ":workmanager-assisted"
 )

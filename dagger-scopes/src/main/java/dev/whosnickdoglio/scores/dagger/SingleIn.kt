@@ -37,7 +37,7 @@ Stolen from https://github.com/gpeal/Anvil-Sample/blob/main/lib.daggerscopes/src
  *
  * Without `@SingleIn`, an AppComponent contribution might look like this:
  * ```
- * @Singleton
+ * @SingleIn(AppScope::class)
  * @ContributesBinding(AppScope::class)
  * class YourClassImpl : YourClass
  * ```

@@ -143,6 +143,7 @@ dependencies {
     implementation(projects.nbaApi)
     implementation(projects.startup)
     implementation(projects.widgetUi)
+    implementation(projects.workmanagerAssisted)
 
     debugImplementation(libs.compose.ui.tooling)
 

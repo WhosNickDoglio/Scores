@@ -22,12 +22,15 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.di
+plugins {
+    id("scores.android")
+    alias(libs.plugins.anvil)
+}
 
-import android.content.Context
-import androidx.work.ListenableWorker
-import androidx.work.WorkerParameters
+android { namespace = "dev.whosnickdoglio.workmanager" }
 
-interface AssistedWorkerFactory<T : ListenableWorker> {
-    fun createWorker(appContext: Context, workerParams: WorkerParameters): T
+dependencies {
+    implementation(projects.anvilScopes)
+    implementation(libs.dagger.core)
+    implementation(libs.androidx.workmanager)
 }

@@ -41,4 +41,5 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
     implementation(projects.anvilScopes)
+    implementation(projects.daggerScopes)
 }

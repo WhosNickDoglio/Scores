@@ -34,10 +34,10 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dev.whosnickdoglio.nba.BallDontLieService
-import dev.whosnickdoglio.scores.di.AssistedWorkerFactory
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
+import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
 import java.time.LocalDate
 
 class UpdateScoresWorker
