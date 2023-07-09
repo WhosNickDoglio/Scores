@@ -21,8 +21,7 @@ jobs:
     needs: [ Build ]
     strategy:
       matrix:
-        # sortDependencies --mode check
-        command: [ detekt, lint, ktfmtCheck ]
+        command: [ detekt, lint, spotlessCheck, checkSortDependencies, licensee ]
     steps:
       - uses: actions/checkout@v3.5.3
       - uses: ./.github/actions/setup

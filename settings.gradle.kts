@@ -21,14 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+rootProject.name = "Scores"
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -39,13 +42,25 @@ dependencyResolutionManagement {
     }
 }
 
+plugins { id("com.gradle.enterprise") version ("3.13.4") }
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "Scores"
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
 
 include(
-    ":scores-app",
-    ":libraries:nba-api",
-    ":libraries:app-scope",
-    ":libraries:widget-ui",
+    ":app",
+    ":app-theme",
+    ":nba-api",
+    ":anvil-scopes",
+    ":widget-ui",
+    ":widget-theme",
+    ":startup",
 )
+
+include(":dagger-scopes")

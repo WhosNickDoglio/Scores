@@ -22,39 +22,11 @@
  * SOFTWARE.
  */
 
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     alias(libs.plugins.android.app) apply false
-    alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.android.lint) apply false
     alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.kapt) apply false
-    alias(libs.plugins.ktfmt) apply false
-    alias(libs.plugins.detekt)
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)
-}
-
-subprojects {
-    // TODO make a convention plugin to avoid this
-    pluginManager.withPlugin("com.ncorti.ktfmt.gradle") {
-        configure<com.ncorti.ktfmt.gradle.KtfmtExtension> { kotlinLangStyle() }
-    }
-
-    pluginManager.withPlugin("org.jetbrains.kotlin.jvm") {
-        configure<KotlinJvmProjectExtension> { jvmToolchain(11) }
-    }
-
-    pluginManager.withPlugin("org.jetbrains.kotlin.android") {
-        configure<KotlinAndroidProjectExtension> { jvmToolchain(11) }
-    }
-}
-
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += listOf("-opt-in=kotlin.ExperimentalStdlibApi")
 }
