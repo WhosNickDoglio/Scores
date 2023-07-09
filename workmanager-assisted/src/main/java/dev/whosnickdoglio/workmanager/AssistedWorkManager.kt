@@ -54,7 +54,10 @@ fun interface AssistedWorkerFactory<T : ListenableWorker> {
 @ContributesBinding(AppScope::class)
 class ScoresWorkerFactory
 @Inject
-constructor(private val assistedWorkerFactories: workerFactoryMap) : WorkerFactory() {
+constructor(
+    private val assistedWorkerFactories:
+        Map<Class<out ListenableWorker>, @JvmSuppressWildcards Provider<AssistedWorkerFactory<out ListenableWorker>>>
+) : WorkerFactory() {
     @Suppress("ReturnCount")
     override fun createWorker(
         appContext: Context,
@@ -74,10 +77,3 @@ constructor(private val assistedWorkerFactories: workerFactoryMap) : WorkerFacto
         return factory.get().createWorker(appContext, workerParameters)
     }
 }
-
-private typealias workerFactoryMap =
-    Map<
-        Class<out ListenableWorker>,
-        @JvmSuppressWildcards
-        Provider<AssistedWorkerFactory<out ListenableWorker>>
-    >

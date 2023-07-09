@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2023 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ import androidx.glance.layout.fillMaxHeight
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.state.GlanceStateDefinition
 import com.squareup.anvil.annotations.ContributesBinding
-import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.anvil.WidgetScope
 import dev.whosnickdoglio.scores.ui.MultipleGameList
 import dev.whosnickdoglio.scores.ui.SingleGame
 import dev.whosnickdoglio.scores.ui.SingleScoreCompact
@@ -50,7 +50,7 @@ import javax.inject.Inject
 import kotlinx.collections.immutable.toImmutableList
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */
-@ContributesBinding(AppScope::class)
+@ContributesBinding(WidgetScope::class)
 class ScoresWidget @Inject constructor(glanceStateDefinition: ScoresStateDefinition) :
     GlanceAppWidget() {
 
@@ -67,35 +67,38 @@ class ScoresWidget @Inject constructor(glanceStateDefinition: ScoresStateDefinit
             //                    .background(ScoresWidgetTheme.background)
 
             when (LocalSize.current) {
-                SINGLE_GAME_COMPACT -> SingleScoreCompact(
-                    modifier = topLevelModifier,
-                    onRefresh = { actionRunCallback<RefreshActionCallback>() },
-                    onNavigateUp = { NavigateActionCallback.up() },
-                    onNavigateDown = { NavigateActionCallback.down() },
-                    game =
-                        if (state.games.isEmpty()) {
-                            null
-                        } else {
-                            state.games[state.currentIndex ?: 0]
-                        }
-                )
-                MULTI_GAME_LIST -> MultipleGameList(
-                    modifier = topLevelModifier,
-                    onRefresh = { actionRunCallback<RefreshActionCallback>() },
-                    games = state.games.toImmutableList()
-                )
-                SINGLE_GAME -> SingleGame(
-                    modifier = topLevelModifier,
-                    onRefresh = { actionRunCallback<RefreshActionCallback>() },
-                    onNavigateUp = { NavigateActionCallback.up() },
-                    onNavigateDown = { NavigateActionCallback.down() },
-                    game =
-                        if (state.games.isEmpty()) {
-                            null
-                        } else {
-                            state.games[state.currentIndex ?: 0]
-                        }
-                )
+                SINGLE_GAME_COMPACT ->
+                    SingleScoreCompact(
+                        modifier = topLevelModifier,
+                        onRefresh = { actionRunCallback<RefreshActionCallback>() },
+                        onNavigateUp = { NavigateActionCallback.up() },
+                        onNavigateDown = { NavigateActionCallback.down() },
+                        game =
+                            if (state.games.isEmpty()) {
+                                null
+                            } else {
+                                state.games[state.currentIndex ?: 0]
+                            }
+                    )
+                MULTI_GAME_LIST ->
+                    MultipleGameList(
+                        modifier = topLevelModifier,
+                        onRefresh = { actionRunCallback<RefreshActionCallback>() },
+                        games = state.games.toImmutableList()
+                    )
+                SINGLE_GAME ->
+                    SingleGame(
+                        modifier = topLevelModifier,
+                        onRefresh = { actionRunCallback<RefreshActionCallback>() },
+                        onNavigateUp = { NavigateActionCallback.up() },
+                        onNavigateDown = { NavigateActionCallback.down() },
+                        game =
+                            if (state.games.isEmpty()) {
+                                null
+                            } else {
+                                state.games[state.currentIndex ?: 0]
+                            }
+                    )
             }
         }
     }

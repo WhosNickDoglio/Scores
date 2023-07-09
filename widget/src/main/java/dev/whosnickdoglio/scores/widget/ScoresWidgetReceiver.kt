@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2023 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,22 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget.settings
+package dev.whosnickdoglio.scores.widget
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.ui.Modifier
+import android.content.Context
+import android.content.Intent
+import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.GlanceAppWidgetReceiver
+import dev.whosnickdoglio.scores.widget.di.DaggerWidgetComponent
+import javax.inject.Inject
 
-/**  */
-class ConfigurationActivity : ComponentActivity() {
+/** A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget]. */
+class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background,
-            ) {
-                Text(text = "Hello Scores!")
-            }
-        }
+    @Inject override lateinit var glanceAppWidget: GlanceAppWidget
+
+    override fun onReceive(context: Context, intent: Intent) {
+        DaggerWidgetComponent.create().inject(this)
+        super.onReceive(context, intent)
     }
 }

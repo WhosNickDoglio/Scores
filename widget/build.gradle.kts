@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2023 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,27 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget
+plugins {
+    id("scores.android")
+    alias(libs.plugins.anvil)
+    alias(libs.plugins.kotlin.kapt)
+}
 
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.core.DataStoreFactory
-import androidx.datastore.dataStoreFile
-import androidx.glance.state.GlanceStateDefinition
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.scores.dagger.SingleIn
-import java.io.File
-import javax.inject.Inject
+android { namespace = "dev.whosnickdoglio.scores.widget" }
 
-@SingleIn(AppScope::class)
-class ScoresStateDefinition @Inject constructor(private val serializer: ScoresStateSerializer) :
-    GlanceStateDefinition<ScoresWidgetState> {
+dependencies {
+    implementation(libs.androidx.workmanager)
+    implementation(libs.dagger.core)
+    implementation(libs.glance.appwidget)
+    implementation(libs.glance.material)
+    implementation(libs.immutableCollections)
+    implementation(libs.moshi)
+    implementation(projects.anvilScopes)
+    implementation(projects.daggerScopes)
+    implementation(projects.nbaApi)
+    implementation(projects.widgetTheme)
+    implementation(projects.widgetUi)
+    implementation(projects.workmanagerAssisted)
 
-    override suspend fun getDataStore(
-        context: Context,
-        fileKey: String
-    ): DataStore<ScoresWidgetState> =
-        DataStoreFactory.create(
-            serializer = serializer,
-            produceFile = { context.dataStoreFile("$fileKey.json") }
-        )
-
-    override fun getLocation(context: Context, fileKey: String): File =
-        context.dataStoreFile("$fileKey.json")
+    kapt(libs.dagger.compiler)
 }

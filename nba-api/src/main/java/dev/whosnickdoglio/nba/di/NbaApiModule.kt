@@ -32,9 +32,9 @@ import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.anvil.WidgetScope
 import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.nba.moshi.CustomJsonAdapter
-import dev.whosnickdoglio.scores.dagger.SingleIn
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -45,19 +45,16 @@ import retrofit2.create
  * to make network requests for NBA and WNBA game information.
  */
 @ContributesTo(AppScope::class)
+@ContributesTo(WidgetScope::class)
 @Module
 object NbaApiModule {
 
-    @SingleIn(AppScope::class)
     @Provides
     fun provideMoshi(adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>): Moshi =
         Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
 
-    @SingleIn(AppScope::class)
-    @Provides
-    fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
+    @Provides fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
 
-    @SingleIn(AppScope::class)
     @Provides
     fun provideBallDontLieService(
         moshi: Moshi,

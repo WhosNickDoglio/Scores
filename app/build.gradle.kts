@@ -142,6 +142,7 @@ dependencies {
     implementation(projects.daggerScopes)
     implementation(projects.nbaApi)
     implementation(projects.startup)
+    implementation(projects.widget)
     implementation(projects.widgetUi)
     implementation(projects.workmanagerAssisted)
 

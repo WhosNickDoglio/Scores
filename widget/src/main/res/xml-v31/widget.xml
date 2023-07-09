@@ -23,11 +23,14 @@
   -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialLayout="@layout/layout_preview"
-    android:minWidth="100dp"
-    android:minHeight="100dp"
-    android:minResizeWidth="40dp"
-    android:minResizeHeight="40dp"
-    android:previewImage="@drawable/ic_launcher_background"
-    android:resizeMode="horizontal|vertical"
-    android:widgetCategory="home_screen" />
+                    android:initialLayout="@layout/glance_default_loading_layout"
+                    android:minWidth="100dp"
+                    android:minHeight="100dp"
+                    android:minResizeWidth="40dp"
+                    android:minResizeHeight="40dp"
+                    android:resizeMode="horizontal|vertical"
+                    android:targetCellWidth="4"
+                    android:targetCellHeight="1"
+                    android:widgetCategory="home_screen"
+                    android:widgetFeatures="reconfigurable|configuration_optional"/><!--    android:previewLayout="Shows sports scores"-->
+    <!--    android:description="Shows sports scores"-->

@@ -29,7 +29,6 @@ import androidx.work.WorkerFactory
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.AppScope
 import dev.whosnickdoglio.scores.dagger.SingleIn
-import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
 import javax.inject.Singleton
 
 /**
@@ -42,7 +41,6 @@ import javax.inject.Singleton
 @MergeComponent(AppScope::class)
 interface AppComponent {
     val workerFactory: WorkerFactory
-    fun inject(target: ScoresWidgetReceiver)
 }
 
 /**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ MIT License
   ~
-  ~ Copyright (c) 2022 Nicholas Doglio
+  ~ Copyright (c) 2023 Nicholas Doglio
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,10 @@
   -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:configure="dev.whosnickdoglio.scores.widget.settings.ConfigurationActivity"
-                    android:initialLayout="@layout/layout_preview"
-                    android:minWidth="100dp"
-                    android:minHeight="100dp"
-                    android:minResizeWidth="40dp"
-                    android:minResizeHeight="40dp"
-                    android:previewImage="@drawable/ic_launcher_background"
-                    android:resizeMode="horizontal|vertical"
-                    android:targetCellWidth="4"
-                    android:targetCellHeight="1"
-                    android:widgetCategory="home_screen"
-                    android:widgetFeatures="reconfigurable|configuration_optional"/><!--    android:previewLayout="Shows sports scores"-->
-    <!--    android:description="Shows sports scores"-->
+    android:initialLayout="@layout/glance_default_loading_layout"
+    android:minWidth="100dp"
+    android:minHeight="100dp"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen" />

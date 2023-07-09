@@ -27,5 +27,10 @@ package dev.whosnickdoglio.scores.widget.di
 import com.squareup.anvil.annotations.MergeComponent
 import dev.whosnickdoglio.anvil.WidgetScope
 import dev.whosnickdoglio.scores.dagger.SingleIn
+import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
 
-@SingleIn(WidgetScope::class) @MergeComponent(WidgetScope::class) interface WidgetComponent
+@SingleIn(WidgetScope::class)
+@MergeComponent(WidgetScope::class)
+interface WidgetComponent {
+    fun inject(target: ScoresWidgetReceiver)
+}

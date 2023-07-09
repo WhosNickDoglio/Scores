@@ -27,6 +27,8 @@ plugins {
     alias(libs.plugins.anvil)
 }
 
+anvil { generateDaggerFactories.set(true) }
+
 android { namespace = "dev.whosnickdoglio.workmanager" }
 
 dependencies {

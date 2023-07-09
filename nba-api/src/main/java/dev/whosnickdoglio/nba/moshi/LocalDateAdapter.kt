@@ -31,10 +31,12 @@ import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
 import dev.whosnickdoglio.anvil.AppScope
+import dev.whosnickdoglio.anvil.WidgetScope
 import java.time.LocalDate
 import javax.inject.Inject
 
 @ContributesMultibinding(scope = AppScope::class, boundType = CustomJsonAdapter::class)
+@ContributesMultibinding(scope = WidgetScope::class, boundType = CustomJsonAdapter::class)
 class LocalDateAdapter @Inject constructor() : JsonAdapter<LocalDate>(), CustomJsonAdapter {
 
     @FromJson

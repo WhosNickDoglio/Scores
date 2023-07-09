@@ -22,21 +22,29 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget
+package dev.whosnickdoglio.scores.settings
 
-import android.content.Context
-import android.content.Intent
-import androidx.glance.appwidget.GlanceAppWidget
-import androidx.glance.appwidget.GlanceAppWidgetReceiver
-import dev.whosnickdoglio.scores.di.injector
-import javax.inject.Inject
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
 
-/** A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget]. */
-class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
+/**  */
+class ConfigurationActivity : ComponentActivity() {
 
-    @Inject override lateinit var glanceAppWidget: GlanceAppWidget
-    override fun onReceive(context: Context, intent: Intent) {
-        context.injector.inject(this)
-        super.onReceive(context, intent)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background,
+            ) {
+                Text(text = "Hello Scores!")
+            }
+        }
     }
 }
