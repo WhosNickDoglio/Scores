@@ -150,8 +150,8 @@ dependencies {
 
     kapt(libs.dagger.compiler)
 
-    testImplementation(libs.junit)
     testImplementation(libs.assertk)
+    testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.workmanager.test)
 }

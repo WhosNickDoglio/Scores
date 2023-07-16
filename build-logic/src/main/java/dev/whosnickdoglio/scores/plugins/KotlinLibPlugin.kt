@@ -27,27 +27,24 @@ package dev.whosnickdoglio.scores.plugins
 import dev.whosnickdoglio.scores.plugins.configurations.CommonDependencyConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.ConfigurablePlugin
 import dev.whosnickdoglio.scores.plugins.configurations.Configuration
-import dev.whosnickdoglio.scores.plugins.configurations.LintPluginConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.JvmLintConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.JvmTaskConfiguration
+import dev.whosnickdoglio.scores.plugins.configurations.LintPluginConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.SpotlessConfiguration
 import org.gradle.api.Project
 
 class KotlinLibPlugin : ConfigurablePlugin() {
     override val configurations: List<Configuration> =
         listOf(
+            JvmLintConfiguration(),
             SpotlessConfiguration(),
             JvmTaskConfiguration(),
             LintPluginConfiguration(),
             CommonDependencyConfiguration(),
-            JvmLintConfiguration(),
         )
 
     override fun apply(target: Project) {
-        target.pluginManager.run {
-            apply("org.jetbrains.kotlin.jvm")
-            apply("com.android.lint")
-        }
+        target.pluginManager.apply("org.jetbrains.kotlin.jvm")
         super.apply(target)
     }
 }

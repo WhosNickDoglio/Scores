@@ -28,16 +28,18 @@ import com.android.build.api.dsl.Lint
 import org.gradle.api.Project
 
 internal class JvmLintConfiguration : Configuration {
-    override fun configure(project: Project) {
-        project.extensions.getByType(Lint::class.java).run {
-            disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck"))
-            htmlReport = false
-            xmlReport = false
-            textReport = true
-            absolutePaths = false
-            checkTestSources = true
-            warningsAsErrors = true
-            baseline = project.file("lint-baseline.xml")
+    override fun configure(project: Project) =
+        with(project) {
+            pluginManager.apply("com.android.lint")
+            extensions.getByType(Lint::class.java).run {
+                disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck"))
+                htmlReport = false
+                xmlReport = false
+                textReport = true
+                absolutePaths = false
+                checkTestSources = true
+                warningsAsErrors = true
+                baseline = project.file("lint-baseline.xml")
+            }
         }
-    }
 }

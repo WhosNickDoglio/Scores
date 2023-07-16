@@ -26,7 +26,6 @@ package dev.whosnickdoglio.scores.plugins.configurations
 
 import org.gradle.api.Project
 
-interface Configuration {
-
+fun interface Configuration {
     fun configure(project: Project)
 }
