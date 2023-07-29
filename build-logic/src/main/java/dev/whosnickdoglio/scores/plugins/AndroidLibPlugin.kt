@@ -47,6 +47,7 @@ class AndroidLibPlugin : ConfigurablePlugin() {
         target.pluginManager.run {
             apply("com.android.library")
             apply("org.jetbrains.kotlin.android")
+            apply("org.gradle.android.cache-fix")
         }
         super.apply(target)
     }

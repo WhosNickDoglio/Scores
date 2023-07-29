@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.detekt.gradle)
     implementation(libs.kotlin.gradle)
     implementation(libs.kover.gradle)
+    implementation(libs.cacheFix.gradle)
     implementation(libs.sortDependencies.gradle)
     implementation(libs.spotless.gradle)
 }

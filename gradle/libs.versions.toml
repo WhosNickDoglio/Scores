@@ -1,14 +1,15 @@
 [versions]
 min-sdk = "26"
 target-sdk = "33"
-compile-sdk = "33"
+compile-sdk = "34"
 agp = "8.1.0"
-kotlin = "1.8.22"
+kotlin = "1.9.0"
 detekt = "1.23.0"
+cacheFix = "2.7.2"
 coroutines = "1.7.3"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
-composeCompiler = "1.4.8"
+composeCompiler = "1.5.1"
 dagger = "2.47"
 moshi = "1.15.0"
 work = "2.8.1"
@@ -16,7 +17,7 @@ licensee = "1.7.0"
 ktfmt = "0.44"
 accompanist = "0.30.1"
 kover = "0.7.3"
-glance = "1.0.0-beta01"
+glance = "1.0.0-rc01"
 spotless = "6.20.0"
 sort = "0.3"
 
@@ -27,12 +28,14 @@ dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version =
 android-app = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
+cacheFix = { id = "org.gradle.android.cache-fix", version.ref = "cacheFix" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-moshiIr = { id = "dev.zacsweers.moshix", version = "0.22.1" }
+ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.12" }
+moshiIr = { id = "dev.zacsweers.moshix", version = "0.24.0" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.47.0" }
-anvil = { id = "com.squareup.anvil", version = "2.4.6" }
+anvil = { id = "com.squareup.anvil", version = "2.4.7" }
 paparazzi = { id = "app.cash.paparazzi", version = "1.3.1" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
@@ -52,6 +55,7 @@ kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.
 kover-gradle = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
 licensee-gradle = { module = "app.cash.licensee:licensee-gradle-plugin", version.ref = "licensee" }
 spotless-gradle = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+cacheFix-gradle = { module = "org.gradle.android.cache-fix:org.gradle.android.cache-fix.gradle.plugin", version.ref = "cacheFix" }
 sortDependencies-gradle = { module = "com.squareup.sort-dependencies:com.squareup.sort-dependencies.gradle.plugin", version.ref = "sort" }
 
 compose-bom = { module = "androidx.compose:compose-bom", version = "2023.06.01" }

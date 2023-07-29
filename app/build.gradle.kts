@@ -26,9 +26,11 @@ plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
     alias(libs.plugins.moshiIr)
+    alias(libs.plugins.cacheFix)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
     alias(libs.plugins.licensee)
@@ -36,7 +38,7 @@ plugins {
 
 licensee { allow("Apache-2.0") }
 
-kotlin { jvmToolchain(11) }
+//kotlin { jvmToolchain(20) }
 
 tasks.withType<com.diffplug.gradle.spotless.SpotlessTask>().configureEach {
     notCompatibleWithConfigurationCache("https://github.com/diffplug/spotless/issues/987")
