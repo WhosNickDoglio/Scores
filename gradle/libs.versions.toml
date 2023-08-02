@@ -32,7 +32,7 @@ cacheFix = { id = "org.gradle.android.cache-fix", version.ref = "cacheFix" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.12" }
+ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.13" }
 moshiIr = { id = "dev.zacsweers.moshix", version = "0.24.0" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.47.0" }
 anvil = { id = "com.squareup.anvil", version = "2.4.7" }
