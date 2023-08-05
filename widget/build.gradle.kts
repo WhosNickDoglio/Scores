@@ -25,12 +25,15 @@
 plugins {
     id("scores.android")
     alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
 }
 
 android { namespace = "dev.whosnickdoglio.scores.widget" }
 
 dependencies {
+    ksp(libs.moshi.codegen)
+
     implementation(libs.androidx.workmanager)
     implementation(libs.dagger.core)
     implementation(libs.glance.appwidget)

@@ -29,7 +29,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
-    alias(libs.plugins.moshiIr)
     alias(libs.plugins.cacheFix)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
@@ -122,6 +121,8 @@ android {
 
 dependencies {
     coreLibraryDesugaring(libs.desugar)
+
+    ksp(libs.moshi.codegen)
 
     lintChecks(libs.lints.compose)
 

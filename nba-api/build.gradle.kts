@@ -24,13 +24,15 @@
 
 plugins {
     id("scores.kotlin")
-    alias(libs.plugins.moshiIr)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.anvil)
 }
 
 anvil { generateDaggerFactories.set(true) }
 
 dependencies {
+    ksp(libs.moshi.codegen)
+
     api(libs.eithernet)
     api(libs.moshi)
     api(libs.okhttp.core)
