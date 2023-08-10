@@ -24,7 +24,7 @@
 
 plugins { id("scores.android") }
 
-android { namespace = "dev.whosnickdoglio.scores.widget.theme" }
+android { namespace = "dev.whosnickdoglio.scores.app.theme" }
 
 dependencies {
     implementation(libs.compose.material)
