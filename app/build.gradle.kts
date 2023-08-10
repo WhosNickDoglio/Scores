@@ -26,7 +26,6 @@ plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
     alias(libs.plugins.anvil)
     alias(libs.plugins.cacheFix)
@@ -121,8 +120,6 @@ android {
 
 dependencies {
     coreLibraryDesugaring(libs.desugar)
-
-    ksp(libs.moshi.codegen)
 
     lintChecks(libs.lints.compose)
 
