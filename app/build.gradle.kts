@@ -36,7 +36,7 @@ plugins {
 
 licensee { allow("Apache-2.0") }
 
-// kotlin { jvmToolchain(20) }
+kotlin { jvmToolchain(19) }
 
 tasks.withType<com.diffplug.gradle.spotless.SpotlessTask>().configureEach {
     notCompatibleWithConfigurationCache("https://github.com/diffplug/spotless/issues/987")
