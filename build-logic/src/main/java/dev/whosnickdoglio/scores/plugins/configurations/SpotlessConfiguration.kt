@@ -62,6 +62,7 @@ internal class SpotlessConfiguration : Configuration {
                     ktExt.ktfmt(libs.findVersion("ktfmt").get().requiredVersion).kotlinlangStyle()
                     ktExt.trimTrailingWhitespace()
                     ktExt.endWithNewline()
+                    ktExt.targetExclude("**/build/generated/**")
                 }
                 kotlinGradle { ktsExt ->
                     ktsExt.ktfmt(libs.findVersion("ktfmt").get().requiredVersion).kotlinlangStyle()
