@@ -31,6 +31,6 @@ dependencies {
     implementation(libs.glance.appwidget)
     implementation(libs.glance.material)
     implementation(libs.immutableCollections)
-    implementation(projects.nbaApi)
+    implementation(projects.nbaApiLegacy)
     implementation(projects.widgetTheme)
 }

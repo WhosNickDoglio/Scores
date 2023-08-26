@@ -140,7 +140,7 @@ dependencies {
     implementation(projects.anvilScopes)
     implementation(projects.appTheme)
     implementation(projects.daggerScopes)
-    implementation(projects.nbaApi)
+    implementation(projects.nbaApiLegacy)
     implementation(projects.startup)
     implementation(projects.widget)
     implementation(projects.widgetUi)

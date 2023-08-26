@@ -56,7 +56,7 @@ gradleEnterprise {
 include(
     ":app",
     ":app-theme",
-    ":nba-api",
+    ":nba-api-legacy",
     ":anvil-scopes",
     ":widget-ui",
     ":widget-theme",

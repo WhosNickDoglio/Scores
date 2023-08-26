@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.moshi)
     implementation(projects.anvilScopes)
     implementation(projects.daggerScopes)
-    implementation(projects.nbaApi)
+    implementation(projects.nbaApiLegacy)
     implementation(projects.widgetTheme)
     implementation(projects.widgetUi)
     implementation(projects.workmanagerAssisted)
