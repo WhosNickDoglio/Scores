@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2023 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,48 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-rootProject.name = "Scores"
 
-pluginManagement {
-    includeBuild("build-logic")
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+plugins {
+    kotlin("multiplatform")
 }
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        // https://androidx.dev/storage/compose-compiler/repository
-        maven(url = "https://androidx.dev/storage/compose-compiler/repository/")
+kotlin {
+    jvm()
+    ios()
+    iosSimulatorArm64()
+
+    sourceSets {
+        commonMain {
+
+        }
     }
 }
-
-plugins { id("com.gradle.enterprise") version ("3.14.1") }
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
-}
-
-include(
-    ":app",
-    ":app-theme",
-    ":nba-api-legacy",
-    ":nba-api",
-    ":anvil-scopes",
-    ":widget-ui",
-    ":widget-theme",
-    ":startup",
-    ":dagger-scopes",
-    ":workmanager-assisted",
-    ":widget",
-)
