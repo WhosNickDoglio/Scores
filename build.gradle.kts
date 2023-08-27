@@ -26,6 +26,7 @@ plugins {
     alias(libs.plugins.android.app) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)

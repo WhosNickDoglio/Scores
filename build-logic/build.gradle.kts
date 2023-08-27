@@ -30,7 +30,7 @@ plugins {
     `java-gradle-plugin`
 }
 
-kotlin { jvmToolchain(19) }
+kotlin { jvmToolchain(20) }
 
 spotless {
 

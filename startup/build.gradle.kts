@@ -31,5 +31,4 @@ android {
 
 dependencies {
     implementation(libs.androidx.startup)
-    implementation(libs.timber)
 }

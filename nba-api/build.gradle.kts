@@ -23,7 +23,8 @@
  */
 
 plugins {
-    kotlin("multiplatform")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -33,7 +34,14 @@ kotlin {
 
     sourceSets {
         commonMain {
-
+            dependencies {
+//                implementation(platform(libs.kotlin.bom))
+//                implementation(platform(libs.ktor.bom))
+                implementation(libs.ktor.core)
+                implementation(libs.serialization)
+                implementation(libs.kermit)
+                implementation(libs.coroutines.core)
+            }
         }
     }
 }

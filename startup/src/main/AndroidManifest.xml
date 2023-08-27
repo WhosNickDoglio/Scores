@@ -33,9 +33,6 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="dev.whosnickdoglio.scores.startup.TimberInitializer"
-                android:value="androidx.startup" />
-            <meta-data
                 android:name="dev.whosnickdoglio.scores.startup.StrictModeInitializer"
                 android:value="androidx.startup" />
         </provider>
