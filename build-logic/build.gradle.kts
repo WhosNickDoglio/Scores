@@ -33,11 +33,6 @@ plugins {
 kotlin { jvmToolchain(20) }
 
 spotless {
-
-    // https://github.com/diffplug/spotless/issues/1527
-    // https://github.com/diffplug/spotless/issues/1644
-    lineEndings = com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
-
     format("misc") {
         target("*.md", ".gitignore")
         trimTrailingWhitespace()

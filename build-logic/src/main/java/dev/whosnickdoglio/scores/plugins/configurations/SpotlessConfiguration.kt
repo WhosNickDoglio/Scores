@@ -25,7 +25,6 @@
 package dev.whosnickdoglio.scores.plugins.configurations
 
 import com.diffplug.gradle.spotless.SpotlessExtension
-import com.diffplug.gradle.spotless.SpotlessTask
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 
@@ -34,12 +33,6 @@ internal class SpotlessConfiguration : Configuration {
         with(project) {
             pluginManager.apply("com.diffplug.spotless")
 
-            tasks.withType(SpotlessTask::class.java).configureEach {
-                it.notCompatibleWithConfigurationCache(
-                    "https://github.com/diffplug/spotless/issues/987"
-                )
-            }
-
             val catalog =
                 extensions.findByType(VersionCatalogsExtension::class.java)
                     ?: error("No Catalog found!")
@@ -47,11 +40,6 @@ internal class SpotlessConfiguration : Configuration {
             val libs = catalog.named("libs")
 
             extensions.getByType(SpotlessExtension::class.java).run {
-
-                // https://github.com/diffplug/spotless/issues/1527
-                // https://github.com/diffplug/spotless/issues/1644
-                lineEndings = com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
-
                 format("misc") { formatExt ->
                     formatExt.target("*.md", ".gitignore")
                     formatExt.trimTrailingWhitespace()
