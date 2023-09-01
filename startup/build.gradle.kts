@@ -29,6 +29,4 @@ android {
     buildFeatures { buildConfig = true }
 }
 
-dependencies {
-    implementation(libs.androidx.startup)
-}
+dependencies { implementation(libs.androidx.startup) }

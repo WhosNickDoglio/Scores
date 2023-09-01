@@ -29,8 +29,6 @@ plugins {
 
 kotlin {
     jvm()
-    ios()
-    iosSimulatorArm64()
 
     sourceSets {
         commonMain {
