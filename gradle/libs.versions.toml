@@ -20,7 +20,7 @@ kover = "0.7.3"
 glance = "1.0.0-rc01"
 spotless = "6.21.0"
 sort = "0.4"
-inject = "0.6.1"
+inject = "0.6.2"
 sqldelight = "2.0.0"
 ktor = "2.3.4"
 
