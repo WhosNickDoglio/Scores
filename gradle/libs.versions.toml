@@ -91,7 +91,7 @@ kotlinInject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp
 
 serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.6.0" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.4.1" }
-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.5" }
+immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.6" }
 
 kermit = { module = "co.touchlab:kermit", version = "2.0.1" }
 
