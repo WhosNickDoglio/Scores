@@ -109,7 +109,7 @@ dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = 
 moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 
-desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.3" }
+desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.4" }
 
 lints-compose = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.2.0" }
 
