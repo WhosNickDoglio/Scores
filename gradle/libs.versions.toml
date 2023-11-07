@@ -22,7 +22,7 @@ spotless = "6.22.0"
 sort = "0.4"
 inject = "0.6.3"
 sqldelight = "2.0.0"
-ktor = "2.3.5"
+ktor = "2.3.6"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
