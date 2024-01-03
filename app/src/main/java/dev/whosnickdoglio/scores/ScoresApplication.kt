@@ -38,6 +38,6 @@ class ScoresApplication : Application(), ComponentProvider, Configuration.Provid
 
     override val component: AppComponent by lazy { DaggerAppComponent.create() }
 
-    override fun getWorkManagerConfiguration(): Configuration =
+    override val workManagerConfiguration: Configuration =
         Configuration.Builder().setWorkerFactory(component.workerFactory).build()
 }
