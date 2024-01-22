@@ -39,7 +39,7 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "1.9.21-1.0.16" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
 anvil = { id = "com.squareup.anvil", version = "2.4.8" }
 paparazzi = { id = "app.cash.paparazzi", version = "1.3.2" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
