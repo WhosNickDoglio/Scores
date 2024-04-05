@@ -42,14 +42,14 @@ dependencyResolutionManagement {
     }
 }
 
-plugins { id("com.gradle.enterprise") version ("3.16.2") }
+plugins { id("com.gradle.develocity") version ("3.17") }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-gradleEnterprise {
+develocity {
     buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
+        termsOfUseUrl = "https://gradle.com/terms-of-service"
+        termsOfUseAgree = "yes"
     }
 }
 
