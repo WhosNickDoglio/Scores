@@ -37,8 +37,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // https://androidx.dev/storage/compose-compiler/repository
-        maven(url = "https://androidx.dev/storage/compose-compiler/repository/")
+        maven("https://androidx.dev/storage/compose-compiler/repository") {
+            name = "Compose Compiler Snapshots"
+            content { includeGroup("androidx.compose.compiler") }
+        }
     }
 }
 
