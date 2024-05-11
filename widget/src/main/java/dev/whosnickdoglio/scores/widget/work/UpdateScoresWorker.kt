@@ -30,26 +30,22 @@ import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.slack.eithernet.ApiResult
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import dev.whosnickdoglio.nba.BallDontLieService
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
+import me.tatarka.inject.annotations.Assisted
+import me.tatarka.inject.annotations.Inject
 import java.time.LocalDate
 
-class UpdateScoresWorker
-@AssistedInject
-constructor(
+@Inject
+class UpdateScoresWorker(
     private val service: BallDontLieService,
     private val glanceScoresStateDefinition: ScoresStateDefinition,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
-
-    @AssistedFactory interface Factory : AssistedWorkerFactory<UpdateScoresWorker>
 
     override suspend fun doWork(): Result {
         val today = LocalDate.now()
@@ -80,11 +76,21 @@ constructor(
                     Result.failure()
                 }
             }
+
             is ApiResult.Failure.NetworkFailure -> Result.failure()
             is ApiResult.Failure.UnknownFailure -> Result.failure()
             is ApiResult.Failure.HttpFailure -> Result.failure()
             is ApiResult.Failure.ApiFailure -> Result.failure()
             else -> Result.failure()
         }
+    }
+
+    @Inject
+    class Factory(private val factory: (context: Context, params: WorkerParameters) -> UpdateScoresWorker) :
+        AssistedWorkerFactory<UpdateScoresWorker> {
+        override fun createWorker(
+            appContext: Context,
+            workerParams: WorkerParameters
+        ): UpdateScoresWorker = factory(appContext, workerParams)
     }
 }

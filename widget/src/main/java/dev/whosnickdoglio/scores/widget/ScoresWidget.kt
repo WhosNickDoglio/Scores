@@ -39,25 +39,23 @@ import androidx.glance.currentState
 import androidx.glance.layout.fillMaxHeight
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.state.GlanceStateDefinition
-import com.squareup.anvil.annotations.ContributesBinding
-import dev.whosnickdoglio.anvil.WidgetScope
 import dev.whosnickdoglio.scores.ui.MultipleGameList
 import dev.whosnickdoglio.scores.ui.SingleGame
 import dev.whosnickdoglio.scores.ui.SingleScoreCompact
 import dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback
 import dev.whosnickdoglio.scores.widget.actions.RefreshActionCallback
-import javax.inject.Inject
 import kotlinx.collections.immutable.toImmutableList
+import me.tatarka.inject.annotations.Inject
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */
-@ContributesBinding(WidgetScope::class)
-class ScoresWidget @Inject constructor(glanceStateDefinition: ScoresStateDefinition) :
-    GlanceAppWidget() {
+@Inject
+class ScoresWidget(glanceStateDefinition: ScoresStateDefinition) : GlanceAppWidget() {
 
     override val stateDefinition: GlanceStateDefinition<*> = glanceStateDefinition
 
     override val sizeMode: SizeMode =
         SizeMode.Responsive(setOf(SINGLE_GAME_COMPACT, SINGLE_GAME, MULTI_GAME_LIST))
+
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         provideContent {
             val state = currentState<ScoresWidgetState>()

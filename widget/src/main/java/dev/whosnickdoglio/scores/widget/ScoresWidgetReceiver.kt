@@ -24,20 +24,15 @@
 
 package dev.whosnickdoglio.scores.widget
 
-import android.content.Context
-import android.content.Intent
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
-import dev.whosnickdoglio.scores.widget.di.DaggerWidgetComponent
-import javax.inject.Inject
+import dev.whosnickdoglio.scores.widget.di.WidgetComponent
+import dev.whosnickdoglio.scores.widget.di.create
 
 /** A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget]. */
 class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
 
-    @Inject override lateinit var glanceAppWidget: GlanceAppWidget
+    private val component: WidgetComponent by lazy { WidgetComponent::class.create() }
 
-    override fun onReceive(context: Context, intent: Intent) {
-        DaggerWidgetComponent.create().inject(this)
-        super.onReceive(context, intent)
-    }
+    override val glanceAppWidget: GlanceAppWidget = component.widget
 }

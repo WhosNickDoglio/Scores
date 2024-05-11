@@ -24,13 +24,25 @@
 
 package dev.whosnickdoglio.scores.widget.di
 
-import com.squareup.anvil.annotations.MergeComponent
-import dev.whosnickdoglio.anvil.WidgetScope
-import dev.whosnickdoglio.scores.dagger.SingleIn
-import dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver
+import androidx.work.ListenableWorker
+import dev.whosnickdoglio.nba.di.NbaApiModule
+import dev.whosnickdoglio.scores.widget.ScoresWidget
+import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
+import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
+import kotlin.reflect.KClass
+import me.tatarka.inject.annotations.Component
+import me.tatarka.inject.annotations.IntoMap
+import me.tatarka.inject.annotations.Provides
 
-@SingleIn(WidgetScope::class)
-@MergeComponent(WidgetScope::class)
-interface WidgetComponent {
-    fun inject(target: ScoresWidgetReceiver)
+@Component
+abstract class WidgetComponent : NbaApiModule() {
+
+    abstract val widget: ScoresWidget
+
+    @IntoMap
+    @Provides
+    protected fun bindUpdateScoresWorkFactoryToMap(
+        factory: UpdateScoresWorker.Factory
+    ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
+        Pair(UpdateScoresWorker::class.java, factory)
 }

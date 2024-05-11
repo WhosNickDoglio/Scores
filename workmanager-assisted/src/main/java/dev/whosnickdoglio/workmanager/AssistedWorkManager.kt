@@ -28,35 +28,19 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import com.squareup.anvil.annotations.ContributesBinding
-import dagger.MapKey
-import dev.whosnickdoglio.anvil.AppScope
-import javax.inject.Inject
-import javax.inject.Provider
-import kotlin.reflect.KClass
-
-// https://gist.github.com/Zhuinden/54136120b15fdabd56aa164c20dc934f
-
-@MustBeDocumented
-@Target(
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER
-)
-@Retention(AnnotationRetention.RUNTIME)
-@MapKey
-annotation class WorkerKey(val value: KClass<out ListenableWorker>)
+import me.tatarka.inject.annotations.Inject
 
 fun interface AssistedWorkerFactory<T : ListenableWorker> {
     fun createWorker(appContext: Context, workerParams: WorkerParameters): T
 }
 
-@ContributesBinding(AppScope::class)
-class ScoresWorkerFactory
 @Inject
-constructor(
+class ScoresWorkerFactory(
     private val assistedWorkerFactories:
-        Map<Class<out ListenableWorker>, @JvmSuppressWildcards Provider<AssistedWorkerFactory<out ListenableWorker>>>
+        Map<
+            Class<out ListenableWorker>,
+            AssistedWorkerFactory<out ListenableWorker>
+        >
 ) : WorkerFactory() {
     @Suppress("ReturnCount")
     override fun createWorker(
@@ -72,8 +56,8 @@ constructor(
                 ?: assistedWorkerFactories.entries
                     .firstOrNull { clazz.isAssignableFrom(it.key) }
                     ?.value
-                    ?: return null // delegate to default if not found
+                ?: return null // delegate to default if not found
 
-        return factory.get().createWorker(appContext, workerParameters)
+        return factory.createWorker(appContext, workerParameters)
     }
 }

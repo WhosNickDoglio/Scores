@@ -24,20 +24,16 @@
 
 package dev.whosnickdoglio.nba.moshi
 
-import com.squareup.anvil.annotations.ContributesMultibinding
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.anvil.WidgetScope
+import me.tatarka.inject.annotations.Inject
 import java.time.LocalDate
-import javax.inject.Inject
 
-@ContributesMultibinding(scope = AppScope::class, boundType = CustomJsonAdapter::class)
-@ContributesMultibinding(scope = WidgetScope::class, boundType = CustomJsonAdapter::class)
-class LocalDateAdapter @Inject constructor() : JsonAdapter<LocalDate>(), CustomJsonAdapter {
+@Inject
+class LocalDateAdapter : JsonAdapter<LocalDate>() {
 
     @FromJson
     override fun fromJson(reader: JsonReader): LocalDate? {

@@ -27,10 +27,10 @@ package dev.whosnickdoglio.scores.widget
 import androidx.datastore.core.Serializer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapter
+import me.tatarka.inject.annotations.Inject
 import java.io.EOFException
 import java.io.InputStream
 import java.io.OutputStream
-import javax.inject.Inject
 import okio.buffer
 import okio.sink
 
@@ -39,9 +39,8 @@ import okio.sink
  *
  * @param moshi A [Moshi] instance that parses the [ScoresWidgetState]
  */
-class ScoresStateSerializer
 @Inject
-constructor(
+class ScoresStateSerializer(
     moshi: Moshi,
 ) : Serializer<ScoresWidgetState> {
 

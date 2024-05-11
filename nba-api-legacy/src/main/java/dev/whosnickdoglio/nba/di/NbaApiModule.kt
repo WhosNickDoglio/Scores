@@ -26,31 +26,26 @@ package dev.whosnickdoglio.nba.di
 
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
-import com.squareup.anvil.annotations.ContributesTo
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import dagger.Lazy
-import dagger.Module
-import dagger.Provides
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.anvil.WidgetScope
 import dev.whosnickdoglio.nba.BallDontLieService
-import dev.whosnickdoglio.nba.moshi.CustomJsonAdapter
+import dev.whosnickdoglio.nba.moshi.LocalDateAdapter
+import me.tatarka.inject.annotations.IntoSet
+import me.tatarka.inject.annotations.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 
-/**
- * A [dagger.Module] that is contributed to the [AppScope] that provides the necessary dependencies
- * to make network requests for NBA and WNBA game information.
- */
-@ContributesTo(AppScope::class)
-@ContributesTo(WidgetScope::class)
-@Module
-object NbaApiModule {
+abstract class NbaApiModule {
+
+    @IntoSet
+    @Provides
+    protected fun provideLocalDateAdapter(localDateAdapter: LocalDateAdapter): JsonAdapter<*> =
+        localDateAdapter
 
     @Provides
-    fun provideMoshi(adapters: Set<@JvmSuppressWildcards CustomJsonAdapter>): Moshi =
+    fun provideMoshi(adapters: Set<JsonAdapter<*>>): Moshi =
         Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
 
     @Provides fun provideOkhttp(): OkHttpClient = OkHttpClient.Builder().build()
@@ -62,7 +57,10 @@ object NbaApiModule {
     ): BallDontLieService =
         Retrofit.Builder()
             .baseUrl(BallDontLieService.BASE_URL)
-            .callFactory { okHttpClient.get().newCall(it) }
+            .callFactory {
+                val client by okHttpClient
+                client.newCall(it)
+            }
             .addConverterFactory(ApiResultConverterFactory)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(ApiResultCallAdapterFactory)

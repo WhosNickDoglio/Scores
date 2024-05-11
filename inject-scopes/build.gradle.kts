@@ -22,13 +22,8 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.anvil
+plugins { id("scores.kotlin") }
 
-/**
- * A scope for Anvil that adds anything contributed to it to the top-level app component graph.
- *
- * @see <a href="https://github.com/square/anvil">More info on Anvil Github repo.</a>
- */
-sealed interface AppScope
-
-sealed interface WidgetScope
+dependencies {
+    implementation(libs.kotlinInject)
+}

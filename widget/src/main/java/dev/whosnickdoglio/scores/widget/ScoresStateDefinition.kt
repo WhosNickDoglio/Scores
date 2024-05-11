@@ -29,10 +29,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import androidx.glance.state.GlanceStateDefinition
+import me.tatarka.inject.annotations.Inject
 import java.io.File
-import javax.inject.Inject
 
-class ScoresStateDefinition @Inject constructor(private val serializer: ScoresStateSerializer) :
+@Inject
+class ScoresStateDefinition(private val serializer: ScoresStateSerializer) :
     GlanceStateDefinition<ScoresWidgetState> {
 
     override suspend fun getDataStore(

@@ -25,23 +25,20 @@
 plugins {
     id("scores.kotlin")
     alias(libs.plugins.ksp)
-    alias(libs.plugins.anvil)
 }
 
-anvil { generateDaggerFactories.set(true) }
 
 dependencies {
     ksp(libs.moshi.codegen)
+    ksp(libs.kotlinInject.compiler)
 
     api(libs.eithernet)
     api(libs.moshi)
     api(libs.okhttp.core)
 
     implementation(libs.coroutines.core)
-    implementation(libs.dagger.core)
+    implementation(libs.kotlinInject)
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
-    implementation(projects.anvilScopes)
-    implementation(projects.daggerScopes)
 }

@@ -25,9 +25,8 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.detekt)
-    alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.cacheFix)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
@@ -36,7 +35,7 @@ plugins {
 
 licensee { allow("Apache-2.0") }
 
-kotlin { jvmToolchain(20) }
+kotlin { jvmToolchain(21) }
 
 tasks.withType<com.diffplug.gradle.spotless.SpotlessTask>().configureEach {
     notCompatibleWithConfigurationCache("https://github.com/diffplug/spotless/issues/987")
@@ -132,13 +131,12 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.dagger.core)
+    implementation(libs.kotlinInject)
     implementation(libs.glance.appwidget)
     implementation(libs.immutableCollections)
     implementation(libs.moshi)
-    implementation(projects.anvilScopes)
     implementation(projects.appTheme)
-    implementation(projects.daggerScopes)
+    implementation(projects.injectScopes)
     implementation(projects.nbaApiLegacy)
     implementation(projects.startup)
     implementation(projects.widget)
@@ -147,7 +145,7 @@ dependencies {
 
     debugImplementation(libs.compose.ui.tooling)
 
-    kapt(libs.dagger.compiler)
+    ksp(libs.kotlinInject.compiler)
 
     testImplementation(libs.assertk)
     testImplementation(libs.junit)

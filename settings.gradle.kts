@@ -58,11 +58,10 @@ include(
     ":app-theme",
     ":nba-api-legacy",
     ":nba-api",
-    ":anvil-scopes",
+    ":inject-scopes",
     ":widget-ui",
     ":widget-theme",
     ":startup",
-    ":dagger-scopes",
     ":workmanager-assisted",
     ":widget",
 )

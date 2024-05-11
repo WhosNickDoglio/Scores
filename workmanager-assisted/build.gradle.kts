@@ -24,15 +24,14 @@
 
 plugins {
     id("scores.android")
-    alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
 }
-
-anvil { generateDaggerFactories.set(true) }
 
 android { namespace = "dev.whosnickdoglio.workmanager" }
 
 dependencies {
+    ksp(libs.kotlinInject.compiler)
+
     implementation(libs.androidx.workmanager)
-    implementation(libs.dagger.core)
-    implementation(projects.anvilScopes)
+    implementation(libs.kotlinInject)
 }

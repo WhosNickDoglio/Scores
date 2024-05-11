@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Nicholas Doglio
+ * Copyright (c) 2022 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,15 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.di
+package dev.whosnickdoglio.inject
 
-import androidx.work.ListenableWorker
-import com.squareup.anvil.annotations.ContributesTo
-import dagger.Binds
-import dagger.Module
-import dagger.multibindings.IntoMap
-import dagger.multibindings.Multibinds
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
-import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
-import dev.whosnickdoglio.workmanager.WorkerKey
+import me.tatarka.inject.annotations.Scope
 
-@Module
-@ContributesTo(AppScope::class)
-interface WorkerModule {
+// TODO docs https://github.com/evant/kotlin-inject?tab=readme-ov-file#scopes
+@Scope
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
+annotation class AppScope
 
-    @Multibinds
-    fun workerFactories():
-        Map<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>>
-
-    @WorkerKey(UpdateScoresWorker::class)
-    @IntoMap
-    @Binds
-    fun bindWorkerFactory(
-        factory: UpdateScoresWorker.Factory
-    ): AssistedWorkerFactory<UpdateScoresWorker>
-}
+@Scope
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
+annotation class WidgetScope

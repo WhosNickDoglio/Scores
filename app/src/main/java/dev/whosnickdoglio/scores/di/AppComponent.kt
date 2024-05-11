@@ -25,11 +25,15 @@
 package dev.whosnickdoglio.scores.di
 
 import android.content.Context
+import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
-import com.squareup.anvil.annotations.MergeComponent
-import dev.whosnickdoglio.anvil.AppScope
-import dev.whosnickdoglio.scores.dagger.SingleIn
-import javax.inject.Singleton
+import dev.whosnickdoglio.nba.di.NbaApiModule
+import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
+import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
+import dev.whosnickdoglio.workmanager.ScoresWorkerFactory
+import me.tatarka.inject.annotations.Component
+import me.tatarka.inject.annotations.IntoMap
+import me.tatarka.inject.annotations.Provides
 
 /**
  * A top level [dagger.Component] for our dependency graph, this [dagger.Component] should be a
@@ -37,10 +41,20 @@ import javax.inject.Singleton
  * [dagger.Modules][dagger.Module] or classes that contribute to [AppScope] will be available in the
  * [AppComponent] graph.
  */
-@SingleIn(AppScope::class)
-@MergeComponent(AppScope::class)
-interface AppComponent {
-    val workerFactory: WorkerFactory
+@Component
+abstract class AppComponent: NbaApiModule() {
+
+    abstract val workerFactory: WorkerFactory
+
+    protected val ScoresWorkerFactory.bind: WorkerFactory
+        @Provides get() = this
+
+    @IntoMap
+    @Provides
+    protected fun bindUpdateScoresWorkFactoryToMap(
+        factory: UpdateScoresWorker.Factory
+    ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
+        Pair(UpdateScoresWorker::class.java, factory)
 }
 
 /**
