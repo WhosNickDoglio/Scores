@@ -30,18 +30,18 @@ plugins {
 android { namespace = "dev.whosnickdoglio.scores.widget" }
 
 dependencies {
-    ksp(libs.moshi.codegen)
     ksp(libs.kotlinInject.compiler)
+    ksp(libs.moshi.codegen)
 
     implementation(libs.androidx.workmanager)
-    implementation(libs.kotlinInject)
     implementation(libs.glance.appwidget)
     implementation(libs.glance.material)
     implementation(libs.immutableCollections)
+    implementation(libs.kotlinInject)
     implementation(libs.moshi)
+    implementation(projects.injectScopes)
     implementation(projects.nbaApiLegacy)
     implementation(projects.widgetTheme)
     implementation(projects.widgetUi)
-    implementation(projects.injectScopes)
     implementation(projects.workmanagerAssisted)
 }

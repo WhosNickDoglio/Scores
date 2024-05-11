@@ -29,8 +29,8 @@ plugins {
 
 
 dependencies {
-    ksp(libs.moshi.codegen)
     ksp(libs.kotlinInject.compiler)
+    ksp(libs.moshi.codegen)
 
     api(libs.eithernet)
     api(libs.moshi)

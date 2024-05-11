@@ -120,6 +120,8 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.desugar)
 
+    ksp(libs.kotlinInject.compiler)
+
     lintChecks(libs.lints.compose)
 
     implementation(platform(libs.compose.bom))
@@ -131,9 +133,9 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.kotlinInject)
     implementation(libs.glance.appwidget)
     implementation(libs.immutableCollections)
+    implementation(libs.kotlinInject)
     implementation(libs.moshi)
     implementation(projects.appTheme)
     implementation(projects.injectScopes)
@@ -144,8 +146,6 @@ dependencies {
     implementation(projects.workmanagerAssisted)
 
     debugImplementation(libs.compose.ui.tooling)
-
-    ksp(libs.kotlinInject.compiler)
 
     testImplementation(libs.assertk)
     testImplementation(libs.junit)
