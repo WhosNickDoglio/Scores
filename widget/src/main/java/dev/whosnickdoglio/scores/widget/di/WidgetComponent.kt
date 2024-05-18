@@ -29,7 +29,6 @@ import dev.whosnickdoglio.nba.di.NbaApiModule
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
 import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
-import kotlin.reflect.KClass
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.IntoMap
 import me.tatarka.inject.annotations.Provides

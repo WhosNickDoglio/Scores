@@ -24,11 +24,16 @@
 
 package dev.whosnickdoglio.scores.plugins.configurations
 
+import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.Project
 
 internal class LintPluginConfiguration: Configuration {
     override fun configure(project: Project) {
         project.pluginManager.apply("io.gitlab.arturbosch.detekt")
         project.pluginManager.apply("com.squareup.sort-dependencies")
+
+        project.tasks.withType(Detekt::class.java).configureEach { detekt ->
+            detekt.exclude { fileTreeElement -> fileTreeElement.file.path.contains("build/generated/ksp") }
+        }
     }
 }
