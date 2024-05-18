@@ -36,6 +36,6 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
       - name: Codecov
-        uses: codecov/codecov-action@v4.3.1
+        uses: codecov/codecov-action@v4.4.0
         with:
           token: ${{ secrets.CODE_COV_TOKEN  }}
