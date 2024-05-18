@@ -34,7 +34,7 @@ data class Game(
     @Json(name = "home_team_score") val homeTeamScore: Int,
     val id: Int,
     val period: Int,
-    val postseason: Boolean,
+    @Json(name = "postseason") val isPostseasonGame: Boolean,
     val season: Int,
     val status: String,
     val time: String,

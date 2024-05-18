@@ -37,7 +37,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 
-abstract class NbaApiModule {
+open class NbaApiModule {
 
     @IntoSet
     @Provides

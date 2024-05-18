@@ -24,6 +24,4 @@
 
 plugins { id("scores.kotlin") }
 
-dependencies {
-    implementation(libs.kotlinInject)
-}
+dependencies { implementation(libs.kotlinInject) }

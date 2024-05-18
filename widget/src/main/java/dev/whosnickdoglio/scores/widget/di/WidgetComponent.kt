@@ -43,5 +43,5 @@ abstract class WidgetComponent : NbaApiModule() {
     protected fun bindUpdateScoresWorkFactoryToMap(
         factory: UpdateScoresWorker.Factory
     ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
-        Pair(UpdateScoresWorker::class.java, factory)
+        UpdateScoresWorker::class.java to factory
 }

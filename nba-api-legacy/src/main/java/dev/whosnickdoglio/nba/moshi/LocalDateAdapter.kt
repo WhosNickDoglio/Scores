@@ -29,8 +29,8 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
-import me.tatarka.inject.annotations.Inject
 import java.time.LocalDate
+import me.tatarka.inject.annotations.Inject
 
 @Inject
 class LocalDateAdapter : JsonAdapter<LocalDate>() {

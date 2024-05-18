@@ -27,7 +27,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-
 dependencies {
     ksp(libs.kotlinInject.compiler)
     ksp(libs.moshi.codegen)
