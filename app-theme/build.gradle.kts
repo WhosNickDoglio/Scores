@@ -22,7 +22,10 @@
  * SOFTWARE.
  */
 
-plugins { id("scores.android") }
+plugins {
+    id("scores.android")
+    alias(libs.plugins.kotlin.compose)
+}
 
 android { namespace = "dev.whosnickdoglio.scores.app.theme" }
 

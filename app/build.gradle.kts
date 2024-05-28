@@ -25,6 +25,7 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.cacheFix)
@@ -88,12 +89,7 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
-
-    composeOptions { kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get() }
+    buildFeatures { buildConfig = true }
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true

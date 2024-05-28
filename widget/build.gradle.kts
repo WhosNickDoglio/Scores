@@ -25,6 +25,7 @@
 plugins {
     id("scores.android")
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android { namespace = "dev.whosnickdoglio.scores.widget" }

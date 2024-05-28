@@ -157,3 +157,7 @@ local.properties
 
 # Google/Firebase secrets
 google-services.json
+
+
+## Kotlin build output directory
+.kotlin

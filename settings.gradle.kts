@@ -37,10 +37,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://androidx.dev/storage/compose-compiler/repository") {
-            name = "Compose Compiler Snapshots"
-            content { includeGroup("androidx.compose.compiler") }
-        }
     }
 }
 

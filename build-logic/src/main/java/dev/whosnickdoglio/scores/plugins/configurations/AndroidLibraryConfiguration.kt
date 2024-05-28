@@ -25,12 +25,9 @@
 package dev.whosnickdoglio.scores.plugins.configurations
 
 import com.android.build.api.dsl.LibraryExtension
-import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.api.plugins.ExtensionAware
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal class AndroidLibraryConfiguration : Configuration {
     override fun configure(project: Project): Unit =
@@ -64,13 +61,6 @@ internal class AndroidLibraryConfiguration : Configuration {
                     sourceCompatibility = JavaVersion.VERSION_11
                     targetCompatibility = JavaVersion.VERSION_11
                 }
-                kotlinOptions { it.jvmTarget = JavaVersion.VERSION_11.toString() }
-                buildFeatures { compose = true }
-                composeOptions {
-                    kotlinCompilerExtensionVersion =
-                        libs.findVersion("composeCompiler").get().requiredVersion
-                }
-
                 lint {
                     disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck"))
                     htmlReport = false
@@ -84,10 +74,5 @@ internal class AndroidLibraryConfiguration : Configuration {
             }
 
             dependencies.add("coreLibraryDesugaring", libs.findLibrary("desugar").get())
-
-            dependencies.add("implementation", libs.findLibrary("compose-runtime").get())
         }
-
-    private fun LibraryExtension.kotlinOptions(configure: Action<KotlinJvmOptions>) =
-        (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
 }
