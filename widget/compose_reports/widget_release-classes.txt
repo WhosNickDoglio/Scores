@@ -1,0 +1,55 @@
+unstable class ScoresWidgetStateJsonAdapter {
+  unstable val options: Options
+  unstable val nullableIntAdapter: JsonAdapter<Int?>
+  unstable val listOfGameAdapter: JsonAdapter<List<Game>>
+  unstable val booleanAdapter: JsonAdapter<Boolean>
+  unstable var constructorRef: Constructor<ScoresWidgetState>?
+  <runtime stability> = Unstable
+}
+stable class InjectWidgetComponent {
+  <runtime stability> = Stable
+}
+unstable class ScoresStateDefinition {
+  unstable val serializer: ScoresStateSerializer
+  <runtime stability> = Unstable
+}
+unstable class ScoresStateSerializer {
+  unstable val adapter: JsonAdapter<ScoresWidgetState>
+  unstable val defaultValue: ScoresWidgetState
+  <runtime stability> = Unstable
+}
+unstable class ScoresWidget {
+  unstable val stateDefinition: GlanceStateDefinition<*>
+  unstable val sizeMode: SizeMode
+  <runtime stability> = Unstable
+}
+unstable class ScoresWidgetReceiver {
+  unstable val component$delegate: Lazy<WidgetComponent>
+  runtime val glanceAppWidget: GlanceAppWidget
+  <runtime stability> = Unstable
+}
+unstable class ScoresWidgetState {
+  stable val currentIndex: Int?
+  unstable val games: List<Game>
+  stable val areThereGamesToday: Boolean
+  <runtime stability> = Unstable
+}
+stable class NavigateActionCallback {
+  <runtime stability> = Stable
+}
+stable class RefreshActionCallback {
+  <runtime stability> = Stable
+}
+stable class WidgetComponent {
+  <runtime stability> = Stable
+}
+stable class Factory {
+  stable val factory: Function2<@[ParameterName(name = 'context')] Context, @[ParameterName(name = 'params')] WorkerParameters, UpdateScoresWorker>
+  <runtime stability> = Stable
+}
+unstable class UpdateScoresWorker {
+  unstable val service: BallDontLieService
+  unstable val glanceScoresStateDefinition: ScoresStateDefinition
+  unstable val appContext: Context
+  <runtime stability> = Unstable
+}

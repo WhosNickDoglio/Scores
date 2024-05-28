@@ -1,0 +1,3 @@
+package,name,composable,skippable,restartable,readonly,inline,isLambda,hasDefaults,defaultsGroup,groups,calls,
+dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme.<get-colors>,<get-colors>,1,0,0,1,0,0,0,0,1,0,
+dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme,ScoresWidgetTheme,1,1,1,0,0,0,0,0,1,1,

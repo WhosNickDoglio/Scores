@@ -1,0 +1,4 @@
+restartable skippable scheme("[0, [0]]") fun ScoresTheme(
+  stable darkTheme: Boolean = @dynamic isSystemInDarkTheme($composer, 0)
+  stable content: Function2<Composer, Int, Unit>
+)

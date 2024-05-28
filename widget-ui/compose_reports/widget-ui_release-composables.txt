@@ -1,0 +1,51 @@
+restartable fun GameInfo(
+  unstable game: Game
+  stable modifier: GlanceModifier? = @static Companion
+)
+fun stringResource(
+  stable resource: Int
+): String
+restartable skippable fun MultipleGameList(
+  stable onRefresh: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+  unstable games: ImmutableList<Game>? = @dynamic emptyList().toImmutableList()
+)
+restartable skippable fun Refresh(
+  stable onRefresh: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+)
+restartable skippable fun SingleGame(
+  stable onRefresh: Function0<Unit>
+  stable onNavigateUp: Function0<Unit>
+  stable onNavigateDown: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+  unstable game: Game? = @static null
+)
+restartable skippable fun NavigationColumn(
+  stable onNavigateUp: Function0<Unit>
+  stable onNavigateDown: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+)
+restartable skippable fun SingleScoreCompact(
+  stable onRefresh: Function0<Unit>
+  stable onNavigateUp: Function0<Unit>
+  stable onNavigateDown: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+  unstable game: Game? = @static null
+)
+restartable skippable fun Loading()
+restartable skippable fun NavigationRow(
+  stable onRefresh: Function0<Unit>
+  stable onNavigateUp: Function0<Unit>
+  stable onNavigateDown: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+)
+restartable skippable fun EmptyChip(
+  stable onRefresh: Function0<Unit>
+  stable modifier: GlanceModifier? = @static Companion
+)
+restartable skippable fun TeamColumn(
+  stable name: String
+  stable score: String
+  stable modifier: GlanceModifier? = @static Companion
+)

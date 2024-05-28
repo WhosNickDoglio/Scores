@@ -1,0 +1,6 @@
+readonly fun <get-colors>(
+  unused stable <this>: ScoresWidgetTheme
+): ColorProviders
+restartable skippable scheme("[androidx.glance.GlanceComposable, [androidx.glance.GlanceComposable]]") fun ScoresWidgetTheme(
+  stable content: @[GlanceComposable] Function2<Composer, Int, Unit>
+)

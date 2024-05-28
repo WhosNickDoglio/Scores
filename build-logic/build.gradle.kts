@@ -73,4 +73,5 @@ dependencies {
     implementation(libs.cacheFix.gradle)
     implementation(libs.sortDependencies.gradle)
     implementation(libs.spotless.gradle)
+    implementation(libs.composeGuard.gradle)
 }

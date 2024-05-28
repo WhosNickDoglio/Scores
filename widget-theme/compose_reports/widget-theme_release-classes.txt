@@ -1,0 +1,5 @@
+stable class ScoresWidgetTheme {
+  stable val textStyle: TextStyle
+  stable val scoreTextStyle: TextStyle
+  <runtime stability> = Stable
+}

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,14 @@
  * SOFTWARE.
  */
 
-plugins {
-    alias(libs.plugins.android.app) apply false
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.compose) apply false
-    alias(libs.plugins.kotlin.kapt) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
-    alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.composeGuard) apply false
-    alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.doctor)
-    alias(libs.plugins.gradle.versions)
+package dev.whosnickdoglio.scores.plugins.configurations
+
+import org.gradle.api.Project
+
+internal class ComposeGuardConfiguration : Configuration {
+    override fun configure(project: Project) {
+        project.pluginManager.withPlugin("org.jetbrains.kotlin.plugin.compose") {
+            project.pluginManager.apply("com.joetr.compose.guard")
+        }
+    }
 }

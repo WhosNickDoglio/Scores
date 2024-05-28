@@ -32,6 +32,7 @@ plugins {
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
     alias(libs.plugins.licensee)
+    alias(libs.plugins.composeGuard)
 }
 
 licensee { allow("Apache-2.0") }

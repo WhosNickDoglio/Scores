@@ -1,0 +1,14 @@
+stable class InjectAppComponent {
+  <runtime stability> = Stable
+}
+unstable class ScoresApplication {
+  unstable val component$delegate: Lazy<AppComponent>
+  unstable val workManagerConfiguration: Configuration
+  <runtime stability> = Unstable
+}
+stable class AppComponent {
+  <runtime stability> = Stable
+}
+stable class ConfigurationActivity {
+  <runtime stability> = Stable
+}

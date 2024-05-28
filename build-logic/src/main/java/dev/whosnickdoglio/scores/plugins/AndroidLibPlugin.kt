@@ -26,6 +26,7 @@ package dev.whosnickdoglio.scores.plugins
 
 import dev.whosnickdoglio.scores.plugins.configurations.AndroidLibraryConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.CommonDependencyConfiguration
+import dev.whosnickdoglio.scores.plugins.configurations.ComposeGuardConfiguration
 import dev.whosnickdoglio.scores.plugins.configurations.ConfigurablePlugin
 import dev.whosnickdoglio.scores.plugins.configurations.Configuration
 import dev.whosnickdoglio.scores.plugins.configurations.LintPluginConfiguration
@@ -40,7 +41,8 @@ class AndroidLibPlugin : ConfigurablePlugin() {
             JvmTaskConfiguration(),
             LintPluginConfiguration(),
             CommonDependencyConfiguration(),
-            AndroidLibraryConfiguration()
+            AndroidLibraryConfiguration(),
+            ComposeGuardConfiguration(),
         )
 
     override fun apply(target: Project) {
