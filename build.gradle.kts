@@ -31,6 +31,11 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.composeGuard) apply false
     alias(libs.plugins.dependency.analysis)
+    alias(libs.plugins.dependencyGuard)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)
+}
+
+dependencyGuard {
+    configuration("classpath")
 }

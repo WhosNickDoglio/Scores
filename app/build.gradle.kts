@@ -33,7 +33,10 @@ plugins {
     alias(libs.plugins.spotless)
     alias(libs.plugins.licensee)
     alias(libs.plugins.composeGuard)
+    alias(libs.plugins.dependencyGuard)
 }
+
+dependencyGuard { configuration("releaseRuntimeClasspath") }
 
 licensee { allow("Apache-2.0") }
 
