@@ -45,6 +45,7 @@ interface BallDontLieService {
         @Query("start_date") startDate: LocalDate? = null,
         @Query("end_date") endDate: LocalDate? = null,
     ): ApiResult<GameResponse, Unit> // TODO custom error type
+
     // https://github.com/slackhq/EitherNet#decoding-error-bodies
 
     companion object {
