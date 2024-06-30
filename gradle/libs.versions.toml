@@ -2,7 +2,7 @@
 min-sdk = "26"
 target-sdk = "34"
 compile-sdk = "34"
-agp = "8.4.2"
+agp = "8.5.0"
 kotlin = "2.0.0"
 detekt = "1.23.6"
 cacheFix = "3.0.1"
@@ -10,17 +10,17 @@ coroutines = "1.8.1"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 circuit = "0.22.2"
-compose-guard = "1.1.0"
+compose-guard = "2.1.0"
 moshi = "1.15.1"
 work = "2.9.0"
 licensee = "1.11.0"
 ktfmt = "0.50"
 accompanist = "0.32.0"
-kover = "0.8.1"
-glance = "1.0.0"
+kover = "0.8.2"
+glance = "1.1.0"
 spotless = "6.25.0"
 sort = "0.6"
-inject = "0.6.3"
+inject = "0.7.1"
 sqldelight = "2.0.2"
 ktor = "2.3.11"
 
@@ -66,7 +66,7 @@ cacheFix-gradle = { module = "org.gradle.android.cache-fix:org.gradle.android.ca
 sortDependencies-gradle = { module = "com.squareup.sort-dependencies:com.squareup.sort-dependencies.gradle.plugin", version.ref = "sort" }
 composeGuard-gradle = { module = "com.joetr.compose.guard:com.joetr.compose.guard.gradle.plugin", version.ref = "compose-guard" }
 
-compose-bom = { module = "androidx.compose:compose-bom", version = "2024.05.00" }
+compose-bom = { module = "androidx.compose:compose-bom", version = "2024.06.00" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
@@ -88,7 +88,7 @@ ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
-kotlinInject = { module = "me.tatarka.inject:kotlin-inject-runtime", version.ref = "inject" }
+kotlinInject = { module = "me.tatarka.inject:kotlin-injectinject-runtime", version.ref = "inject" }
 kotlinInject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp", version.ref = "inject" }
 
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
@@ -100,11 +100,11 @@ circuit-test = { module = "com.slack.circuit:circuit-test", version.ref = "circu
 circuitx-android = { module = "com.slack.circuit:circuitx-android", version.ref = "circuit" }
 circuitx-overlays = { module = "com.slack.circuit:circuitx-overlays", version.ref = "circuit" }
 
-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.0" }
+serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.1" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.0" }
 immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
 
-kermit = { module = "co.touchlab:kermit", version = "2.0.3" }
+kermit = { module = "co.touchlab:kermit", version = "2.0.4" }
 
 sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
