@@ -35,7 +35,10 @@ plugins {
     alias(libs.plugins.composeGuard)
 }
 
-licensee { allow("Apache-2.0") }
+licensee {
+    allow("Apache-2.0")
+    allow("BSD-3-Clause")
+}
 
 kotlin { jvmToolchain(21) }
 
