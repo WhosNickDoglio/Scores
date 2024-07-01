@@ -107,10 +107,11 @@ private fun Scores(
     modifier: GlanceModifier =
         GlanceModifier.fillMaxWidth().fillMaxHeight().appWidgetBackground().background(Color.White)
 ) {
-    Column(modifier) {
+    Column {
         when (LocalSize.current) {
             SINGLE_GAME_COMPACT ->
                 SingleScoreCompact(
+                    modifier = modifier,
                     onRefresh = onRefresh,
                     onNavigateUp = { NavigateActionCallback.up() },
                     onNavigateDown = { NavigateActionCallback.down() },
@@ -122,10 +123,15 @@ private fun Scores(
                         })
 
             MULTI_GAME_LIST ->
-                MultipleGameList(onRefresh = onRefresh, games = state.games.toImmutableList())
+                MultipleGameList(
+                    modifier = modifier,
+                    onRefresh = onRefresh,
+                    games = state.games.toImmutableList()
+                )
 
             SINGLE_GAME ->
                 SingleGame(
+                    modifier = modifier,
                     onRefresh = onRefresh,
                     onNavigateUp = { NavigateActionCallback.up() },
                     onNavigateDown = { NavigateActionCallback.down() },

@@ -31,7 +31,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Team(
     @SerialName("teamId")
-    val teamId: Int? = 0, // 1611661330
+    val teamId: Int? = null, // 1611661330
     @SerialName("teamName")
     val teamName: String? = null, // Dream
     @SerialName("teamCity")
@@ -41,21 +41,15 @@ data class Team(
     @SerialName("wins")
     val wins: Int? = null, // 7
     @SerialName("losses")
-    val losses: Int? = 0, // 10
+    val losses: Int? = null, // 10
     @SerialName("score")
-    val score: Int? = 0, // 75
+    val score: Int? = null, // 75
     @SerialName("seed")
     val seed: Int? = null, // null
     @SerialName("inBonus")
     val inBonus: Int? = null, // null
     @SerialName("timeoutsRemaining")
-    val timeoutsRemaining: Int? = 0, // 0
+    val timeoutsRemaining: Int? = null, // 0
     @SerialName("periods")
-    val periods: List<Period>? = listOf()
+    val periods: List<Period>? = null
 )
-
-
-sealed interface Result<T> {
-    data class Success<T>(val data: T): Result<T>
-    data class Failure(val message: String): Result<Nothing>
-}
