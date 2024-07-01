@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +22,40 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.models
+package dev.whosnickdoglio.nba.api.models
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
-data class Game(
-    val date: String, // TODO convert to LocalDate will need adapter
-    @Json(name = "home_team") val homeTeam: Team,
-    @Json(name = "home_team_score") val homeTeamScore: Int,
-    val id: Int,
-    val period: Int,
-    @Json(name = "postseason") val isPostseasonGame: Boolean,
-    val season: Int,
-    val status: String,
-    val time: String,
-    @Json(name = "visitor_team") val visitorTeam: Team,
-    @Json(name = "visitor_team_score") val visitorTeamScore: Int
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Team(
+    @SerialName("teamId")
+    val teamId: Int? = 0, // 1611661330
+    @SerialName("teamName")
+    val teamName: String? = null, // Dream
+    @SerialName("teamCity")
+    val teamCity: String? = null, // Atlanta
+    @SerialName("teamTricode")
+    val teamTricode: String? = null, // ATL
+    @SerialName("wins")
+    val wins: Int? = null, // 7
+    @SerialName("losses")
+    val losses: Int? = 0, // 10
+    @SerialName("score")
+    val score: Int? = 0, // 75
+    @SerialName("seed")
+    val seed: Int? = null, // null
+    @SerialName("inBonus")
+    val inBonus: Int? = null, // null
+    @SerialName("timeoutsRemaining")
+    val timeoutsRemaining: Int? = 0, // 0
+    @SerialName("periods")
+    val periods: List<Period>? = listOf()
 )
+
+
+sealed interface Result<T> {
+    data class Success<T>(val data: T): Result<T>
+    data class Failure(val message: String): Result<Nothing>
+}

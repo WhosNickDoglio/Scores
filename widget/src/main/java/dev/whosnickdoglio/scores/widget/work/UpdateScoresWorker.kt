@@ -29,31 +29,26 @@ import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.slack.eithernet.ApiResult
-import dev.whosnickdoglio.nba.BallDontLieService
+import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
+import dev.whosnickdoglio.nba.api.Result as NetworkResult
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
 import dev.whosnickdoglio.scores.widget.ScoresWidget
 import dev.whosnickdoglio.scores.widget.ScoresWidgetState
 import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
 import me.tatarka.inject.annotations.Assisted
 import me.tatarka.inject.annotations.Inject
-import java.time.LocalDate
 
 @Inject
 class UpdateScoresWorker(
-    private val service: BallDontLieService,
+    private val service: NbaScoreboardNetworkClient,
     private val glanceScoresStateDefinition: ScoresStateDefinition,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
 
-    override suspend fun doWork(): Result {
-        val today = LocalDate.now()
-
-        val apiResult = service.retrieveGameData(startDate = today, endDate = today)
-
-        return when (apiResult) {
-            is ApiResult.Success -> {
+    override suspend fun doWork(): Result =
+        when (val apiResult = service.fetch()) {
+            is NetworkResult.Success -> {
                 val glanceId =
                     GlanceAppWidgetManager(appContext)
                         .getGlanceIds(ScoresWidget::class.java)
@@ -63,13 +58,14 @@ class UpdateScoresWorker(
                     updateAppWidgetState(
                         context = appContext,
                         definition = glanceScoresStateDefinition,
-                        glanceId = glanceId
-                    ) { oldState ->
-                        ScoresWidgetState(
-                            currentIndex = oldState.currentIndex ?: 0,
-                            games = apiResult.value.games.orEmpty().sortedBy { it.period }
-                        )
-                    }
+                        glanceId = glanceId) { oldState ->
+                            ScoresWidgetState(
+                                currentIndex = oldState.currentIndex ?: 0,
+                                games =
+                                    apiResult.data.scoreboard?.games.orEmpty().sortedBy {
+                                        it.period ?: 0
+                                    })
+                        }
 
                     Result.success()
                 } else {
@@ -77,17 +73,13 @@ class UpdateScoresWorker(
                 }
             }
 
-            is ApiResult.Failure.NetworkFailure -> Result.failure()
-            is ApiResult.Failure.UnknownFailure -> Result.failure()
-            is ApiResult.Failure.HttpFailure -> Result.failure()
-            is ApiResult.Failure.ApiFailure -> Result.failure()
-            else -> Result.failure()
+            is NetworkResult.Failure -> Result.failure()
         }
-    }
 
     @Inject
-    class Factory(private val factory: (context: Context, params: WorkerParameters) -> UpdateScoresWorker) :
-        AssistedWorkerFactory<UpdateScoresWorker> {
+    class Factory(
+        private val factory: (context: Context, params: WorkerParameters) -> UpdateScoresWorker
+    ) : AssistedWorkerFactory<UpdateScoresWorker> {
         override fun createWorker(
             appContext: Context,
             workerParams: WorkerParameters

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.models
+package dev.whosnickdoglio.nba.api.models
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
-data class Meta(
-    @Json(name = "current_page") val currentPage: Int? = null,
-    @Json(name = "next_page") val nextPage: Int? = null,
-    @Json(name = "per_page") val perPage: Int? = null,
-    @Json(name = "total_count") val totalCount: Int? = null,
-    @Json(name = "total_pages") val totalPages: Int? = null
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class WnbaResponse(
+    val meta: Meta? = null,
+    val scoreboard: Scoreboard? = null
 )

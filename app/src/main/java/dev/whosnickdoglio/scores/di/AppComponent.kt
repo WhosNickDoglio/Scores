@@ -27,7 +27,7 @@ package dev.whosnickdoglio.scores.di
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
-import dev.whosnickdoglio.nba.di.NbaApiModule
+import dev.whosnickdoglio.nba.api.di.NbaApiModule
 import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
 import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
 import dev.whosnickdoglio.workmanager.ScoresWorkerFactory
@@ -35,14 +35,8 @@ import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.IntoMap
 import me.tatarka.inject.annotations.Provides
 
-/**
- * A top level [dagger.Component] for our dependency graph, this [dagger.Component] should be a
- * [Singleton] and only initialized once per app launch via the [ComponentProvider]. All
- * [dagger.Modules][dagger.Module] or classes that contribute to [AppScope] will be available in the
- * [AppComponent] graph.
- */
 @Component
-abstract class AppComponent: NbaApiModule() {
+abstract class AppComponent: NbaApiModule {
 
     abstract val workerFactory: WorkerFactory
 

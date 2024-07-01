@@ -25,41 +25,32 @@
 package dev.whosnickdoglio.scores.widget
 
 import androidx.datastore.core.Serializer
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapter
-import me.tatarka.inject.annotations.Inject
 import java.io.EOFException
 import java.io.InputStream
 import java.io.OutputStream
-import okio.buffer
-import okio.sink
+import kotlinx.serialization.json.Json
+import me.tatarka.inject.annotations.Inject
 
 /**
  * A DataStore [Serializer] for the [ScoresWidgetState] object.
  *
- * @param moshi A [Moshi] instance that parses the [ScoresWidgetState]
+ * @param json A [Json] instance that parses the [ScoresWidgetState]
  */
 @Inject
-class ScoresStateSerializer(
-    moshi: Moshi,
-) : Serializer<ScoresWidgetState> {
-
-    @OptIn(ExperimentalStdlibApi::class)
-    private val adapter = moshi.adapter<ScoresWidgetState>()
+class ScoresStateSerializer(private val json: Json) : Serializer<ScoresWidgetState> {
 
     override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
     @Suppress("SwallowedException") // TODO come back to this
     override suspend fun readFrom(input: InputStream): ScoresWidgetState =
         try {
-            adapter.fromJson(input.bufferedReader().readText()) ?: ScoresWidgetState()
+            json.decodeFromString(
+                ScoresWidgetState.serializer(), input.readBytes().decodeToString())
         } catch (exception: EOFException) {
             ScoresWidgetState()
         }
 
     override suspend fun writeTo(t: ScoresWidgetState, output: OutputStream) {
-        val sink = output.sink().buffer()
-        adapter.toJson(sink, t)
-        sink.close()
+        output.write(json.encodeToString(ScoresWidgetState.serializer(), t).encodeToByteArray())
     }
 }

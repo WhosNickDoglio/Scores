@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +22,26 @@
  * SOFTWARE.
  */
 
-plugins {
-    id("scores.kotlin")
-    alias(libs.plugins.ksp)
+package dev.whosnickdoglio.nba.api
+
+import dev.whosnickdoglio.nba.api.models.WnbaResponse
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import me.tatarka.inject.annotations.Inject
+
+// https://nba-prod-us-east-1-mediaops-stats.s3.amazonaws.com/WNBA/liveData/scoreboard/todaysScoreboard_10.json
+
+// https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json
+@Inject
+class WnbaScoreboardClient(private val client: HttpClient) : NbaScoreboardNetworkClient {
+    override suspend fun fetch(): Result<WnbaResponse> =
+        try {
+            val data = client.get("$BASE_URL/liveData/scoreboard/todaysScoreboard_10.json")
+            Result.Success(data.body())
+        } catch (e: Exception) {
+            Result.Failure(e.message.orEmpty())
+        }
 }
 
-dependencies {
-    ksp(libs.kotlinInject.compiler)
-    ksp(libs.moshi.codegen)
-
-    api(libs.eithernet)
-    api(libs.moshi)
-    api(libs.okhttp.core)
-
-    implementation(libs.coroutines.core)
-    implementation(libs.kotlinInject)
-    implementation(libs.okhttp.logging)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.moshi)
-}
+private const val BASE_URL = "https://cdn.nba.com/static/json/"

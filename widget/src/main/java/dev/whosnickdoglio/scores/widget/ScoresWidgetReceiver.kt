@@ -26,13 +26,8 @@ package dev.whosnickdoglio.scores.widget
 
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
-import dev.whosnickdoglio.scores.widget.di.WidgetComponent
-import dev.whosnickdoglio.scores.widget.di.create
 
 /** A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget]. */
 class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
-
-    private val component: WidgetComponent by lazy { WidgetComponent::class.create() }
-
-    override val glanceAppWidget: GlanceAppWidget = component.widget
+    override val glanceAppWidget: GlanceAppWidget = ScoresWidget()
 }

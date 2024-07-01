@@ -34,7 +34,7 @@ import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxHeight
 import androidx.glance.text.Text
-import dev.whosnickdoglio.nba.models.Game
+import dev.whosnickdoglio.nba.api.models.Game
 import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
 
 /**

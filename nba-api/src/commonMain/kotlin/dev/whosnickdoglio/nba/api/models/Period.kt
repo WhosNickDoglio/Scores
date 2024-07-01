@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,44 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-rootProject.name = "Scores"
 
-pluginManagement {
-    includeBuild("build-logic")
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
+package dev.whosnickdoglio.nba.api.models
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 
-plugins { id("com.gradle.develocity") version ("3.17.5") }
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-develocity {
-    buildScan {
-        termsOfUseUrl = "https://gradle.com/terms-of-service"
-        termsOfUseAgree = "yes"
-    }
-}
-
-include(
-    ":app",
-    ":app-theme",
-    ":nba-api",
-    ":inject-scopes",
-    ":widget-ui",
-    ":widget-theme",
-    ":startup",
-    ":workmanager-assisted",
-    ":widget",
+@Serializable
+data class Period(
+    @SerialName("period")
+    val period: Int? = null, // 1
+    @SerialName("periodType")
+    val periodType: String? = null, // REGULAR
+    @SerialName("score")
+    val score: Int? = null // 13
 )

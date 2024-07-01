@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +22,16 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.models
+package dev.whosnickdoglio.nba.api.models
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
-data class Team(
-    val abbreviation: String,
-    val city: String,
-    val conference: String,
-    val division: String,
-    @Json(name = "full_name") val fullName: String,
-    val id: Int,
-    val name: String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Meta(
+    val version: Int? = null, // 1
+    val request: String? = null, // https://nba-prod-us-east-1-mediaops-stats.s3.amazonaws.com/WNBA/liveData/scoreboard/todaysScoreboard_10.json
+    val time: String? = null, // 2024-06-30 05:38:26.3826
+    val code: Int? = null // 200
 )

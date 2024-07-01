@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,31 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba
+package dev.whosnickdoglio.nba.api.models
 
-import com.slack.eithernet.ApiResult
-import dev.whosnickdoglio.nba.models.GameResponse
-import java.time.LocalDate
-import retrofit2.http.GET
-import retrofit2.http.Query
 
-/**  */
-interface BallDontLieService {
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-    /** https://www.balldontlie.io/#get-all-games */
-    @GET("games")
-    suspend fun retrieveGameData(
-        @Query("page") page: Int? = null,
-        @Query("per_page") perPage: Int? = null,
-        @Query("dates") dates: List<LocalDate>? = null,
-        @Query("seasons") seasons: List<Int>? = null,
-        @Query("team_ids") teamIds: List<Int>? = null,
-        @Query("postseason") postseason: Boolean? = null,
-        @Query("start_date") startDate: LocalDate? = null,
-        @Query("end_date") endDate: LocalDate? = null,
-    ): ApiResult<GameResponse, Unit> // TODO custom error type
-
-    // https://github.com/slackhq/EitherNet#decoding-error-bodies
-
-    companion object {
-        internal const val BASE_URL = "https://www.balldontlie.io/api/v1/"
-    }
-}
+@Serializable
+data class Game(
+    val gameId: String? = null, // 1022400106
+    val gameCode: String? = null, // 20240630/ATLNYL
+    val gameStatus: Int? = null, // 3
+    val gameStatusText: String? = null, // Final
+    val period: Int? = null, // 4
+    val gameClock: String? = null,
+    val gameTimeUTC: String? = null, // 2024-06-30T17:00:00Z
+    val gameEt: String? = null, // 2024-06-30T13:00:00Z
+    val regulationPeriods: Int? = null, // 4
+    val ifNecessary: Boolean? = null, // false
+    val seriesGameNumber: String? = null,
+    val gameLabel: String? = null, // Regular Season
+    val gameSubLabel: String? = null,
+    val seriesText: String? = null,
+    val seriesConference: String? = null,
+    val poRoundDesc: String? = null,
+    val gameSubtype: String? = null,
+    val homeTeam: Team? = null,
+    val awayTeam: Team? = null,
+)

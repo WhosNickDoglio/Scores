@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,16 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.models
+package dev.whosnickdoglio.nba.api
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import dev.whosnickdoglio.nba.api.models.WnbaResponse
 
-@JsonClass(generateAdapter = true)
-data class GameResponse(@Json(name = "data") val games: List<Game>? = null, val meta: Meta? = null)
+interface NbaScoreboardNetworkClient {
+    suspend fun fetch(): Result<WnbaResponse>
+}
+
+sealed interface Result<out T> {
+    data class Success<T>(val data: T) : Result<T>
+
+    data class Failure(val message: String) : Result<Nothing>
+}

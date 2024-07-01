@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,16 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.nba.moshi
+package dev.whosnickdoglio.nba.api
 
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonReader
-import com.squareup.moshi.JsonWriter
-import com.squareup.moshi.ToJson
-import java.time.LocalDate
-import me.tatarka.inject.annotations.Inject
+sealed interface LeagueId {
+    val id: String
 
-@Inject
-class LocalDateAdapter : JsonAdapter<LocalDate>() {
-
-    @FromJson
-    override fun fromJson(reader: JsonReader): LocalDate? {
-        if (reader.peek() == JsonReader.Token.NULL) {
-            return reader.nextNull()
-        }
-        val string = reader.nextString()
-        reader.close()
-        return LocalDate.parse(string)
+    data object Wnba : LeagueId {
+        override val id: String = "10"
     }
 
-    @ToJson
-    override fun toJson(writer: JsonWriter, value: LocalDate?) {
-        if (value == null) {
-            writer.nullValue()
-        } else {
-            writer.value(value.toString())
-        }
-        writer.close()
+    data object Nba : LeagueId {
+        override val id: String = "00"
     }
 }

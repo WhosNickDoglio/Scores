@@ -43,33 +43,33 @@ class NavigateActionCallback : ActionCallback {
         glanceId: GlanceId,
         parameters: ActionParameters
     ) {
-//        val direction: Direction? = parameters[navKey]
-//
-//        updateAppWidgetState(
-//            context = context,
-//            definition = ScoresStateDefinition,
-//            glanceId = glanceId
-//        ) { currentState ->
-//            val currentIndex = currentState.currentIndex ?: 0
-//
-//            // TODO more robust logic and handling of this
-//            // TODO wrapping around
-//            val newIndex =
-//                when (direction) {
-//                    Direction.DOWN ->
-//                        if (currentIndex == currentState.games.lastIndex) {
-//                            0
-//                        } else {
-//                            currentIndex + 1
-//                        }
-//                    Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
-//                    null -> currentState.currentIndex
-//                }
-//
-//            return@updateAppWidgetState ScoresWidgetState(newIndex, currentState.games)
-//        }
-//
-//        ScoresWidget().update(context, glanceId)
+        //        val direction: Direction? = parameters[navKey]
+        //
+        //        updateAppWidgetState(
+        //            context = context,
+        //            definition = ScoresStateDefinition,
+        //            glanceId = glanceId
+        //        ) { currentState ->
+        //            val currentIndex = currentState.currentIndex ?: 0
+        //
+        //            // TODO more robust logic and handling of this
+        //            // TODO wrapping around
+        //            val newIndex =
+        //                when (direction) {
+        //                    Direction.DOWN ->
+        //                        if (currentIndex == currentState.games.lastIndex) {
+        //                            0
+        //                        } else {
+        //                            currentIndex + 1
+        //                        }
+        //                    Direction.UP -> if (currentIndex == 0) 0 else currentIndex - 1
+        //                    null -> currentState.currentIndex
+        //                }
+        //
+        //            return@updateAppWidgetState ScoresWidgetState(newIndex, currentState.games)
+        //        }
+        //
+        //        ScoresWidget().update(context, glanceId)
     }
 
     companion object {

@@ -42,7 +42,7 @@ import androidx.glance.layout.width
 import androidx.glance.layout.wrapContentHeight
 import androidx.glance.layout.wrapContentWidth
 import androidx.glance.text.Text
-import dev.whosnickdoglio.nba.models.Game
+import dev.whosnickdoglio.nba.api.models.Game
 import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
 
 // TODO clean this up
@@ -74,14 +74,14 @@ fun SingleScoreCompact(
             if (game != null) {
                 TeamColumn(
                     modifier = chipContentHeight,
-                    name = game.homeTeam.abbreviation,
-                    score = game.homeTeamScore.toString()
+                    name = game.homeTeam?.teamTricode.orEmpty(),
+                    score = game.homeTeam?.score.toString()
                 )
                 Spacer(modifier = GlanceModifier.width(10.dp))
                 TeamColumn(
                     modifier = chipContentHeight,
-                    name = game.visitorTeam.abbreviation,
-                    score = game.visitorTeamScore.toString()
+                    name = game.awayTeam?.teamTricode.orEmpty(),
+                    score = game.awayTeam?.score.toString()
                 )
             } else {
                 EmptyChip(
@@ -92,7 +92,7 @@ fun SingleScoreCompact(
         }
 
         if (game != null) {
-            Text(text = game.status, style = ScoresWidgetTheme.textStyle) // More info on game
+            Text(text = game.gameStatusText.orEmpty(), style = ScoresWidgetTheme.textStyle) // More info on game
             Spacer(GlanceModifier.height(2.dp))
             NavigationRow(
                 modifier = GlanceModifier.height(50.dp).fillMaxWidth(),

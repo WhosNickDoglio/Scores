@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Nicholas Doglio
+ * Copyright (c) 2024 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,42 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.scores.widget.di
+package dev.whosnickdoglio.nba.api.di
 
-import androidx.work.ListenableWorker
 import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
-import dev.whosnickdoglio.nba.api.di.NbaApiModule
-import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
-import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
-import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
-import me.tatarka.inject.annotations.Component
-import me.tatarka.inject.annotations.IntoMap
+import dev.whosnickdoglio.nba.api.WnbaScoreboardClient
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.http.ContentType
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import me.tatarka.inject.annotations.Provides
 
-@Component
-abstract class WidgetComponent : NbaApiModule {
+interface NbaApiModule {
 
-    abstract val glanceStateDefinition: ScoresStateDefinition
+    @Provides fun WnbaScoreboardClient.bind(): NbaScoreboardNetworkClient = this
 
-    abstract val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
-
-    @IntoMap
     @Provides
-    protected fun bindUpdateScoresWorkFactoryToMap(
-        factory: UpdateScoresWorker.Factory
-    ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
-        UpdateScoresWorker::class.java to factory
+    fun provideJson(): Json = Json {
+        isLenient = true
+        ignoreUnknownKeys = true
+
+    }
+
+    @Provides
+    fun provideClient(json: Json): HttpClient =
+        HttpClient(CIO) {
+            install(ContentNegotiation) { json(json, contentType = ContentType.Application.OctetStream) }
+
+            // TODO only do in debug builds
+            install(Logging) {
+                logger = Logger.DEFAULT
+                level = LogLevel.ALL
+            }
+        }
 }
