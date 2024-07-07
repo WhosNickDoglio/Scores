@@ -98,12 +98,12 @@ android {
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         freeCompilerArgs += listOf("-opt-in=kotlin.ExperimentalStdlibApi")
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     lint {
@@ -128,14 +128,9 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.kotlin.bom))
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.core)
-    implementation(libs.androidx.datastore)
-    implementation(libs.androidx.workmanager)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
     implementation(libs.glance.appwidget)
-    implementation(libs.immutableCollections)
     implementation(libs.kotlinInject)
     implementation(projects.appTheme)
     implementation(projects.injectScopes)
@@ -145,10 +140,6 @@ dependencies {
     implementation(projects.widgetUi)
     implementation(projects.workmanagerAssisted)
 
-    debugImplementation(libs.compose.ui.tooling)
-
     testImplementation(libs.assertk)
     testImplementation(libs.junit)
-
-    androidTestImplementation(libs.androidx.workmanager.test)
 }

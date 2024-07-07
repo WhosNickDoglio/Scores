@@ -34,9 +34,8 @@ android { namespace = "dev.whosnickdoglio.scores.widget" }
 dependencies {
     ksp(libs.kotlinInject.compiler)
 
-    implementation(libs.androidx.workmanager)
+    api(libs.androidx.workmanager)
     implementation(libs.glance.appwidget)
-    implementation(libs.glance.material)
     implementation(libs.immutableCollections)
     implementation(libs.kotlinInject)
     implementation(libs.serialization)

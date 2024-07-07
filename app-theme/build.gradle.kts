@@ -31,5 +31,4 @@ android { namespace = "dev.whosnickdoglio.scores.app.theme" }
 
 dependencies {
     implementation(libs.compose.material)
-    implementation(libs.immutableCollections)
 }

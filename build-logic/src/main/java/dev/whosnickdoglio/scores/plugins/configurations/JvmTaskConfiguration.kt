@@ -36,13 +36,13 @@ internal class JvmTaskConfiguration : Configuration {
             tasks.withType(KotlinCompile::class.java).configureEach {
                 it.compilerOptions {
                     allWarningsAsErrors.set(true)
-                    jvmTarget.set(JvmTarget.JVM_11)
+                    jvmTarget.set(JvmTarget.JVM_17)
                 }
             }
 
             tasks.withType(JavaCompile::class.java).configureEach {
-                it.sourceCompatibility = JavaVersion.VERSION_11.toString()
-                it.targetCompatibility = JavaVersion.VERSION_11.toString()
+                it.sourceCompatibility = JavaVersion.VERSION_17.toString()
+                it.targetCompatibility = JavaVersion.VERSION_17.toString()
             }
         }
 }

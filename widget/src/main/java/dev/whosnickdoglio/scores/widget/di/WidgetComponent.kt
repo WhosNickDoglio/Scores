@@ -25,6 +25,7 @@
 package dev.whosnickdoglio.scores.widget.di
 
 import androidx.work.ListenableWorker
+import dev.whosnickdoglio.inject.WidgetScope
 import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
 import dev.whosnickdoglio.nba.api.di.NbaApiModule
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
@@ -34,6 +35,7 @@ import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.IntoMap
 import me.tatarka.inject.annotations.Provides
 
+@WidgetScope
 @Component
 abstract class WidgetComponent : NbaApiModule {
 

@@ -24,16 +24,12 @@
 
 package dev.whosnickdoglio.scores.widget
 
-import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import dev.whosnickdoglio.nba.api.models.Game
 import kotlinx.serialization.Serializable
 
 // TODO move this out of this module
 /** A data class that represents all the relevant state information for the Scores widget. */
 @Serializable
-@Stable
-@Immutable
 data class ScoresWidgetState(
     val currentIndex: Int? = null,
     val games: List<Game> = emptyList(),

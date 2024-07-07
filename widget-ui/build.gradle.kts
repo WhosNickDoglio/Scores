@@ -27,7 +27,13 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-android { namespace = "dev.whosnickdoglio.scores.ui" }
+android {
+    namespace = "dev.whosnickdoglio.scores.ui"
+
+    testOptions.unitTests {
+        isIncludeAndroidResources = true
+    }
+}
 
 dependencies {
     implementation(libs.compose.material)
@@ -36,4 +42,9 @@ dependencies {
     implementation(libs.immutableCollections)
     implementation(projects.nbaApi)
     implementation(projects.widgetTheme)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.glance.testing)
+    testImplementation(libs.glance.appwidget.testing)
+    testImplementation(libs.robolectric)
 }

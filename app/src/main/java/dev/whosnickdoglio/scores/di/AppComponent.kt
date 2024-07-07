@@ -27,6 +27,7 @@ package dev.whosnickdoglio.scores.di
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
+import dev.whosnickdoglio.inject.AppScope
 import dev.whosnickdoglio.nba.api.di.NbaApiModule
 import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
 import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
@@ -35,6 +36,7 @@ import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.IntoMap
 import me.tatarka.inject.annotations.Provides
 
+@AppScope
 @Component
 abstract class AppComponent: NbaApiModule {
 

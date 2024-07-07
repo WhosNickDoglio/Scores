@@ -12,7 +12,6 @@ compose-guard = "2.2.1"
 work = "2.9.0"
 licensee = "1.11.0"
 ktfmt = "0.50"
-accompanist = "0.32.0"
 kover = "0.8.2"
 glance = "1.1.0"
 spotless = "6.25.0"
@@ -38,7 +37,6 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.23" }
 gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
-paparazzi = { id = "app.cash.paparazzi", version = "1.3.4" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
@@ -72,6 +70,8 @@ compose-material = { module = "androidx.compose.material3:material3" }
 compose-runtime = { module = "androidx.compose.runtime:runtime" }
 glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 glance-material = { module = "androidx.glance:glance-material3", version.ref = "glance" }
+glance-testing = { module = "androidx.glance:glance-testing", version.ref = "glance" }
+glance-appwidget-testing = { module = "androidx.glance:glance-appwidget-testing", version.ref = "glance" }
 
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktor" }
@@ -115,6 +115,4 @@ lints-compose = { module = "com.slack.lint.compose:compose-lint-checks", version
 junit = { module = "junit:junit", version = "4.13.2" }
 assertk = { module = "com.willowtreeapps.assertk:assertk", version = "0.28.1" }
 androidx-workmanager-test = { module = "androidx.work:work-testing", version.ref = "work" }
-androidx-test-junit = { module = "androidx.test.ext:junit", version = "1.2.1" }
-androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.6.1" }
-compose-test-junit = { module = "androidx.compose.ui:ui-test-junit4" }
+robolectric = { module = "org.robolectric:robolectric", version = "4.12.2" }
