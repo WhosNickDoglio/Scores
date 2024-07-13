@@ -30,9 +30,7 @@ plugins {
 android {
     namespace = "dev.whosnickdoglio.scores.ui"
 
-    testOptions.unitTests {
-        isIncludeAndroidResources = true
-    }
+    testOptions.unitTests { isIncludeAndroidResources = true }
 }
 
 dependencies {
@@ -43,8 +41,8 @@ dependencies {
     implementation(projects.nbaApi)
     implementation(projects.widgetTheme)
 
-    testImplementation(libs.junit)
-    testImplementation(libs.glance.testing)
     testImplementation(libs.glance.appwidget.testing)
+    testImplementation(libs.glance.testing)
+    testImplementation(libs.junit)
     testImplementation(libs.robolectric)
 }
