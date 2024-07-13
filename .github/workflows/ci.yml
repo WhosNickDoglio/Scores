@@ -14,14 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: ./.github/actions/setup
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Build
+        run: ./gradlew assemble
   Lint:
     runs-on: ubuntu-latest
     needs: [ Build ]
     strategy:
       matrix:
-        command: [ detektMain, detektTest, lint, spotlessCheck, checkSortDependencies, licensee ]
+        command: [ detektMain, detektTest, lint, spotlessCheck, checkSortDependencies, licensee, releaseComposeCompilerCheck ]
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: ./.github/actions/setup
