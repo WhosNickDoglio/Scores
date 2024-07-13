@@ -1,0 +1,5 @@
+restartable fun Scores(
+  unstable state: ScoresWidgetState
+  stable onRefresh: Function0<Unit>
+  stable modifier: GlanceModifier? = @dynamic Companion.fillMaxWidth().fillMaxHeight().appWidgetBackground().background(Companion.White)
+)

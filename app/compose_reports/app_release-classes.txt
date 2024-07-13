@@ -1,5 +1,6 @@
-stable class InjectAppComponent {
-  <runtime stability> = Stable
+unstable class InjectAppComponent {
+  unstable val _scoped: LazyMap
+  <runtime stability> = Unstable
 }
 unstable class ScoresApplication {
   unstable val component$delegate: Lazy<AppComponent>

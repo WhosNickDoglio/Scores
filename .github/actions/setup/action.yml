@@ -9,4 +9,4 @@ runs:
         distribution: 'zulu'
         java-version: '21'
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3.4.2
+      uses: gradle/actions/setup-gradle@v3
