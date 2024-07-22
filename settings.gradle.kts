@@ -40,7 +40,7 @@ dependencyResolutionManagement {
     }
 }
 
-plugins { id("com.gradle.develocity") version ("3.17.5") }
+plugins { id("com.gradle.develocity") version ("3.17.6") }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
