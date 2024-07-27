@@ -23,7 +23,7 @@ ktor = "2.3.12"
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 doctor = { id = "com.osacky.doctor", version = "0.10.0" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.32.0" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.33.0" }
 android-app = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
