@@ -108,7 +108,7 @@ sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref 
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
 
-desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.1" }
+desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.2" }
 
 lints-compose = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.3.1" }
 
