@@ -99,7 +99,7 @@ circuitx-overlays = { module = "com.slack.circuit:circuitx-overlays", version.re
 
 serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.7.2" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.6.1" }
-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
+immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.8" }
 
 kermit = { module = "co.touchlab:kermit", version = "2.0.4" }
 
