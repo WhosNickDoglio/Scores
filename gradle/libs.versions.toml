@@ -61,7 +61,7 @@ cacheFix-gradle = { module = "org.gradle.android.cache-fix:org.gradle.android.ca
 sortDependencies-gradle = { module = "com.squareup.sort-dependencies:com.squareup.sort-dependencies.gradle.plugin", version.ref = "sort" }
 composeGuard-gradle = { module = "com.joetr.compose.guard:com.joetr.compose.guard.gradle.plugin", version.ref = "compose-guard" }
 
-compose-bom = { module = "androidx.compose:compose-bom", version = "2024.09.00" }
+compose-bom = { module = "androidx.compose:compose-bom", version = "2024.09.01" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
