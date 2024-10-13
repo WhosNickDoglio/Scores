@@ -30,8 +30,8 @@ plugins {
 android { namespace = "dev.whosnickdoglio.workmanager" }
 
 dependencies {
-    ksp(libs.kotlinInject.compiler)
-
     implementation(libs.androidx.workmanager)
     implementation(libs.kotlinInject)
+
+    ksp(libs.kotlinInject.compiler)
 }

@@ -90,7 +90,7 @@ android {
         release {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -119,12 +119,6 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.desugar)
-
-    ksp(libs.kotlinInject.compiler)
-
-    lintChecks(libs.lints.compose)
-
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.kotlin.bom))
     implementation(libs.androidx.activity.compose)
@@ -142,4 +136,10 @@ dependencies {
 
     testImplementation(libs.assertk)
     testImplementation(libs.junit)
+
+    coreLibraryDesugaring(libs.desugar)
+
+    ksp(libs.kotlinInject.compiler)
+
+    lintChecks(libs.lints.compose)
 }
