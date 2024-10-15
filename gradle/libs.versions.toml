@@ -42,7 +42,7 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
-skie = { id = "co.touchlab.skie", version = "0.9.2" }
+skie = { id = "co.touchlab.skie", version = "0.9.3" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.13.1" }
