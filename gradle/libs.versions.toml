@@ -110,7 +110,7 @@ sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", 
 
 desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.2" }
 
-lints-compose = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.1" }
+lints-compose = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.2" }
 
 junit = { module = "junit:junit", version = "4.13.2" }
 assertk = { module = "com.willowtreeapps.assertk:assertk", version = "0.28.1" }
