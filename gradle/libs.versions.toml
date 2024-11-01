@@ -19,6 +19,7 @@ sort = "0.12"
 inject = "0.7.2"
 sqldelight = "2.0.2"
 ktor = "3.0.1"
+jdk="21"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

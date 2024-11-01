@@ -30,7 +30,7 @@ plugins {
     `java-gradle-plugin`
 }
 
-kotlin { jvmToolchain(21) }
+kotlin { jvmToolchain(libs.versions.jdk.get().toInt()) }
 
 spotless {
     format("misc") {
@@ -64,6 +64,9 @@ gradlePlugin {
         }
     }
 }
+
+// https://docs.gradle.org/8.9/userguide/gradle_daemon.html#daemon_jvm_criteria
+tasks.updateDaemonJvm.configure { jvmVersion = JavaVersion.toVersion(libs.versions.jdk.get()) }
 
 dependencies {
     implementation(libs.android.gradle)
