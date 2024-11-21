@@ -9,6 +9,7 @@ cacheFix = "3.0.1"
 coroutines = "1.9.0"
 circuit = "0.25.0"
 compose-guard = "2.4.0"
+dependencyAnalysis = "2.5.0"
 work = "2.10.0"
 licensee = "1.12.0"
 ktfmt = "0.50"
@@ -24,7 +25,7 @@ jdk="21"
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 doctor = { id = "com.osacky.doctor", version = "0.10.0" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "2.5.0" }
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
 android-app = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
@@ -61,6 +62,7 @@ spotless-gradle = { module = "com.diffplug.spotless:spotless-plugin-gradle", ver
 cacheFix-gradle = { module = "org.gradle.android.cache-fix:org.gradle.android.cache-fix.gradle.plugin", version.ref = "cacheFix" }
 sortDependencies-gradle = { module = "com.squareup.sort-dependencies:com.squareup.sort-dependencies.gradle.plugin", version.ref = "sort" }
 composeGuard-gradle = { module = "com.joetr.compose.guard:com.joetr.compose.guard.gradle.plugin", version.ref = "compose-guard" }
+dependencyAnalysis-gradle = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
 
 compose-bom = { module = "androidx.compose:compose-bom", version = "2024.11.00" }
 compose-ui = { module = "androidx.compose.ui:ui" }

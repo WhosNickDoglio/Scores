@@ -77,4 +77,5 @@ dependencies {
     implementation(libs.sortDependencies.gradle)
     implementation(libs.spotless.gradle)
     implementation(libs.composeGuard.gradle)
+    implementation(libs.dependencyAnalysis.gradle)
 }

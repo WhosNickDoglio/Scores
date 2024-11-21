@@ -31,6 +31,7 @@ internal class LintPluginConfiguration: Configuration {
     override fun configure(project: Project) {
         project.pluginManager.apply("io.gitlab.arturbosch.detekt")
         project.pluginManager.apply("com.squareup.sort-dependencies")
+        project.pluginManager.apply("com.autonomousapps.dependency-analysis")
 
         project.tasks.withType(Detekt::class.java).configureEach { detekt ->
             detekt.exclude { fileTreeElement -> fileTreeElement.file.path.contains("build/generated/ksp") }
