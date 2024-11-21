@@ -671,11 +671,11 @@ style:
   ProtectedMemberInFinalClass:
     active: true
   RedundantExplicitType:
-    active: true
+    active: false
   RedundantHigherOrderMapUsage:
     active: true
   RedundantVisibilityModifierRule:
-    active: true
+    active: false
   ReturnCount:
     active: true
     max: 2
