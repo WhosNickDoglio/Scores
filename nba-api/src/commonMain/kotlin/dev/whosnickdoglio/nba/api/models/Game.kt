@@ -24,8 +24,6 @@
 
 package dev.whosnickdoglio.nba.api.models
 
-
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
