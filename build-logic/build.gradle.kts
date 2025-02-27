@@ -66,7 +66,10 @@ gradlePlugin {
 }
 
 // https://docs.gradle.org/8.9/userguide/gradle_daemon.html#daemon_jvm_criteria
-tasks.updateDaemonJvm.configure { jvmVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get())) }
+tasks.updateDaemonJvm.configure {
+    languageVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+    vendor = JvmVendorSpec.AZUL
+}
 
 dependencies {
     implementation(libs.android.gradle)
