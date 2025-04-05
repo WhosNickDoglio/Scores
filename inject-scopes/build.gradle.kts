@@ -22,6 +22,11 @@
  * SOFTWARE.
  */
 
-plugins { id("scores.kotlin") }
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.metro)
+}
 
-dependencies { implementation(libs.kotlinInject) }
+kotlin {
+    jvm()
+}

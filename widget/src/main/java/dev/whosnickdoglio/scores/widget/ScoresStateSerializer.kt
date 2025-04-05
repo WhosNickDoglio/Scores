@@ -25,11 +25,11 @@
 package dev.whosnickdoglio.scores.widget
 
 import androidx.datastore.core.Serializer
+import dev.zacsweers.metro.Inject
 import java.io.EOFException
 import java.io.InputStream
 import java.io.OutputStream
 import kotlinx.serialization.json.Json
-import me.tatarka.inject.annotations.Inject
 
 /**
  * A DataStore [Serializer] for the [ScoresWidgetState] object.

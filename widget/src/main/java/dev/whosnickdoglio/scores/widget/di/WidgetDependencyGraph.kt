@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Nicholas Doglio
+ * Copyright (c) 2025 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,29 +24,21 @@
 
 package dev.whosnickdoglio.scores.widget.di
 
-import androidx.work.ListenableWorker
 import dev.whosnickdoglio.inject.WidgetScope
 import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
-import dev.whosnickdoglio.nba.api.di.NbaApiModule
 import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
-import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
-import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
-import me.tatarka.inject.annotations.Component
-import me.tatarka.inject.annotations.IntoMap
-import me.tatarka.inject.annotations.Provides
+import dev.zacsweers.metro.DependencyGraph
+import dev.zacsweers.metro.Extends
+import dev.zacsweers.metro.SingleIn
 
-@WidgetScope
-@Component
-abstract class WidgetComponent : NbaApiModule {
+@SingleIn(WidgetScope::class)
+@DependencyGraph(WidgetScope::class)
+interface WidgetDependencyGraph {
+    val glanceStateDefinition: ScoresStateDefinition
+    val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
 
-    abstract val glanceStateDefinition: ScoresStateDefinition
-
-    abstract val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
-
-    @IntoMap
-    @Provides
-    protected fun bindUpdateScoresWorkFactoryToMap(
-        factory: UpdateScoresWorker.Factory
-    ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
-        UpdateScoresWorker::class.java to factory
+    @DependencyGraph.Factory
+    fun interface Factory {
+        fun create(@Extends appGraph: Scores): UserGraph
+    }
 }

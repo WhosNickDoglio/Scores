@@ -24,8 +24,10 @@
 
 package dev.whosnickdoglio.nba.api.di
 
-import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
-import dev.whosnickdoglio.nba.api.WnbaScoreboardClient
+import dev.whosnickdoglio.inject.WidgetScope
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesTo
+import dev.zacsweers.metro.Provides
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -36,23 +38,22 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.http.ContentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import me.tatarka.inject.annotations.Provides
 
+@ContributesTo(AppScope::class)
 interface NbaApiModule {
-
-    @Provides fun WnbaScoreboardClient.bind(): NbaScoreboardNetworkClient = this
 
     @Provides
     fun provideJson(): Json = Json {
         isLenient = true
         ignoreUnknownKeys = true
-
     }
 
     @Provides
     fun provideClient(json: Json): HttpClient =
         HttpClient(CIO) {
-            install(ContentNegotiation) { json(json, contentType = ContentType.Application.OctetStream) }
+            install(ContentNegotiation) {
+                json(json, contentType = ContentType.Application.OctetStream)
+            }
 
             // TODO only do in debug builds
             install(Logging) {
@@ -60,4 +61,28 @@ interface NbaApiModule {
                 level = LogLevel.ALL
             }
         }
+}
+
+@ContributesTo(WidgetScope::class)
+interface WidgetNbaApiModule {
+
+        @Provides
+        fun provideJson(): Json = Json {
+            isLenient = true
+            ignoreUnknownKeys = true
+        }
+
+        @Provides
+        fun provideClient(json: Json): HttpClient =
+            HttpClient(CIO) {
+                install(ContentNegotiation) {
+                    json(json, contentType = ContentType.Application.OctetStream)
+                }
+
+                // TODO only do in debug builds
+                install(Logging) {
+                    logger = Logger.DEFAULT
+                    level = LogLevel.ALL
+                }
+            }
 }

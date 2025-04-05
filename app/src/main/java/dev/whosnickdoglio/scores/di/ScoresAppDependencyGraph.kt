@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2025 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,33 +25,18 @@
 package dev.whosnickdoglio.scores.di
 
 import android.content.Context
-import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
-import dev.whosnickdoglio.inject.AppScope
-import dev.whosnickdoglio.nba.api.di.NbaApiModule
-import dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker
-import dev.whosnickdoglio.workmanager.AssistedWorkerFactory
-import dev.whosnickdoglio.workmanager.ScoresWorkerFactory
-import me.tatarka.inject.annotations.Component
-import me.tatarka.inject.annotations.IntoMap
-import me.tatarka.inject.annotations.Provides
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.DependencyGraph
+import dev.zacsweers.metro.SingleIn
 
-@AppScope
-@Component
-abstract class AppComponent: NbaApiModule {
 
-    abstract val workerFactory: WorkerFactory
-
-    protected val ScoresWorkerFactory.bind: WorkerFactory
-        @Provides get() = this
-
-    @IntoMap
-    @Provides
-    protected fun bindUpdateScoresWorkFactoryToMap(
-        factory: UpdateScoresWorker.Factory
-    ): Pair<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>> =
-        UpdateScoresWorker::class.java to factory
+@SingleIn(AppScope::class)
+@DependencyGraph(AppScope::class, isExtendable = true)
+interface ScoresAppDependencyGraph {
+    val workerFactory: WorkerFactory
 }
+
 
 /**
  * A class that provides and maintains a single instance of a [AppComponent].
@@ -61,9 +46,9 @@ abstract class AppComponent: NbaApiModule {
 interface ComponentProvider {
 
     /** An instance of the [AppComponent]. */
-    val component: AppComponent
+    val graph: ScoresAppDependencyGraph
 }
 
 /** Exposes the [AppComponent] via an [android.content.Context] for easy member injection. */
 val Context.injector
-    get() = (applicationContext as ComponentProvider).component
+    get() = (applicationContext as ComponentProvider).graph

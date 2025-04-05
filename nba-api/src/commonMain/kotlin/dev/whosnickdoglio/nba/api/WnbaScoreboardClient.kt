@@ -24,16 +24,22 @@
 
 package dev.whosnickdoglio.nba.api
 
+import dev.whosnickdoglio.inject.WidgetScope
 import dev.whosnickdoglio.nba.api.models.WnbaResponse
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.Binds
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.ContributesTo
+import dev.zacsweers.metro.Inject
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
-import me.tatarka.inject.annotations.Inject
 
 // https://nba-prod-us-east-1-mediaops-stats.s3.amazonaws.com/WNBA/liveData/scoreboard/todaysScoreboard_10.json
 
 // https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json
 @Inject
+@ContributesBinding(AppScope::class)
 class WnbaScoreboardClient(private val client: HttpClient) : NbaScoreboardNetworkClient {
     override suspend fun fetch(): Result<WnbaResponse> =
         try {
@@ -42,6 +48,11 @@ class WnbaScoreboardClient(private val client: HttpClient) : NbaScoreboardNetwor
         } catch (e: Exception) {
             Result.Failure(e.message.orEmpty())
         }
+
+    @ContributesTo(WidgetScope::class)
+    interface WidgetBindsModule {
+        @Binds val WnbaScoreboardClient.bind: NbaScoreboardNetworkClient
+    }
 }
 
 private const val BASE_URL = "https://cdn.nba.com/static/json/"

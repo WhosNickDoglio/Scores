@@ -26,9 +26,9 @@ package dev.whosnickdoglio.scores
 
 import android.app.Application
 import androidx.work.Configuration
-import dev.whosnickdoglio.scores.di.AppComponent
 import dev.whosnickdoglio.scores.di.ComponentProvider
-import dev.whosnickdoglio.scores.di.create
+import dev.whosnickdoglio.scores.di.ScoresAppDependencyGraph
+import dev.zacsweers.metro.createGraph
 
 /**
  * Our Android [Application] class that acts as our [ComponentProvider] to maintain a single
@@ -36,8 +36,8 @@ import dev.whosnickdoglio.scores.di.create
  */
 class ScoresApplication : Application(), ComponentProvider, Configuration.Provider {
 
-    override val component: AppComponent by lazy { AppComponent::class.create() }
+    override val graph: ScoresAppDependencyGraph by lazy { createGraph() }
 
     override val workManagerConfiguration: Configuration =
-        Configuration.Builder().setWorkerFactory(component.workerFactory).build()
+        Configuration.Builder().setWorkerFactory(graph.workerFactory).build()
 }

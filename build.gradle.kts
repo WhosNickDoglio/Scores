@@ -30,6 +30,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.composeGuard) apply false
+    alias(libs.plugins.metro) apply false
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)

@@ -25,7 +25,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.metro)
 }
 
 kotlin {
@@ -47,9 +47,7 @@ kotlin {
             api(libs.serialization)
             implementation(libs.kermit)
             implementation(libs.coroutines.core)
-            implementation(libs.kotlinInject)
+            implementation(projects.injectScopes)
         }
     }
 }
-
-dependencies { ksp(libs.kotlinInject.compiler) }

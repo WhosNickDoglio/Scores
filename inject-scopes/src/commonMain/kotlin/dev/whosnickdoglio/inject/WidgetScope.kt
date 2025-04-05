@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2025 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,7 @@
 
 package dev.whosnickdoglio.inject
 
-import me.tatarka.inject.annotations.Scope
-
-// TODO docs https://github.com/evant/kotlin-inject?tab=readme-ov-file#scopes
-@Scope
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
-annotation class AppScope
+import dev.zacsweers.metro.Scope
 
 @Scope
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)

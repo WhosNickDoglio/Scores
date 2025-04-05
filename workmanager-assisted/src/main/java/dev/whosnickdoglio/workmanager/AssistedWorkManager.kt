@@ -25,31 +25,44 @@
 package dev.whosnickdoglio.workmanager
 
 import android.content.Context
+import androidx.work.CoroutineWorker
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import me.tatarka.inject.annotations.Inject
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metro.MapKey
+import kotlin.reflect.KClass
 
 fun interface AssistedWorkerFactory<T : ListenableWorker> {
     fun createWorker(appContext: Context, workerParams: WorkerParameters): T
 }
 
+@MapKey
+@Target(
+    AnnotationTarget.CLASS,
+    AnnotationTarget.TYPE_PARAMETER,
+    AnnotationTarget.TYPE,
+)
+annotation class WorkerKey(val value: KClass<out CoroutineWorker>)
+
 @Inject
+@ContributesBinding(AppScope::class)
 class ScoresWorkerFactory(
     private val assistedWorkerFactories:
-        Map<
-            Class<out ListenableWorker>,
-            AssistedWorkerFactory<out ListenableWorker>
-        >
+        Map<Class<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>>
 ) : WorkerFactory() {
     @Suppress("ReturnCount")
     override fun createWorker(
         appContext: Context,
         workerClassName: String,
-        workerParameters: WorkerParameters
+        workerParameters: WorkerParameters,
     ): ListenableWorker? {
         val clazz =
             Class.forName(workerClassName) ?: return null // handle rename or deletion of worker
+
+        assistedWorkerFactories
 
         val factory =
             assistedWorkerFactories[clazz]

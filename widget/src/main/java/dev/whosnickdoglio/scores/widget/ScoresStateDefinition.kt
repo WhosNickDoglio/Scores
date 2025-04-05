@@ -29,7 +29,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import androidx.glance.state.GlanceStateDefinition
-import me.tatarka.inject.annotations.Inject
+import dev.zacsweers.metro.Inject
 import java.io.File
 
 @Inject
