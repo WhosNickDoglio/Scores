@@ -24,14 +24,9 @@
 
 plugins {
     id("scores.android")
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.metro)
 }
 
 android { namespace = "dev.whosnickdoglio.workmanager" }
 
-dependencies {
-    implementation(libs.androidx.workmanager)
-    implementation(libs.kotlinInject)
-
-    ksp(libs.kotlinInject.compiler)
-}
+dependencies { implementation(libs.androidx.workmanager) }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Nicholas Doglio
+ * Copyright (c) 2025 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,17 @@
  * SOFTWARE.
  */
 
-package dev.whosnickdoglio.inject
+package dev.whosnickdoglio.scores.widget.di
 
-import me.tatarka.inject.annotations.Scope
+import dev.whosnickdoglio.inject.WidgetScope
+import dev.whosnickdoglio.nba.api.NbaScoreboardNetworkClient
+import dev.whosnickdoglio.scores.widget.ScoresStateDefinition
+import dev.zacsweers.metro.DependencyGraph
+import dev.zacsweers.metro.SingleIn
 
-// TODO docs https://github.com/evant/kotlin-inject?tab=readme-ov-file#scopes
-@Scope
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
-annotation class AppScope
-
-@Scope
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
-annotation class WidgetScope
+@SingleIn(WidgetScope::class)
+@DependencyGraph(WidgetScope::class)
+interface WidgetDependencyGraph {
+    val glanceStateDefinition: ScoresStateDefinition
+    val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
+}

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Nicholas Doglio
+ * Copyright (c) 2025 Nicholas Doglio
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,32 +22,10 @@
  * SOFTWARE.
  */
 
-plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.metro)
-}
+package dev.whosnickdoglio.inject
 
-kotlin {
-    jvm()
+import dev.zacsweers.metro.Scope
 
-    sourceSets {
-        jvmMain.dependencies {
-            implementation(project.dependencies.platform(libs.kotlin.bom))
-            implementation(project.dependencies.platform(libs.ktor.bom))
-        }
-
-        commonMain.dependencies {
-            api(libs.ktor.core)
-            api(libs.ktor.serialization)
-            implementation(libs.ktor.logging)
-            implementation(libs.ktor.contentNegotiation)
-            // TODO investigate using different engines per platform
-            implementation(libs.ktor.cio)
-            api(libs.serialization)
-            implementation(libs.kermit)
-            implementation(libs.coroutines.core)
-            implementation(projects.injectScopes)
-        }
-    }
-}
+@Scope
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
+annotation class WidgetScope

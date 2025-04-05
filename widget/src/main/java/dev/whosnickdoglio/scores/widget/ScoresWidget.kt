@@ -52,14 +52,14 @@ import dev.whosnickdoglio.scores.ui.MultipleGameList
 import dev.whosnickdoglio.scores.ui.SingleGame
 import dev.whosnickdoglio.scores.ui.SingleScoreCompact
 import dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback
-import dev.whosnickdoglio.scores.widget.di.WidgetComponent
-import dev.whosnickdoglio.scores.widget.di.create
+import dev.whosnickdoglio.scores.widget.di.WidgetDependencyGraph
+import dev.zacsweers.metro.createGraph
 import kotlinx.collections.immutable.toImmutableList
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */
 class ScoresWidget : GlanceAppWidget() {
 
-    private val component by lazy { WidgetComponent::class.create() }
+    private val component: WidgetDependencyGraph by lazy { createGraph() }
 
     override val stateDefinition: GlanceStateDefinition<*> = component.glanceStateDefinition
 
@@ -92,7 +92,8 @@ class ScoresWidget : GlanceAppWidget() {
                 ScoresWidgetState(
                     currentIndex = 0,
                     games = data.data.scoreboard?.games.orEmpty(),
-                    areThereGamesToday = data.data.scoreboard?.games?.isNotEmpty() == true)
+                    areThereGamesToday = data.data.scoreboard?.games?.isNotEmpty() == true,
+                )
             }
 
             is Result.Failure -> ScoresWidgetState()
@@ -105,7 +106,7 @@ private fun Scores(
     state: ScoresWidgetState,
     onRefresh: () -> Unit,
     modifier: GlanceModifier =
-        GlanceModifier.fillMaxWidth().fillMaxHeight().appWidgetBackground().background(Color.White)
+        GlanceModifier.fillMaxWidth().fillMaxHeight().appWidgetBackground().background(Color.White),
 ) {
     Column {
         when (LocalSize.current) {
@@ -120,13 +121,14 @@ private fun Scores(
                             null
                         } else {
                             state.games[state.currentIndex ?: 0]
-                        })
+                        },
+                )
 
             MULTI_GAME_LIST ->
                 MultipleGameList(
                     modifier = modifier,
                     onRefresh = onRefresh,
-                    games = state.games.toImmutableList()
+                    games = state.games.toImmutableList(),
                 )
 
             SINGLE_GAME ->
@@ -140,7 +142,8 @@ private fun Scores(
                             null
                         } else {
                             state.games[state.currentIndex ?: 0]
-                        })
+                        },
+                )
         }
     }
 }

@@ -24,7 +24,7 @@
 
 plugins {
     id("scores.android")
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.metro)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
@@ -36,13 +36,10 @@ dependencies {
 
     implementation(libs.glance.appwidget)
     implementation(libs.immutableCollections)
-    implementation(libs.kotlinInject)
     implementation(libs.serialization)
     implementation(projects.injectScopes)
     implementation(projects.nbaApi)
     implementation(projects.widgetTheme)
     implementation(projects.widgetUi)
     implementation(projects.workmanagerAssisted)
-
-    ksp(libs.kotlinInject.compiler)
 }
