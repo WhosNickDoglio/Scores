@@ -47,7 +47,7 @@ licensee = { id = "app.cash.licensee", version.ref = "licensee" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.16.0" }
-androidx-datastore = { module = "androidx.datastore:datastore", version = "1.1.6" }
+androidx-datastore = { module = "androidx.datastore:datastore", version = "1.1.7" }
 androidx-workmanager = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.2.0" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.10.1" }
