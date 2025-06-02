@@ -107,7 +107,9 @@ android {
     }
 
     lint {
-        disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck", "AndroidGradlePluginVersion"))
+        disable.addAll(
+            setOf("GradleDependency", "ObsoleteLintCustomCheck", "AndroidGradlePluginVersion")
+        )
         htmlReport = false
         xmlReport = false
         textReport = true
