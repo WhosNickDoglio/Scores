@@ -62,7 +62,7 @@ internal class AndroidLibraryConfiguration : Configuration {
                     targetCompatibility = JavaVersion.VERSION_17
                 }
                 lint {
-                    disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck"))
+                    disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck", "AndroidGradlePluginVersion"))
                     htmlReport = false
                     xmlReport = false
                     textReport = true

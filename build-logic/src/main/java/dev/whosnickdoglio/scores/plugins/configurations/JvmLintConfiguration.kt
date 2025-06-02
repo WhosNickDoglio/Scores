@@ -32,7 +32,7 @@ internal class JvmLintConfiguration : Configuration {
         with(project) {
             pluginManager.apply("com.android.lint")
             extensions.getByType(Lint::class.java).run {
-                disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck"))
+                disable.addAll(setOf("GradleDependency", "ObsoleteLintCustomCheck", "AndroidGradlePluginVersion"))
                 htmlReport = false
                 xmlReport = false
                 textReport = true
