@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 /*
  * MIT License
  *
@@ -69,6 +71,11 @@ gradlePlugin {
 tasks.updateDaemonJvm.configure {
     languageVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
     vendor = JvmVendorSpec.AZUL
+}
+
+tasks.withType<Detekt>().configureEach {
+    // https://github.com/detekt/detekt/issues/8017
+    jvmTarget = "22"
 }
 
 dependencies {

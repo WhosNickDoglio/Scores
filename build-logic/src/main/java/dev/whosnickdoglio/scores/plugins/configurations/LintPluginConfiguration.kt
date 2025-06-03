@@ -34,6 +34,8 @@ internal class LintPluginConfiguration: Configuration {
         project.pluginManager.apply("com.autonomousapps.dependency-analysis")
 
         project.tasks.withType(Detekt::class.java).configureEach { detekt ->
+            // https://github.com/detekt/detekt/issues/8017
+            detekt.jvmTarget = "22"
             detekt.exclude { fileTreeElement -> fileTreeElement.file.path.contains("build/generated/ksp") }
         }
     }

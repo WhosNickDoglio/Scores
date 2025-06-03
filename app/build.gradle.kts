@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.kotlin.dsl.withType
+
 /*
  * MIT License
  *
@@ -43,16 +46,7 @@ licensee {
 
 kotlin { jvmToolchain(libs.versions.jdk.get().toInt()) }
 
-tasks.withType<com.diffplug.gradle.spotless.SpotlessTask>().configureEach {
-    notCompatibleWithConfigurationCache("https://github.com/diffplug/spotless/issues/987")
-}
-
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
-
-    // https://github.com/diffplug/spotless/issues/1527
-    // https://github.com/diffplug/spotless/issues/1644
-    lineEndings = com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
-
     format("misc") {
         target("*.md", ".gitignore")
         trimTrailingWhitespace()
@@ -118,6 +112,11 @@ android {
         warningsAsErrors = true
         baseline = file("lint-baseline.xml")
     }
+}
+
+tasks.withType<Detekt>().configureEach {
+    // https://github.com/detekt/detekt/issues/8017
+    jvmTarget = "22"
 }
 
 dependencies {
