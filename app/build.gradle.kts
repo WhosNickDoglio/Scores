@@ -43,7 +43,7 @@ plugins {
 licensee {
     allow("Apache-2.0")
     allow("BSD-3-Clause")
-    allow("MIT")
+    allowUrl("https://opensource.org/license/mit")
 }
 
 kotlin { jvmToolchain(libs.versions.jdk.get().toInt()) }
