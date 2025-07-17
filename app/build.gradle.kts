@@ -1,5 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /*
  * MIT License
@@ -95,11 +97,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        freeCompilerArgs += listOf("-opt-in=kotlin.ExperimentalStdlibApi")
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-
     lint {
         disable.addAll(
             setOf("GradleDependency", "ObsoleteLintCustomCheck", "AndroidGradlePluginVersion")
@@ -111,6 +108,13 @@ android {
         checkTestSources = true
         warningsAsErrors = true
         baseline = file("lint-baseline.xml")
+    }
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+        freeCompilerArgs.add("-opt-in=kotlin.ExperimentalStdlibApi")
     }
 }
 
