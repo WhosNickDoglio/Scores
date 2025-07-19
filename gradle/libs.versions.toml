@@ -44,6 +44,7 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
+metro = { id = "dev.zacsweers.metro", version = "0.5.1" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.16.0" }
@@ -87,9 +88,6 @@ ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
-kotlinInject = { module = "me.tatarka.inject:kotlin-inject-runtime-kmp", version.ref = "inject" }
-kotlinInject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp", version.ref = "inject" }
-
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
 circuit-runtime = { module = "com.slack.circuit:circuit-runtime", version.ref = "circuit" }
 circuit-retained = { module = "com.slack.circuit:circuit-retained", version.ref = "circuit" }
@@ -108,7 +106,6 @@ kermit = { module = "co.touchlab:kermit", version = "2.0.6" }
 sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
-
 
 desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.5" }
 

@@ -32,12 +32,12 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.detekt)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.cacheFix)
     alias(libs.plugins.sortDependencies)
     alias(libs.plugins.spotless)
     alias(libs.plugins.licensee)
     alias(libs.plugins.composeGuard)
+    alias(libs.plugins.metro)
 }
 
 licensee {
@@ -130,7 +130,6 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.compose.ui)
     implementation(libs.glance.appwidget)
-    implementation(libs.kotlinInject)
     implementation(projects.appTheme)
     implementation(projects.injectScopes)
     implementation(projects.nbaApi)
@@ -143,8 +142,6 @@ dependencies {
     testImplementation(libs.junit)
 
     coreLibraryDesugaring(libs.desugar)
-
-    ksp(libs.kotlinInject.compiler)
 
     lintChecks(libs.lints.compose)
 }
