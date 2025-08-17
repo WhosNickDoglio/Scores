@@ -27,9 +27,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-android {
-    namespace = "dev.whosnickdoglio.scores.ui"
-}
+android { namespace = "dev.whosnickdoglio.scores.ui" }
 
 dependencies {
     implementation(libs.compose.material)
