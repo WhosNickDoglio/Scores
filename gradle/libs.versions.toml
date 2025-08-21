@@ -24,7 +24,7 @@ jdk="24"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-doctor = { id = "com.osacky.doctor", version = "0.11.0" }
+doctor = { id = "com.osacky.doctor", version = "0.12.0" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
 android-app = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
