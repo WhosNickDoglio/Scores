@@ -3,7 +3,7 @@ min-sdk = "26"
 target-sdk = "36"
 compile-sdk = "36"
 agp = "8.13.0"
-kotlin = "2.2.10"
+kotlin = "2.2.20"
 detekt = "1.23.8"
 cacheFix = "3.0.1"
 coroutines = "1.10.2"
@@ -44,7 +44,7 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
-metro = { id = "dev.zacsweers.metro", version = "0.6.4" }
+metro = { id = "dev.zacsweers.metro", version = "0.6.6" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.17.0" }
