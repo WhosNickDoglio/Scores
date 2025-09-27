@@ -1,15 +1,11 @@
-unstable class InjectAppComponent {
-  unstable val _scoped: LazyMap
-  <runtime stability> = Unstable
-}
-unstable class ScoresApplication {
-  unstable val component$delegate: Lazy<AppComponent>
+unstable class dev.whosnickdoglio.scores.ScoresApplication {
+  unstable val graph$delegate: Lazy<ScoresAppDependencyGraph>
   unstable val workManagerConfiguration: Configuration
   <runtime stability> = Unstable
 }
-stable class AppComponent {
+stable class dev.whosnickdoglio.scores.di.ScoresAppDependencyGraph.$$MetroGraph {
   <runtime stability> = Stable
 }
-stable class ConfigurationActivity {
-  <runtime stability> = Stable
+unstable class dev.whosnickdoglio.scores.settings.ConfigurationActivity {
+  <runtime stability> = Unstable
 }

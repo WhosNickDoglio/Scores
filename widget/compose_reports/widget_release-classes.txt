@@ -1,47 +1,62 @@
-unstable class InjectWidgetComponent {
-  unstable val _scoped: LazyMap
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateDefinition.$$MetroFactory {
+  unstable var serializer: Provider<ScoresStateSerializer>
   <runtime stability> = Unstable
 }
-unstable class ScoresStateDefinition {
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateDefinition {
   unstable val serializer: ScoresStateSerializer
   <runtime stability> = Unstable
 }
-unstable class ScoresStateSerializer {
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateSerializer.$$MetroFactory {
+  unstable var json: Provider<Json>
+  <runtime stability> = Unstable
+}
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateSerializer {
   unstable val json: Json
   unstable val defaultValue: ScoresWidgetState
   <runtime stability> = Unstable
 }
-unstable class ScoresWidget {
-  unstable val component$delegate: Lazy<WidgetComponent>
+unstable class dev.whosnickdoglio.scores.widget.ScoresWidget {
+  unstable val component$delegate: Lazy<WidgetDependencyGraph>
   unstable val stateDefinition: GlanceStateDefinition<*>
   unstable val sizeMode: SizeMode
   <runtime stability> = Unstable
 }
-runtime class ScoresWidgetReceiver {
+runtime class dev.whosnickdoglio.scores.widget.ScoresWidgetReceiver {
   runtime val glanceAppWidget: GlanceAppWidget
-  <runtime stability> = Runtime(GlanceAppWidget)
+  <runtime stability> = Runtime(GlanceAppWidgetReceiver),Runtime(GlanceAppWidget)
 }
-unstable class $serializer {
+unstable class dev.whosnickdoglio.scores.widget.ScoresWidgetState.$serializer {
   unstable val descriptor: SerialDescriptor
   <runtime stability> = Unstable
 }
-unstable class ScoresWidgetState {
+unstable class dev.whosnickdoglio.scores.widget.ScoresWidgetState {
   stable val currentIndex: Int?
   unstable val games: List<Game>
   stable val areThereGamesToday: Boolean
   <runtime stability> = Unstable
 }
-stable class NavigateActionCallback {
+stable class dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback {
   <runtime stability> = Stable
 }
-stable class WidgetComponent {
+unstable class dev.whosnickdoglio.scores.widget.di.WidgetDependencyGraph.$$MetroGraph {
+  runtime var thisGraphInstance: WidgetDependencyGraph
+  unstable var thisGraphInstanceProvider: Provider<WidgetDependencyGraph>
+  unstable var provideJsonProvider: Provider<Json>
+  <runtime stability> = Unstable
+}
+unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.$$Impl {
+  unstable var delegateFactory: $$MetroFactory
+  <runtime stability> = Unstable
+}
+stable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.$$MetroContributionToAppScope.$$BindsMirror {
   <runtime stability> = Stable
 }
-stable class Factory {
-  stable val factory: Function2<@[ParameterName(name = 'context')] Context, @[ParameterName(name = 'params')] WorkerParameters, UpdateScoresWorker>
-  <runtime stability> = Stable
+unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.$$MetroFactory {
+  unstable var service: Provider<NbaScoreboardNetworkClient>
+  unstable var glanceScoresStateDefinition: Provider<ScoresStateDefinition>
+  <runtime stability> = Unstable
 }
-unstable class UpdateScoresWorker {
+unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker {
   unstable val service: NbaScoreboardNetworkClient
   unstable val glanceScoresStateDefinition: ScoresStateDefinition
   unstable val appContext: Context

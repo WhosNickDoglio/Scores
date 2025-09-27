@@ -1,4 +1,4 @@
-restartable skippable scheme("[0, [0]]") fun ScoresTheme(
-  stable darkTheme: Boolean = @dynamic isSystemInDarkTheme($composer, 0)
+restartable skippable scheme("[0, [0]]") fun dev.whosnickdoglio.scores.app.theme.ScoresTheme(
+  stable darkTheme: Boolean = @dynamic <expression>
   stable content: Function2<Composer, Int, Unit>
 )

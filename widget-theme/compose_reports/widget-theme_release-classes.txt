@@ -1,4 +1,4 @@
-stable class ScoresWidgetTheme {
+stable class dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme {
   stable val textStyle: TextStyle
   stable val scoreTextStyle: TextStyle
   <runtime stability> = Stable
