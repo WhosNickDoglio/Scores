@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.convention.kmp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.metro)
 }

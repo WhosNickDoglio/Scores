@@ -3,8 +3,10 @@ unstable class dev.whosnickdoglio.scores.ScoresApplication {
   unstable val workManagerConfiguration: Configuration
   <runtime stability> = Unstable
 }
-stable class dev.whosnickdoglio.scores.di.ScoresAppDependencyGraph.$$MetroGraph {
-  <runtime stability> = Stable
+unstable class dev.whosnickdoglio.scores.di.ScoresAppDependencyGraph.Impl {
+  unstable val thisGraphInstance: Impl
+  unstable val provideJsonProvider: Provider<Json>
+  <runtime stability> = Unstable
 }
 unstable class dev.whosnickdoglio.scores.settings.ConfigurationActivity {
   <runtime stability> = Unstable

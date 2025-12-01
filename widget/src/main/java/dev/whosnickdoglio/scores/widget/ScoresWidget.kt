@@ -36,7 +36,7 @@ import dev.zacsweers.metro.createGraph
 import kotlinx.collections.immutable.toImmutableList
 
 /** An implementation of [GlanceAppWidget] that shows sports scores. */
-class ScoresWidget : GlanceAppWidget() {
+public class ScoresWidget : GlanceAppWidget() {
 
     private val component: WidgetDependencyGraph by lazy { createGraph() }
 

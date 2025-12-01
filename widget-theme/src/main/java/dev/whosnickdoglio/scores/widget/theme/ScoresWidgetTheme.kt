@@ -14,18 +14,15 @@ import androidx.glance.text.FontWeight
 import androidx.glance.text.TextStyle
 
 /**  */
-object ScoresWidgetTheme {
+public object ScoresWidgetTheme {
 
     // TODO use textColorPrimary or colorPrimary?
 
-    val textStyle = TextStyle()
+    public val textStyle: TextStyle = TextStyle()
 
-    val scoreTextStyle =
-        TextStyle(
-            fontWeight = FontWeight.Bold,
-        )
+    public val scoreTextStyle: TextStyle = TextStyle(fontWeight = FontWeight.Bold)
 
-    val colors: ColorProviders
+    public val colors: ColorProviders
         @GlanceComposable @Composable @ReadOnlyComposable get() = scoresColorProviders
 }
 
@@ -35,6 +32,6 @@ private val darkColors: ColorScheme = TODO()
 private val scoresColorProviders = ColorProviders(lightColors, darkColors)
 
 @Composable
-fun ScoresWidgetTheme(content: @GlanceComposable @Composable () -> Unit) {
+public fun ScoresWidgetTheme(content: @GlanceComposable @Composable () -> Unit) {
     GlanceTheme(colors = scoresColorProviders, content = content)
 }

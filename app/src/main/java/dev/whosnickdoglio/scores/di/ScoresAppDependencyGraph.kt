@@ -11,8 +11,8 @@ import dev.zacsweers.metro.SingleIn
 
 @SingleIn(AppScope::class)
 @DependencyGraph(AppScope::class)
-interface ScoresAppDependencyGraph {
-    val workerFactory: WorkerFactory
+public interface ScoresAppDependencyGraph {
+    public val workerFactory: WorkerFactory
 }
 
 /**
@@ -20,15 +20,12 @@ interface ScoresAppDependencyGraph {
  *
  * **NOTE**: This should be applied to the Application class.
  */
-interface GraphProvider {
+public interface GraphProvider {
 
     /** An instance of the [ScoresAppDependencyGraph]. */
-    val graph: ScoresAppDependencyGraph
+    public val graph: ScoresAppDependencyGraph
 }
 
-/**
- * Exposes the [ScoresAppDependencyGraph] via an [android.content.Context] for easy member
- * injection.
- */
-val Context.appDependencyGraph
+/** Exposes the [ScoresAppDependencyGraph] via an [Context] for easy member injection. */
+public val Context.appDependencyGraph: ScoresAppDependencyGraph
     get() = (applicationContext as GraphProvider).graph

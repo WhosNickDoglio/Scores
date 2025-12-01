@@ -3,14 +3,14 @@
 
 package dev.whosnickdoglio.nba.api
 
-sealed interface LeagueId {
-    val id: String
+public sealed interface LeagueId {
+    public val id: String
 
-    data object Wnba : LeagueId {
+    public data object Wnba : LeagueId {
         override val id: String = "10"
     }
 
-    data object Nba : LeagueId {
+    public data object Nba : LeagueId {
         override val id: String = "00"
     }
 }

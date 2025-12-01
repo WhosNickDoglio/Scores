@@ -1,4 +1,4 @@
-unstable class dev.whosnickdoglio.scores.widget.ScoresStateDefinition.$$MetroFactory {
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateDefinition.MetroFactory {
   unstable var serializer: Provider<ScoresStateSerializer>
   <runtime stability> = Unstable
 }
@@ -6,7 +6,7 @@ unstable class dev.whosnickdoglio.scores.widget.ScoresStateDefinition {
   unstable val serializer: ScoresStateSerializer
   <runtime stability> = Unstable
 }
-unstable class dev.whosnickdoglio.scores.widget.ScoresStateSerializer.$$MetroFactory {
+unstable class dev.whosnickdoglio.scores.widget.ScoresStateSerializer.MetroFactory {
   unstable var json: Provider<Json>
   <runtime stability> = Unstable
 }
@@ -38,20 +38,18 @@ unstable class dev.whosnickdoglio.scores.widget.ScoresWidgetState {
 stable class dev.whosnickdoglio.scores.widget.actions.NavigateActionCallback {
   <runtime stability> = Stable
 }
-unstable class dev.whosnickdoglio.scores.widget.di.WidgetDependencyGraph.$$MetroGraph {
-  runtime var thisGraphInstance: WidgetDependencyGraph
-  unstable var thisGraphInstanceProvider: Provider<WidgetDependencyGraph>
-  unstable var provideJsonProvider: Provider<Json>
+unstable class dev.whosnickdoglio.scores.widget.di.WidgetDependencyGraph.Impl {
+  unstable val thisGraphInstance: Impl
   <runtime stability> = Unstable
 }
-unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.$$Impl {
-  unstable var delegateFactory: $$MetroFactory
-  <runtime stability> = Unstable
-}
-stable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.$$MetroContributionToAppScope.$$BindsMirror {
+stable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.MetroContributionToAppScope.BindsMirror {
   <runtime stability> = Stable
 }
-unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.$$MetroFactory {
+unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.Factory.Impl {
+  unstable var delegateFactory: MetroFactory
+  <runtime stability> = Unstable
+}
+unstable class dev.whosnickdoglio.scores.widget.work.UpdateScoresWorker.MetroFactory {
   unstable var service: Provider<NbaScoreboardNetworkClient>
   unstable var glanceScoresStateDefinition: Provider<ScoresStateDefinition>
   <runtime stability> = Unstable

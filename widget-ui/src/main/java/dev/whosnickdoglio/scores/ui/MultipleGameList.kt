@@ -17,19 +17,19 @@ import dev.whosnickdoglio.nba.api.models.Game
 import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
-
+import widget.ui.R
 
 @Composable
-fun MultipleGameList(
+public fun MultipleGameList(
     onRefresh: () -> Unit,
     modifier: GlanceModifier = GlanceModifier,
-    games: ImmutableList<Game> = emptyList<Game>().toImmutableList()
+    games: ImmutableList<Game> = emptyList<Game>().toImmutableList(),
 ) {
     if (games.isEmpty()) {
         Column(
             modifier = modifier,
             verticalAlignment = Alignment.CenterVertically,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
             Refresh(modifier = GlanceModifier.padding(4.dp), onRefresh = onRefresh)

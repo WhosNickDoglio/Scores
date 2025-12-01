@@ -11,7 +11,7 @@ import dev.zacsweers.metro.SingleIn
 
 @SingleIn(WidgetScope::class)
 @DependencyGraph(WidgetScope::class)
-interface WidgetDependencyGraph {
-    val glanceStateDefinition: ScoresStateDefinition
-    val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
+public interface WidgetDependencyGraph {
+    public val glanceStateDefinition: ScoresStateDefinition
+    public val nbaScoreboardNetworkClient: NbaScoreboardNetworkClient
 }

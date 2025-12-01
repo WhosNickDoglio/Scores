@@ -12,16 +12,16 @@ import dev.zacsweers.metro.Inject
 import java.io.File
 
 @Inject
-class ScoresStateDefinition(private val serializer: ScoresStateSerializer) :
+public class ScoresStateDefinition(private val serializer: ScoresStateSerializer) :
     GlanceStateDefinition<ScoresWidgetState> {
 
     override suspend fun getDataStore(
         context: Context,
-        fileKey: String
+        fileKey: String,
     ): DataStore<ScoresWidgetState> =
         DataStoreFactory.create(
             serializer = serializer,
-            produceFile = { context.dataStoreFile("$fileKey.json") }
+            produceFile = { context.dataStoreFile("$fileKey.json") },
         )
 
     override fun getLocation(context: Context, fileKey: String): File =

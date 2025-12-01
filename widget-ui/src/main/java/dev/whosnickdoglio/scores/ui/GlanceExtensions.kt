@@ -8,4 +8,5 @@ import androidx.compose.runtime.Composable
 import androidx.glance.LocalContext
 
 @Composable
-fun stringResource(@StringRes resource: Int): String = LocalContext.current.getString(resource)
+public fun stringResource(@StringRes resource: Int): String =
+    LocalContext.current.getString(resource)

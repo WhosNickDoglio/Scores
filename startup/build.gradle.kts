@@ -1,11 +1,8 @@
 // Copyright (C) 2026 Nicholas Doglio
 // SPDX-License-Identifier: MIT
 
-plugins { id("scores.android") }
+plugins { alias(libs.plugins.convention.android.library) }
 
-android {
-    namespace = "dev.whosnickdoglio.scores.startup"
-    buildFeatures { buildConfig = true }
-}
+android { buildFeatures { buildConfig = true } }
 
 dependencies { implementation(libs.androidx.startup) }

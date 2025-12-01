@@ -13,17 +13,22 @@ import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.MapKey
 import kotlin.reflect.KClass
 
-fun interface AssistedWorkerFactory<T : ListenableWorker> {
-    fun createWorker(appContext: Context, workerParams: WorkerParameters): T
+public fun interface AssistedWorkerFactory<T : ListenableWorker> {
+    public fun createWorker(appContext: Context, workerParams: WorkerParameters): T
 }
 
 @MapKey
-@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
-annotation class WorkerKey(val value: KClass<out ListenableWorker>)
+@Target(
+    AnnotationTarget.CLASS,
+    AnnotationTarget.TYPE_PARAMETER,
+    AnnotationTarget.TYPE,
+    AnnotationTarget.FUNCTION,
+)
+public annotation class WorkerKey(val value: KClass<out ListenableWorker>)
 
 @Inject
 @ContributesBinding(AppScope::class)
-class ScoresWorkerFactory(
+public class ScoresWorkerFactory(
     private val assistedWorkerFactories:
         Map<KClass<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>>
 ) : WorkerFactory() {

@@ -5,22 +5,23 @@ package dev.whosnickdoglio.scores.widget.actions
 
 import android.content.Context
 import androidx.glance.GlanceId
+import androidx.glance.action.Action
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
 import androidx.glance.appwidget.action.ActionCallback
 import androidx.glance.appwidget.action.actionRunCallback
 
-class NavigateActionCallback : ActionCallback {
+public class NavigateActionCallback : ActionCallback {
 
     private enum class Direction {
         UP,
-        DOWN
+        DOWN,
     }
 
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
-        parameters: ActionParameters
+        parameters: ActionParameters,
     ) {
         //        val direction: Direction? = parameters[navKey]
         //
@@ -51,13 +52,13 @@ class NavigateActionCallback : ActionCallback {
         //        ScoresWidget().update(context, glanceId)
     }
 
-    companion object {
+    public companion object {
         private val navKey = ActionParameters.Key<Direction>("direction")
 
-        fun up() =
+        public fun up(): Action =
             actionRunCallback<NavigateActionCallback>(actionParametersOf(navKey to Direction.UP))
 
-        fun down() =
+        public fun down(): Action =
             actionRunCallback<NavigateActionCallback>(actionParametersOf(navKey to Direction.DOWN))
     }
 }

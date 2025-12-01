@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 
 /**  */
-class ConfigurationActivity : ComponentActivity() {
+public class ConfigurationActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".ScoresApplication"
+        android:name="dev.whosnickdoglio.scores.ScoresApplication"
         android:allowBackup="true"
         android:configChanges="colorMode|density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".settings.ConfigurationActivity"
+            android:name="dev.whosnickdoglio.scores.settings.ConfigurationActivity"
             android:exported="false"
             android:theme="@style/AppTheme">
             <intent-filter>

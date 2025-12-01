@@ -2,10 +2,8 @@
 // SPDX-License-Identifier: MIT
 
 plugins {
-    id("scores.android")
+    alias(libs.plugins.convention.android.library)
     alias(libs.plugins.metro)
 }
-
-android { namespace = "dev.whosnickdoglio.workmanager" }
 
 dependencies { implementation(libs.androidx.workmanager) }
