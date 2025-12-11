@@ -2,7 +2,7 @@
 min-sdk = "26"
 target-sdk = "36"
 compile-sdk = "36"
-agp = "8.13.1"
+agp = "8.13.2"
 kotlin = "2.2.21"
 detekt = "1.23.8"
 cacheFix = "3.0.3"
