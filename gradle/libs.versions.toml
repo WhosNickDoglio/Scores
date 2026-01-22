@@ -19,7 +19,7 @@ spotless = "8.1.0"
 sort = "0.16"
 inject = "0.8.0"
 sqldelight = "2.2.1"
-ktor = "3.3.3"
+ktor = "3.4.0"
 jdk="24"
 
 [plugins]
