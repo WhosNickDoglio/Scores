@@ -39,7 +39,7 @@ fun interface AssistedWorkerFactory<T : ListenableWorker> {
 }
 
 @MapKey
-@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.TYPE)
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
 annotation class WorkerKey(val value: KClass<out ListenableWorker>)
 
 @Inject
