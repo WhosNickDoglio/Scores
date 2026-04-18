@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2026 Nicholas Doglio -->
+<!-- SPDX-License-Identifier: MIT -->
+
 <issues format="6" by="lint 8.0.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.0.2)" variant="all" version="8.0.2">
 
 </issues>
