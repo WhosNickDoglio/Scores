@@ -64,7 +64,7 @@ sortDependencies-gradle = { module = "com.squareup.sort-dependencies:com.squareu
 composeGuard-gradle = { module = "com.joetr.compose.guard:com.joetr.compose.guard.gradle.plugin", version.ref = "compose-guard" }
 dependencyAnalysis-gradle = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependencyAnalysis" }
 
-compose-bom = { module = "androidx.compose:compose-bom", version = "2026.03.01" }
+compose-bom = { module = "androidx.compose:compose-bom", version = "2026.04.01" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
