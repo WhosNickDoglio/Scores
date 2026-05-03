@@ -23,6 +23,7 @@ import androidx.glance.layout.wrapContentWidth
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.api.models.Game
 import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
+import widget.ui.R
 
 // TODO clean this up
 //  Centering seems off with Team columns and navigation row icons
@@ -31,18 +32,18 @@ import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
  * the full name (NYK instead of New York Knicks).
  */
 @Composable
-fun SingleScoreCompact(
+public fun SingleScoreCompact(
     onRefresh: () -> Unit,
     onNavigateUp: () -> Unit,
     onNavigateDown: () -> Unit,
     modifier: GlanceModifier = GlanceModifier,
     game: Game? = null,
     //    forceRefresh: Boolean = false,
-    ) {
+) {
     Column(
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
             modifier = GlanceModifier.fillMaxWidth().wrapContentHeight(),
@@ -54,24 +55,27 @@ fun SingleScoreCompact(
                 TeamColumn(
                     modifier = chipContentHeight,
                     name = game.homeTeam?.teamTricode.orEmpty(),
-                    score = game.homeTeam?.score.toString()
+                    score = game.homeTeam?.score.toString(),
                 )
                 Spacer(modifier = GlanceModifier.width(10.dp))
                 TeamColumn(
                     modifier = chipContentHeight,
                     name = game.awayTeam?.teamTricode.orEmpty(),
-                    score = game.awayTeam?.score.toString()
+                    score = game.awayTeam?.score.toString(),
                 )
             } else {
                 EmptyChip(
                     modifier = GlanceModifier.fillMaxWidth().fillMaxSize(),
-                    onRefresh = onRefresh
+                    onRefresh = onRefresh,
                 )
             }
         }
 
         if (game != null) {
-            Text(text = game.gameStatusText.orEmpty(), style = ScoresWidgetTheme.textStyle) // More info on game
+            Text(
+                text = game.gameStatusText.orEmpty(),
+                style = ScoresWidgetTheme.textStyle,
+            ) // More info on game
             Spacer(GlanceModifier.height(2.dp))
             NavigationRow(
                 modifier = GlanceModifier.height(50.dp).fillMaxWidth(),
@@ -99,31 +103,28 @@ private fun NavigationRow(
     Row(
         modifier = modifier.wrapContentHeight(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
             provider = ImageProvider(R.drawable.back),
             contentDescription = stringResource(R.string.cd_navigation_previous),
-            modifier = GlanceModifier.clickable(onNavigateUp)
+            modifier = GlanceModifier.clickable(onNavigateUp),
         )
         Refresh(onRefresh = onRefresh)
         Image(
             provider = ImageProvider(R.drawable.next),
             contentDescription = stringResource(R.string.cd_navigation_next),
-            modifier = GlanceModifier.clickable(onNavigateDown)
+            modifier = GlanceModifier.clickable(onNavigateDown),
         )
     }
 }
 
 @Composable
-private fun EmptyChip(
-    onRefresh: () -> Unit,
-    modifier: GlanceModifier = GlanceModifier,
-) {
+private fun EmptyChip(onRefresh: () -> Unit, modifier: GlanceModifier = GlanceModifier) {
     Column(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
         Refresh(onRefresh = onRefresh)
@@ -135,7 +136,7 @@ private fun TeamColumn(name: String, score: String, modifier: GlanceModifier = G
     Column(
         modifier = modifier.wrapContentWidth(),
         verticalAlignment = Alignment.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = GlanceModifier.height(2.dp))
         Text(text = name, style = ScoresWidgetTheme.textStyle)

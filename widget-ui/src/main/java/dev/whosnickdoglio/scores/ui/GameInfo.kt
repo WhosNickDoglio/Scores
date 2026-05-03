@@ -27,28 +27,26 @@ internal fun GameInfo(
     Row(
         modifier = modifier.padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalAlignment = Alignment.CenterVertically) {
-            // Team logos? Where can I get these?
-            // TODO Make this less ugly and handle more info
-            Text(text = game.homeTeam?.teamName.orEmpty(), style = ScoresWidgetTheme.textStyle)
-            Spacer(modifier = GlanceModifier.width(6.dp))
-            if (game.period != 0) {
-                Text(
-                    text = game.homeTeam?.score.toString(),
-                    style = ScoresWidgetTheme.scoreTextStyle)
-            }
-            Spacer(modifier = GlanceModifier.width(6.dp))
-            Text(
-                text = game.gameStatus.toString(),
-                style = ScoresWidgetTheme.textStyle) // More info on game
-            Spacer(modifier = GlanceModifier.width(6.dp))
-
-            if (game.period != 0) {
-                Text(
-                    text = game.awayTeam?.score.toString(),
-                    style = ScoresWidgetTheme.scoreTextStyle)
-            }
-            Spacer(modifier = GlanceModifier.width(6.dp))
-            Text(text = game.awayTeam?.teamName.orEmpty(), style = ScoresWidgetTheme.textStyle)
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        // Team logos? Where can I get these?
+        // TODO Make this less ugly and handle more info
+        Text(text = game.homeTeam?.teamName.orEmpty(), style = ScoresWidgetTheme.textStyle)
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        if (game.period != 0) {
+            Text(text = game.homeTeam?.score.toString(), style = ScoresWidgetTheme.scoreTextStyle)
         }
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        Text(
+            text = game.gameStatus.toString(),
+            style = ScoresWidgetTheme.textStyle,
+        ) // More info on game
+        Spacer(modifier = GlanceModifier.width(6.dp))
+
+        if (game.period != 0) {
+            Text(text = game.awayTeam?.score.toString(), style = ScoresWidgetTheme.scoreTextStyle)
+        }
+        Spacer(modifier = GlanceModifier.width(6.dp))
+        Text(text = game.awayTeam?.teamName.orEmpty(), style = ScoresWidgetTheme.textStyle)
+    }
 }

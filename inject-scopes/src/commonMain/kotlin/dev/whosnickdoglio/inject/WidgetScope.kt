@@ -3,8 +3,4 @@
 
 package dev.whosnickdoglio.inject
 
-import dev.zacsweers.metro.Scope
-
-@Scope
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER)
-annotation class WidgetScope
+public interface WidgetScope

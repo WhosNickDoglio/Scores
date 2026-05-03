@@ -8,12 +8,13 @@ import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.action.clickable
+import widget.ui.R
 
 @Composable
 internal fun Refresh(onRefresh: () -> Unit, modifier: GlanceModifier = GlanceModifier) {
     Image(
         provider = ImageProvider(R.drawable.refresh),
         contentDescription = stringResource(R.string.cd_refresh),
-        modifier = modifier.clickable(onRefresh)
+        modifier = modifier.clickable(onRefresh),
     )
 }

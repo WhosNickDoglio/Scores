@@ -7,6 +7,6 @@ import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
 
 /** A [GlanceAppWidgetReceiver] implementation for the [ScoresWidget]. */
-class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
+public class ScoresWidgetReceiver : GlanceAppWidgetReceiver() {
     override val glanceAppWidget: GlanceAppWidget = ScoresWidget()
 }

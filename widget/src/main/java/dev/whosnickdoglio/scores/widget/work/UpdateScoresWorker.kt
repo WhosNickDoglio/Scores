@@ -24,7 +24,7 @@ import dev.zacsweers.metro.ContributesIntoMap
 import dev.zacsweers.metro.binding
 
 @AssistedInject
-class UpdateScoresWorker(
+public class UpdateScoresWorker(
     private val service: NbaScoreboardNetworkClient,
     private val glanceScoresStateDefinition: ScoresStateDefinition,
     @Assisted private val appContext: Context,
@@ -37,7 +37,7 @@ class UpdateScoresWorker(
         binding = binding<AssistedWorkerFactory<out ListenableWorker>>(),
     )
     @AssistedFactory
-    fun interface Factory : AssistedWorkerFactory<UpdateScoresWorker>
+    public fun interface Factory : AssistedWorkerFactory<UpdateScoresWorker>
 
     override suspend fun doWork(): Result =
         when (val apiResult = service.fetch()) {

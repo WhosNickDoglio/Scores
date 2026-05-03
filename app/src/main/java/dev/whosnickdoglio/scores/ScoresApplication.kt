@@ -13,7 +13,7 @@ import dev.zacsweers.metro.createGraph
  * Our Android [Application] class that acts as our [GraphProvider] to maintain a single instance of
  * our [ScoresAppDependencyGraph] as well as initializing some debug tools.
  */
-class ScoresApplication : Application(), GraphProvider, Configuration.Provider {
+public class ScoresApplication : Application(), GraphProvider, Configuration.Provider {
 
     override val graph: ScoresAppDependencyGraph by lazy { createGraph() }
 

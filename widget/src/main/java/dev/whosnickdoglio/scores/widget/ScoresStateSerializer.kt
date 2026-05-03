@@ -16,7 +16,7 @@ import kotlinx.serialization.json.Json
  * @param json A [Json] instance that parses the [ScoresWidgetState]
  */
 @Inject
-class ScoresStateSerializer(private val json: Json) : Serializer<ScoresWidgetState> {
+public class ScoresStateSerializer(private val json: Json) : Serializer<ScoresWidgetState> {
 
     override val defaultValue: ScoresWidgetState = ScoresWidgetState()
 
@@ -24,7 +24,9 @@ class ScoresStateSerializer(private val json: Json) : Serializer<ScoresWidgetSta
     override suspend fun readFrom(input: InputStream): ScoresWidgetState =
         try {
             json.decodeFromString(
-                ScoresWidgetState.serializer(), input.readBytes().decodeToString())
+                ScoresWidgetState.serializer(),
+                input.readBytes().decodeToString(),
+            )
         } catch (exception: EOFException) {
             ScoresWidgetState()
         }

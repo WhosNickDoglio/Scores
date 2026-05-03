@@ -2,10 +2,14 @@
 // SPDX-License-Identifier: MIT
 
 plugins {
-    id("scores.android")
+    alias(libs.plugins.convention.android.library)
     alias(libs.plugins.kotlin.compose)
 }
 
-android { namespace = "dev.whosnickdoglio.scores.app.theme" }
+convention.published { composeGuard() }
 
-dependencies { implementation(libs.compose.material) }
+dependencies {
+    implementation(platform(libs.compose.bom))
+    implementation(platform(libs.kotlin.bom))
+    implementation(libs.compose.material)
+}

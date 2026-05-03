@@ -19,16 +19,16 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 @ContributesTo(AppScope::class)
-interface NbaApiModule {
+public interface NbaApiModule {
 
     @Provides
-    fun provideJson(): Json = Json {
+    public fun provideJson(): Json = Json {
         isLenient = true
         ignoreUnknownKeys = true
     }
 
     @Provides
-    fun provideClient(json: Json): HttpClient =
+    public fun provideClient(json: Json): HttpClient =
         HttpClient(CIO) {
             install(ContentNegotiation) {
                 json(json, contentType = ContentType.Application.OctetStream)
@@ -43,25 +43,25 @@ interface NbaApiModule {
 }
 
 @ContributesTo(WidgetScope::class)
-interface WidgetNbaApiModule {
+public interface WidgetNbaApiModule {
 
-        @Provides
-        fun provideJson(): Json = Json {
-            isLenient = true
-            ignoreUnknownKeys = true
-        }
+    @Provides
+    public fun provideJson(): Json = Json {
+        isLenient = true
+        ignoreUnknownKeys = true
+    }
 
-        @Provides
-        fun provideClient(json: Json): HttpClient =
-            HttpClient(CIO) {
-                install(ContentNegotiation) {
-                    json(json, contentType = ContentType.Application.OctetStream)
-                }
-
-                // TODO only do in debug builds
-                install(Logging) {
-                    logger = Logger.DEFAULT
-                    level = LogLevel.ALL
-                }
+    @Provides
+    public fun provideClient(json: Json): HttpClient =
+        HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json(json, contentType = ContentType.Application.OctetStream)
             }
+
+            // TODO only do in debug builds
+            install(Logging) {
+                logger = Logger.DEFAULT
+                level = LogLevel.ALL
+            }
+        }
 }

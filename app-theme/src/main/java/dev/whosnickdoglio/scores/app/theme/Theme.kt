@@ -14,7 +14,7 @@ private val DarkColorPalette = darkColorScheme(primary = Purple200, secondary = 
 private val LightColorPalette =
     lightColorScheme(
         primary = Purple500,
-        secondary = Teal200
+        secondary = Teal200,
 
         /* Other default colors to override
         background = Color.White,
@@ -27,7 +27,10 @@ private val LightColorPalette =
     )
 
 @Composable
-fun ScoresTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+public fun ScoresTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit,
+) {
     val colors =
         if (darkTheme) {
             DarkColorPalette

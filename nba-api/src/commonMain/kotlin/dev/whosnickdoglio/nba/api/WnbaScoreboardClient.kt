@@ -18,7 +18,8 @@ import io.ktor.client.request.get
 @Inject
 @ContributesBinding(WidgetScope::class)
 @ContributesBinding(AppScope::class)
-class WnbaScoreboardClient(private val client: HttpClient) : NbaScoreboardNetworkClient {
+@Suppress("TooGenericExceptionCaught")
+public class WnbaScoreboardClient(private val client: HttpClient) : NbaScoreboardNetworkClient {
     override suspend fun fetch(): Result<WnbaResponse> =
         try {
             val data = client.get("$BASE_URL/liveData/scoreboard/todaysScoreboard_10.json")

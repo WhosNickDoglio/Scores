@@ -6,8 +6,9 @@ package dev.whosnickdoglio.scores.startup
 import android.content.Context
 import android.os.StrictMode
 import androidx.startup.Initializer
+import startup.BuildConfig
 
-class StrictModeInitializer : Initializer<Unit> {
+public class StrictModeInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(

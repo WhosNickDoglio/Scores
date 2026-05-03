@@ -15,21 +15,21 @@ import androidx.glance.layout.fillMaxHeight
 import androidx.glance.text.Text
 import dev.whosnickdoglio.nba.api.models.Game
 import dev.whosnickdoglio.scores.widget.theme.ScoresWidgetTheme
+import widget.ui.R
 
-/**
- */
+/**  */
 @Composable
-fun SingleGame(
+public fun SingleGame(
     onRefresh: () -> Unit,
     onNavigateUp: () -> Unit,
     onNavigateDown: () -> Unit,
     modifier: GlanceModifier = GlanceModifier,
-    game: Game? = null
+    game: Game? = null,
 ) {
     Row(modifier = modifier) {
         Column(
             modifier = GlanceModifier.fillMaxHeight(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Refresh(onRefresh = onRefresh)
         }
@@ -40,7 +40,7 @@ fun SingleGame(
             Row(
                 modifier = GlanceModifier.fillMaxHeight().defaultWeight(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(text = stringResource(R.string.no_games), style = ScoresWidgetTheme.textStyle)
             }
@@ -62,12 +62,12 @@ private fun NavigationColumn(
         Image(
             provider = ImageProvider(R.drawable.up),
             contentDescription = stringResource(R.string.cd_navigation_previous),
-            modifier = GlanceModifier.clickable(onNavigateUp)
+            modifier = GlanceModifier.clickable(onNavigateUp),
         )
         Image(
             provider = ImageProvider(R.drawable.down),
             contentDescription = stringResource(R.string.cd_navigation_next),
-            modifier = GlanceModifier.clickable(onNavigateDown)
+            modifier = GlanceModifier.clickable(onNavigateDown),
         )
     }
 }
