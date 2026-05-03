@@ -87,7 +87,7 @@ public fun SingleScoreCompact(
     }
 }
 
-@Suppress("UnusedPrivateMember")
+@Suppress("UnusedPrivateFunction")
 @Composable
 private fun Loading() {
     Text(text = "Loading...")
