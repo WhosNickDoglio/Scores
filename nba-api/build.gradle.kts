@@ -19,13 +19,14 @@ kotlin {
         commonMain.dependencies {
             api(libs.ktor.core)
             api(libs.ktor.serialization)
-            implementation(libs.ktor.logging)
-            implementation(libs.ktor.contentNegotiation)
+            api(libs.serialization)
+
+            implementation(libs.coroutines.core)
+            implementation(libs.kermit)
             // TODO investigate using different engines per platform
             implementation(libs.ktor.cio)
-            api(libs.serialization)
-            implementation(libs.kermit)
-            implementation(libs.coroutines.core)
+            implementation(libs.ktor.contentNegotiation)
+            implementation(libs.ktor.logging)
             implementation(projects.injectScopes)
         }
     }
