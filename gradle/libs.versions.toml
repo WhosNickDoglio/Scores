@@ -22,7 +22,7 @@ jdkTarget = "17"
 convention-plugin = "0.4.0"
 
 [plugins]
-detekt = { id = "dev.detekt", version = "2.0.0-alpha.3" }
+detekt = { id = "dev.detekt", version = "2.0.0-alpha.5" }
 doctor = { id = "com.osacky.doctor", version = "0.12.1" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependencyAnalysis" }
 android-app = { id = "com.android.application", version.ref = "agp" }
