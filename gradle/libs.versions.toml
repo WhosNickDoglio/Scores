@@ -90,7 +90,7 @@ circuitx-overlays = { module = "com.slack.circuit:circuitx-overlays", version.re
 
 serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.11.0" }
 datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.8.0-0.6.x-compat" }
-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.5.0" }
+immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.5.1" }
 
 kermit = { module = "co.touchlab:kermit", version = "2.1.0" }
 
