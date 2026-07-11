@@ -29,6 +29,11 @@ plugins {
     alias(libs.plugins.gradle.versions)
 }
 
+doctor {
+    javaHome {
+        failOnError = false
+    }
+}
 
 // https://docs.gradle.org/8.9/userguide/gradle_daemon.html#daemon_jvm_criteria
 tasks.updateDaemonJvm.configure {
