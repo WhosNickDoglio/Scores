@@ -17,7 +17,6 @@ plugins {
     alias(libs.plugins.dependencyGuard) apply false
     alias(libs.plugins.licensee) apply false
     alias(libs.plugins.detekt) apply false
-    alias(libs.plugins.ksp) apply false
     alias(libs.plugins.ktfmt) apply false
     alias(libs.plugins.composeGuard) apply false
     alias(libs.plugins.metro) apply false
