@@ -21,13 +21,13 @@ kotlin {
             api(libs.ktor.serialization)
             api(libs.serialization)
 
+            implementation(project(":inject-scopes"))
             implementation(libs.coroutines.core)
             implementation(libs.kermit)
             // TODO investigate using different engines per platform
             implementation(libs.ktor.cio)
             implementation(libs.ktor.contentNegotiation)
             implementation(libs.ktor.logging)
-            implementation(projects.injectScopes)
         }
     }
 }

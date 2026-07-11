@@ -23,12 +23,12 @@ dependencies {
 
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.kotlin.bom))
+    implementation(project(":inject-scopes"))
+    implementation(project(":nba-api"))
+    implementation(project(":widget-theme"))
+    implementation(project(":widget-ui"))
+    implementation(project(":workmanager-assisted"))
     implementation(libs.glance.appwidget)
     implementation(libs.immutableCollections)
     implementation(libs.serialization)
-    implementation(projects.injectScopes)
-    implementation(projects.nbaApi)
-    implementation(projects.widgetTheme)
-    implementation(projects.widgetUi)
-    implementation(projects.workmanagerAssisted)
 }

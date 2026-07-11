@@ -1,0 +1,9 @@
+:app
+:app-theme
+:nba-api
+:inject-scopes
+:widget-ui
+:widget-theme
+:startup
+:workmanager-assisted
+:widget

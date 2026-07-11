@@ -11,10 +11,10 @@ convention.published { composeGuard() }
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(platform(libs.kotlin.bom))
+    implementation(project(":nba-api"))
+    implementation(project(":widget-theme"))
     implementation(libs.compose.material)
     implementation(libs.glance.appwidget)
     implementation(libs.glance.material)
     implementation(libs.immutableCollections)
-    implementation(projects.nbaApi)
-    implementation(projects.widgetTheme)
 }
