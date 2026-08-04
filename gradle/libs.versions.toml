@@ -43,7 +43,7 @@ gradle-versions = { id = "com.github.ben-manes.versions", version = "0.59.0" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-ktfmt = { id = "com.ncorti.ktfmt.gradle", version = "0.26.0" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version = "0.27.0" }
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
 metro = { id = "dev.zacsweers.metro", version = "1.4.0" }
 
