@@ -5,6 +5,7 @@ package dev.whosnickdoglio.nba.api.di
 
 import dev.whosnickdoglio.inject.WidgetScope
 import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.BindingContainer
 import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.Provides
 import io.ktor.client.HttpClient
@@ -19,7 +20,8 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 @ContributesTo(AppScope::class)
-public interface NbaApiModule {
+@BindingContainer
+public object NbaApiModule {
 
     @Provides
     public fun provideJson(): Json = Json {
@@ -43,7 +45,8 @@ public interface NbaApiModule {
 }
 
 @ContributesTo(WidgetScope::class)
-public interface WidgetNbaApiModule {
+@BindingContainer
+public object WidgetNbaApiModule {
 
     @Provides
     public fun provideJson(): Json = Json {
