@@ -39,7 +39,7 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.61.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.62.0" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 sortDependencies = { id = "com.squareup.sort-dependencies", version.ref = "sort" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
