@@ -30,7 +30,7 @@ public annotation class WorkerKey(val value: KClass<out ListenableWorker>)
 @ContributesBinding(AppScope::class)
 public class ScoresWorkerFactory(
     private val assistedWorkerFactories:
-        Map<KClass<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>>
+        Map<KClass<out ListenableWorker>, AssistedWorkerFactory<out ListenableWorker>>,
 ) : WorkerFactory() {
     @Suppress("ReturnCount")
     override fun createWorker(

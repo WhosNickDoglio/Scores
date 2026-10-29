@@ -17,12 +17,10 @@ plugins {
     alias(libs.plugins.dependencyGuard) apply false
     alias(libs.plugins.licensee) apply false
     alias(libs.plugins.detekt) apply false
-    alias(libs.plugins.ktfmt) apply false
     alias(libs.plugins.composeGuard) apply false
     alias(libs.plugins.metro) apply false
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.kover) apply false
-    alias(libs.plugins.sortDependencies) apply false
     alias(libs.plugins.dependency.analysis)
     alias(libs.plugins.doctor)
     alias(libs.plugins.gradle.versions)

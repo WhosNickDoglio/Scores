@@ -16,12 +16,21 @@ jobs:
       - uses: ./.github/actions/setup
       - name: Build
         run: ./gradlew assemble
+  Kempt:
+    runs-on: ubuntu-latest
+    needs: [ Build ]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - uses: ZacSweers/kempt@7020aae27a2f81a38e5b01b78a0735d332da3876 # main
+        with:
+          cache: true
   Lint:
     runs-on: ubuntu-latest
     needs: [ Build ]
     strategy:
       matrix:
-        command: [ detektMain, detektTest, lint, ktfmtCheck, checkSortDependencies, licensee, releaseComposeCompilerCheck --rerun-tasks ]
+        command: [ detektMain, detektTest, lint, licensee, releaseComposeCompilerCheck --rerun-tasks ]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup
