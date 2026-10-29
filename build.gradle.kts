@@ -22,13 +22,6 @@ plugins {
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.kover) apply false
     alias(libs.plugins.dependency.analysis)
-    alias(libs.plugins.doctor)
-}
-
-doctor {
-    javaHome {
-        failOnError = false
-    }
 }
 
 // https://docs.gradle.org/8.9/userguide/gradle_daemon.html#daemon_jvm_criteria
