@@ -40,7 +40,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
-metro = { id = "dev.zacsweers.metro", version = "1.5.0" }
+metro = { id = "dev.zacsweers.metro", version = "1.5.1" }
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version = "1.19.1" }
