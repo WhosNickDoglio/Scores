@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup
-      - uses: ZacSweers/kempt@7020aae27a2f81a38e5b01b78a0735d332da3876 # main
+      - uses: ZacSweers/kempt@2540639b1c8852e8e6a2ba9be67e0b5c2dd9d758 # main
         with:
           cache: true
   Lint:
